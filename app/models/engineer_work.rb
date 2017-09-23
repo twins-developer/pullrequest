@@ -1,0 +1,2 @@
+class EngineerWork < ApplicationRecord
+end
