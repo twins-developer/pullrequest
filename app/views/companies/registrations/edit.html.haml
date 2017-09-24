@@ -1,36 +1,65 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "off"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+%h1.text-center= title t('.title')
+
+.row
+  .col-xs-12.col-sm-offset-2.col-sm-8
+    = render 'error_messages', resource: resource if resource.errors.any?
+    = form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' } do |f|
+
+      = f.fields_for :basic_info do |basic_info_f|
+        .form-group
+          = basic_info_f.label :image, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= basic_info_f.file_field :image, class: 'form-control'
+
+        .form-group
+          = basic_info_f.label :name, class: 'col-xs-6 col-sm-3 control-label'
+          .col-sm-9.col-xs-12
+            = basic_info_f.text_field :name, class: 'form-control'
+
+        .form-group
+          = basic_info_f.label :founded_on, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9.col-xs-12
+            = basic_info_f.date_select :founded_on, { use_month_numbers: true }, { class: 'form-control form-control-date-select' }
+
+        .form-group
+          .col-xs-12
+            %h2 ご連絡先
+
+        .form-group
+          = basic_info_f.label :zip_code, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9.col-xs-6= basic_info_f.text_field :zip_code, class: 'form-control'
+
+        .form-group
+          = basic_info_f.label :prefecture, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= basic_info_f.text_field :prefecture, class: 'form-control'
+
+        .form-group
+          = basic_info_f.label :city, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= basic_info_f.text_field :city, class: 'form-control'
+
+        .form-group
+          = basic_info_f.label :street, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= basic_info_f.text_field :street, class: 'form-control'
+
+        .form-group
+          = basic_info_f.label :building, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= basic_info_f.text_field :building, class: 'form-control'
+
+        .form-group
+          = basic_info_f.label :tel, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= basic_info_f.text_field :tel, class: 'form-control'
+
+        .form-group
+          = basic_info_f.label :capital, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= basic_info_f.number_field :capital, class: 'form-control'
+
+      .form-group
+        .col-xs-12
+          %hr
+
+      .form-group
+        .col-xs-12.col-sm-3.col-sm-offset-3
+          = f.submit nil, class: 'btn btn-primary btn-block'
+          %br.visible-xs-block.visible-sm-block
+
+        .col-xs-12.col-sm-3
+          = link_to t('.cancel', default: t("helpers.links.cancel")), :back, class: 'btn btn-default btn-block'

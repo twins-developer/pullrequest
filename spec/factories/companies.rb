@@ -40,11 +40,11 @@ FactoryGirl.define do
   #     end
   #   end
   #
-  #   trait :with_plans do
-  #     after(:create) do |company|
-  #       create_list(:plan, 9, :with_images, :with_plan_tags, company: company)
-  #     end
-  #   end
+    trait :with_projects do
+      after(:create) do |company|
+        create_list(:project, 9, company: company)
+      end
+    end
   #
   #
   #   trait :with_deliveries do
@@ -57,7 +57,7 @@ FactoryGirl.define do
   #         start_at: today - 14.hours,
   #         end_at: today- 11.hours,
   #         company: company,
-  #         plan: Plan.last,
+  #         project: project.last,
   #       )
   #       for num in 1..5 do
   #         today += 3.hours
@@ -68,7 +68,7 @@ FactoryGirl.define do
   #           start_at: today,
   #           end_at: today + 3.hours,
   #           company: company,
-  #           plan: Plan.last,
+  #           project: project.last,
   #         )
   #       end
   #
@@ -80,7 +80,7 @@ FactoryGirl.define do
   #        start_at: tomorrow,
   #        end_at: tomorrow + 3.hours,
   #        company: company,
-  #        plan: Plan.last,
+  #        project: project.last,
   #      )
   #      tomorrow += 3.hours
   #      create(:delivery,
@@ -91,7 +91,7 @@ FactoryGirl.define do
   #        start_at: tomorrow,
   #        end_at: tomorrow + 3.hours,
   #        company: company,
-  #        plan: Plan.last,
+  #        project: project.last,
   #      )
   #      tomorrow += 3.hours
   #      create(:delivery,
@@ -101,7 +101,7 @@ FactoryGirl.define do
   #        start_at: tomorrow,
   #        end_at: tomorrow + 3.hours,
   #        company: company,
-  #        plan: Plan.last,
+  #        project: project.last,
   #      )
   #     tomorrow += 3.hours
   #     create(:delivery,
@@ -111,7 +111,7 @@ FactoryGirl.define do
   #       start_at: tomorrow,
   #       end_at: tomorrow + 3.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     date = Time.zone.today.since(14.days)
   #     create(:delivery,
@@ -120,7 +120,7 @@ FactoryGirl.define do
   #       start_at: date,
   #       end_at: date + 3.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     date = Time.zone.today.since(15.days)
   #     create(:delivery,
@@ -129,7 +129,7 @@ FactoryGirl.define do
   #       start_at: date,
   #       end_at: date + 3.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     date = Time.zone.today.ago(15.days)
   #     create(:delivery,
@@ -138,7 +138,7 @@ FactoryGirl.define do
   #       start_at: date,
   #       end_at: date + 3.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     date = Time.zone.today.ago(1.month)
   #     create(:delivery,
@@ -149,7 +149,7 @@ FactoryGirl.define do
   #       start_at: date,
   #       end_at: date + 3.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     date = date.ago(1.day)
   #     create(:delivery,
@@ -160,7 +160,7 @@ FactoryGirl.define do
   #       start_at: tomorrow,
   #       end_at: tomorrow + 3.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     yesterday = Time.zone.today.yesterday
   #     create(:delivery,
@@ -171,7 +171,7 @@ FactoryGirl.define do
   #       start_at: tomorrow,
   #       end_at: tomorrow + 3.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     create(:delivery,
   #       :with_reviews,
@@ -181,7 +181,7 @@ FactoryGirl.define do
   #       start_at: yesterday + 2.hours,
   #       end_at: yesterday + 5.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     today = Time.zone.today
   #     create(:delivery,
@@ -192,14 +192,14 @@ FactoryGirl.define do
   #       start_at: today,
   #       end_at: today - 3.hours,
   #       company: company,
-  #       plan: Plan.last,
+  #       project: project.last,
   #     )
   #     end
   #   end
   #   trait :with_delivery_reports do
   #     after(:create) do |company|
   #       company.deliveries.completed.each do |delivery|
-  #         create(:delivery_report, company: company, delivery: delivery, plan: delivery.plan)
+  #         create(:delivery_report, company: company, delivery: delivery, project: delivery.project)
   #       end
   #     end
   #   end

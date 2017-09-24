@@ -1,0 +1,26 @@
+.page-header
+  %h1 Welcome#index
+%p Find me in app/views/welcome/index.html.haml
+
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+    %thead
+      %tr
+        %th Company
+        %th 開始日
+        %th 終了日
+        %th Status
+        %th title
+        %th 詳細
+        %th
+
+    %tbody
+      - @projects.each do |project|
+        %tr
+          %td= project.company.name
+          %td= project.start_at
+          %td= project.end_at
+          %td= project.status
+          %td= project.title
+          %td= project.note
+          %td= link_to 'Show', companies_project_path(project.id)

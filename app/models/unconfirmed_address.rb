@@ -30,7 +30,7 @@ class UnconfirmedAddress < ApplicationRecord
   }
 
   # -------------------------------------------------------------------------------
-  # Default
+  # Attributes
   # -------------------------------------------------------------------------------
 
   attribute :status, default: statuses[:prepare]

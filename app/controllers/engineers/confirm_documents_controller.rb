@@ -9,6 +9,7 @@ class Engineers::ConfirmDocumentsController < Engineers::BaseController
 
   # GET /engineers/confirm_documents/new
   def new
+    @confirm_document = ConfirmDocument.new
   end
 
   # POST   /engineers/confirm_documents

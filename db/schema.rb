@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924130612) do
+ActiveRecord::Schema.define(version: 20170924110558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,8 +87,11 @@ ActiveRecord::Schema.define(version: 20170924130612) do
   end
 
   create_table "confirm_documents", force: :cascade do |t|
+    t.bigint "unconfirmed_address_id"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["unconfirmed_address_id"], name: "index_confirm_documents_on_unconfirmed_address_id"
   end
 
   create_table "engineers", force: :cascade do |t|
@@ -288,6 +291,7 @@ ActiveRecord::Schema.define(version: 20170924130612) do
   add_foreign_key "companies_careers", "companies"
   add_foreign_key "companies_engineers", "companies"
   add_foreign_key "companies_engineers", "engineers"
+  add_foreign_key "confirm_documents", "unconfirmed_addresses"
   add_foreign_key "engineers_profiles", "engineers"
   add_foreign_key "engineers_reviews", "engineers"
   add_foreign_key "engineers_settings", "engineers"

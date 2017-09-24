@@ -4,13 +4,13 @@
 
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li= link_to t('companys.plans.index.title'), '#'
+        %li= link_to t('companys.plans.index.title'), new_companies_project_path
         %li= link_to t('companys.stock_hour_masters.index.title'), '#'
 
       %ul.nav.navbar-nav.pull-right
         %li
           %p.nav-text= image_tag current_company.image.url, size: '36x36', class: 'img-circle'
-        %li= link_to current_company.name, '#'
+        %li= link_to current_company.name, companies_my_page_path
 
         %li
           = link_to destroy_company_session_path, method: :delete do
