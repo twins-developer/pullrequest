@@ -1,3 +1,30 @@
+# == Schema Information
+#
+# Table name: engineers_profiles
+#
+#  id              :integer          not null, primary key
+#  engineer_id     :integer
+#  status          :integer
+#  image           :string
+#  last_name       :string
+#  last_name_kana  :string
+#  first_name      :string
+#  first_name_kana :string
+#  birthday        :date
+#  gender          :integer
+#  zip_code        :string
+#  prefecture      :string
+#  city            :string
+#  street          :string
+#  building        :string
+#  tel             :string
+#  language        :string
+#  country         :string
+#  message         :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 FactoryGirl.define do
   factory :engineers_profile, class: 'engineers::Profile' do
     engineer nil

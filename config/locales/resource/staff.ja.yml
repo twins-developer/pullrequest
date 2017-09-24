@@ -1,0 +1,88 @@
+ja:
+  activerecord:
+    models:
+      staff: スタッフ
+    attributes:
+      staff:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        sign_in_count: ログイン回数
+        created_at: 登録日時
+
+      staffs/profile:
+        staff: スタッフ
+        staff_id: スタッフ
+        image: アイコン画像
+        name: お名前
+        name_kana: お名前（ふりがな）
+        first_name: 名
+        first_name_kana: メイ
+        last_name: 性
+        last_name_kana: セイ
+        birthday: 生年月日
+        gender: 性別
+        zip_code: 郵便番号
+        prefecture: 都道府県
+        city: 市区町村
+        street: それ以降の住所（番地まで）
+        building: 建物名・部屋番号
+        tel: 電話番号
+
+      address_confirmation_image:
+        image: 法人確認書類
+
+  staffs:
+    index:
+      title: マイページ
+    my_page:
+      title: マイページ
+      basic_info: 基本情報
+      entry: 法人をする
+
+    edit_mail:
+      title: メールアドレスを変更する
+      unconfirmed_address_prepare: 本人確認をする
+      unconfirmed_address_confirmation: 本人確認審査中
+      unconfirmed_address_confirmed: 本人確認完了
+      unconfirmed_address_resubmit: 本人確認再提出願い
+
+    sessions:
+      new:
+        title: スタッフでログイン
+        sub_titles:
+          login_with_email_and_password: メールアドレスとパスワードでログインする
+          login_with_oauth: SNSアカウントでログインする
+          no_account: アカウントをお持ちではありませんか？
+        forgot_password: パスワードをお忘れの方はこちら
+      create:
+        title: ログイン
+
+    registrations:
+      new:
+        title: 新規スタッフ登録
+        sub_titles:
+          sign_up_with_email_and_password: 情報を入力して会員登録する
+          sign_up_with_oauth: SNSアカウントで会員登録する
+          already_have_account: 既にアカウントをお持ちの場合
+      edit:
+        title: アカウント情報の編集
+      create:
+        title: 新規アカウントの登録
+    passwords:
+      new:
+        title: パスワードをお忘れですか？
+        description: アカウント登録時に設定したメールアドレス宛にパスワードの再設定方法を送信します。
+        placeholders:
+          email: アカウント登録したときのメールアドレスを入力してください
+      edit:
+        title: パスワードの再設定
+        description: 新しいパスワードを設定することで、サービスを再び利用することができるようになります。
+        new_password: 新しいパスワード
+        new_password_confirmation: 新しいパスワード（確認）
+        sub_titles:
+          renew_password: パスワードの再設定を行う
+          found_password: パスワードが見つかりましたか？
+        placeholders:
+          new_password: 半角英数字で8文字から128文字まで入力できます
+          new_password_confirmation: 上記で入力したパスワードと同じものを入力してください

@@ -22,9 +22,24 @@ class Engineers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+    engineer = current_engineer
+    attributes = {
+      status: :prepare,
+      zip_code: engineer.zip_code,
+      prefecture: engineer.prefecture,
+      city: engineer.city,
+      street: engineer.street,
+      building: engineer.building
+    }
+
+    if engineer.unconfirmed_address
+      engineer.unconfirmed_address.update(attributes)
+    else
+      engineer.build_unconfirmed_address(attributes).save
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -33,7 +48,7 @@ class Engineers::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
+  # in to be expired now. This is useful if the engineer wants to
   # cancel oauth signing in/up in the middle of the process,
   # removing all OAuth session data.
   # def cancel

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170923113620) do
+ActiveRecord::Schema.define(version: 20170924130612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,11 @@ ActiveRecord::Schema.define(version: 20170923113620) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_companies_engineers_on_company_id"
     t.index ["engineer_id"], name: "index_companies_engineers_on_engineer_id"
+  end
+
+  create_table "confirm_documents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "engineers", force: :cascade do |t|
@@ -249,6 +254,19 @@ ActiveRecord::Schema.define(version: 20170923113620) do
     t.string "name"
     t.text "note"
     t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "unconfirmed_addresses", force: :cascade do |t|
+    t.integer "status", null: false
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.string "zip_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

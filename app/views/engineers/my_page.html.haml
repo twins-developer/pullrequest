@@ -1,0 +1,28 @@
+-# - if current_engineer.unconfirmed_email
+-#   .alert.alert-danger= t '.unconfirmed_email', unconfirmed_email: current_engineer.unconfirmed_email
+
+%h1= title t '.title'
+%br
+%h4= t '.basic_info'
+.row
+  .col-xs-12.col-md-4
+    %table.table.table-bordered
+      %tbody
+        %tr
+          %td.profile-label= t 'activerecord.attributes.user.email'
+          %td= current_engineer.email
+        %tr
+          %td.profile-label= t 'activerecord.attributes.user.name'
+          %td= current_engineer.name
+        %tr
+          %td.profile-label= t 'activerecord.attributes.user.image'
+          %td= image_tag current_engineer.image.url, size: '23x23'
+        %tr
+          %td.profile-label= t 'activerecord.attributes.user.prefecture'
+          %td= current_engineer.prefecture
+%hr
+.row
+.btn-group.btn-group-justified
+  .col-xs-12.col-md-4.btn-group= link_to t('.delivery_history'), '#', class: 'btn btn-primary btn-block'
+  .col-xs-12.col-md-4.btn-group= link_to t('.confirm_documents'), new_engineers_confirm_document_path, class: 'btn btn-primary btn-block'
+  .col-xs-12.col-md-4.btn-group= link_to t('helpers.links.edit'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
