@@ -31,11 +31,17 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :career
   has_many :engineers, class_name: 'Companies::Engineer', dependent: :destroy
   accepts_nested_attributes_for :engineers
+  has_one :unconfirmed_address, as: :resource
+  has_many :projects
 
   # -------------------------------------------------------------------------------
   # Delegations
   # -------------------------------------------------------------------------------
   delegate :image, to: :basic_info
   delegate :name, to: :basic_info
-
+  delegate :prefecture, to: :basic_info
+  delegate :zip_code, to: :basic_info
+  delegate :city, to: :basic_info
+  delegate :street, to: :basic_info
+  delegate :building, to: :basic_info
 end

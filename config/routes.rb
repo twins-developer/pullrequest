@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   #
   namespace :companies do
     get 'my_page'
+    resources :confirm_documents, only: %i(new create)
+    resources :projects
   end
 
   #

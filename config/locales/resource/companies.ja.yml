@@ -88,3 +88,8 @@ ja:
         placeholders:
           new_password: 半角英数字で8文字から128文字まで入力できます
           new_password_confirmation: 上記で入力したパスワードと同じものを入力してください
+    confirm_documents:
+      new:
+        title: 本人確認書類の提出
+        upload: 本人確認書類
+        submit: 本人確認書類を提出する

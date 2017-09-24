@@ -1,0 +1,49 @@
+.col-md-12
+  = form_for [:companies, @project], html: { class: 'form-horizontal', role: 'form' } do |f|
+
+    - if @project.errors.any?
+      .alert.alert-danger.alert-dismissable{ role: 'alert' }
+        %button.close{ type: 'button', data: { dismiss: 'alert' } }
+          %span{ aria: { hidden: 'true' } } &times;
+          %span.sr-only Close
+        %h4= "#{pluralize(@project.errors.count, t('.errors'))}"
+
+        %ul
+          - @project.errors.full_messages.each do |msg|
+            %li= msg
+
+    .form-group
+      %label.col-sm-2.control-label.control-label-required
+        = t('.title')
+        &nbsp;
+        %span.label.label-info= t('.required')
+      .col-sm-10
+        = f.text_field :title, class: 'form-control', placeholder: t('.title_example')
+
+    .form-group
+      %label.col-sm-2.control-label.control-label-required
+        = t('.start_at')
+        &nbsp;
+        %span.label.label-info= t('.required')
+      .col-sm-10
+        = f.date_select :start_at, class: 'form-control', placeholder: t('.description_example')
+
+    .form-group
+      %label.col-sm-2.control-label.control-label-required
+        = t('.end_at')
+        &nbsp;
+        %span.label.label-info= t('.required')
+      .col-sm-10
+        = f.date_select :end_at, class: 'form-control', placeholder: t('.price_unit')
+
+    .form-group
+      %label.col-sm-2.control-label.control-label-required
+        = t('.note')
+        &nbsp;
+        %span.label.label-info= t('.required')
+      .col-sm-10
+        = f.text_area :note, class: 'form-control', placeholder: t('.price_unit')
+
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        = f.submit class: 'btn btn-primary'

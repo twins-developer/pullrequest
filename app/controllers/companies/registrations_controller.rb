@@ -12,7 +12,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     super
     resource.build_basic_info
     resource.build_career
-    resource.build_engineer
+    resource.build_company
   end
 
   # GET /resource/edit
@@ -21,9 +21,24 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+    company = current_company
+    attributes = {
+      status: :prepare,
+      zip_code: company.zip_code,
+      prefecture: company.prefecture,
+      city: company.city,
+      street: company.street,
+      building: company.building
+    }
+
+    if company.unconfirmed_address
+      company.unconfirmed_address.update(attributes)
+    else
+      company.build_unconfirmed_address(attributes).save
+    end
+  end
 
   # DELETE /resource
   # def destroy
