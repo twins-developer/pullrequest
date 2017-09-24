@@ -1,0 +1,19 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header= link_to 'Pullrequest', root_path, class: 'navbar-brand'
+
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li= link_to t('staffs.tags.index.title'), '#'
+
+      %ul.nav.navbar-nav.pull-right
+        %li
+          %p.navbar-text
+            = current_staff.name
+
+        %li
+          = link_to destroy_staff_session_path, method: :delete do
+            = icon 'sign-out'
+            &nbsp;
+            スタッフ
+            = t('helpers.label.user.log_out')
