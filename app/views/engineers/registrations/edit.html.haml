@@ -1,0 +1,78 @@
+%h1.text-center= title t('.title')
+
+.row
+  .col-xs-12.col-sm-offset-2.col-sm-8
+    = render 'error_messages', resource: resource if resource.errors.any?
+    = form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' } do |f|
+
+      = f.fields_for :profile do |profile_f|
+        .form-group
+          = profile_f.label :image, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= profile_f.file_field :image, class: 'form-control'
+
+        .form-group
+          = profile_f.label :last_name, class: 'col-xs-6 col-sm-3 control-label visible-xs'
+          = profile_f.label :first_name, class: 'col-xs-6 col-sm-3 control-label visible-xs'
+          = profile_f.label :name, class: 'col-xs-6 col-sm-3 control-label hidden-xs'
+          .col-xs-6.col-sm-3= profile_f.text_field :last_name, class: 'form-control'
+          .col-xs-6.col-sm-3= profile_f.text_field :first_name, class: 'form-control'
+
+        .form-group
+          = profile_f.label :last_name_kana, class: 'col-xs-6 col-sm-3 control-label visible-xs'
+          = profile_f.label :first_name_kana, class: 'col-xs-6 col-sm-3 control-label visible-xs'
+          = profile_f.label :name_kana, class: 'col-xs-6 col-sm-3 control-label hidden-xs'
+          .col-xs-6.col-sm-3= profile_f.text_field :last_name_kana, class: 'form-control'
+          .col-xs-6.col-sm-3= profile_f.text_field :first_name_kana, class: 'form-control'
+
+        .form-group
+          = profile_f.label :gender, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9.col-xs-12
+            - Engineers::Profile.genders_i18n.invert.each do |key_i18n, value|
+              %label.radio-inline
+                = profile_f.radio_button :gender, value
+                = key_i18n
+
+        .form-group
+          = profile_f.label :birthday, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9.col-xs-12
+            = profile_f.date_select :birthday, { use_month_numbers: true }, { class: 'form-control form-control-date-select' }
+
+        .form-group
+          .col-xs-12
+            %h2 ご連絡先
+
+        .form-group
+          = profile_f.label :zip_code, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9.col-xs-6= profile_f.text_field :zip_code, class: 'form-control'
+
+        .form-group
+          = profile_f.label :prefecture, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= profile_f.text_field :prefecture, class: 'form-control'
+
+        .form-group
+          = profile_f.label :city, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= profile_f.text_field :city, class: 'form-control'
+
+        .form-group
+          = profile_f.label :street, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= profile_f.text_field :street, class: 'form-control'
+
+        .form-group
+          = profile_f.label :building, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= profile_f.text_field :building, class: 'form-control'
+
+        .form-group
+          = profile_f.label :tel, class: 'col-xs-12 col-sm-3 control-label'
+          .col-sm-9= profile_f.text_field :tel, class: 'form-control'
+
+      .form-group
+        .col-xs-12
+          %hr
+
+      .form-group
+        .col-xs-12.col-sm-3.col-sm-offset-3
+          = f.submit nil, class: 'btn btn-primary btn-block'
+          %br.visible-xs-block.visible-sm-block
+
+        .col-xs-12.col-sm-3
+          = link_to t('.cancel', default: t("helpers.links.cancel")), :back, class: 'btn btn-default btn-block'

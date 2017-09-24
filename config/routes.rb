@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   #
   namespace :engineers do
     get 'my_page'
+    resources :confirm_documents, only: %i(new create)
   end
 
   #

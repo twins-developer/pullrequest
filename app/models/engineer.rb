@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: engineers
+#
+#  id                     :integer          not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default(0), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+
 class Engineer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -8,10 +27,18 @@ class Engineer < ApplicationRecord
   # -------------------------------------------------------------------------------
   has_one :profile, class_name: 'Engineers::Profile', dependent: :destroy
   accepts_nested_attributes_for :profile
-
+  has_one :unconfirmed_address, as: :resource
+  
   # -------------------------------------------------------------------------------
   # Delegations
   # -------------------------------------------------------------------------------
   delegate :image, to: :profile
   delegate :name, to: :profile
+  delegate :last_name, to: :profile
+  delegate :first_name, to: :profile
+  delegate :prefecture, to: :profile
+  delegate :zip_code, to: :profile
+  delegate :city, to: :profile
+  delegate :street, to: :profile
+  delegate :building, to: :profile
 end
