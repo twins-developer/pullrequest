@@ -5,9 +5,14 @@
     %meta{ http: { equiv: 'X-UA-Compatible' }, content: 'IE=Edge,chrome=1' }
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
-    %title Pullrequest
+    -# = render 'meta'
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag '/favicon.png', rel: 'shortcut icon', type: 'image/png'
+    = favicon_link_tag '/apple-touch-icon-precomposed.png',  type: 'image/png',  rel: 'apple-touch-icon-precomposed'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     - if staff_signed_in?
@@ -16,4 +21,23 @@
       = render 'companies_navbar'
     - else
       = render 'navbar'
-    = yield
+
+    // breadcrumbs
+    %ol.breadcrumb.visible-xs
+      = render_breadcrumbs tag: :li, separator: ''
+    .container.hidden-xs
+      .row
+        .col-sm-12
+          %ol.breadcrumb
+            = render_breadcrumbs tag: :li, separator: ''
+
+    .container
+
+      - !content_for?(:flash) && flash && flash.each do |key, message|
+        .alert{ class: "alert-#{key}", role: 'alert' }
+          %strong= message
+
+      = yield
+
+    = render 'footer'
+    = yield :javascript

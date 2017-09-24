@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # ----------------------------------------------------------------------------
   # User
   # ----------------------------------------------------------------------------
-  
+
   devise_for :staffs, controllers: {
     sessions:      'staffs/sessions',
     passwords:     'staffs/passwords',
@@ -22,4 +22,26 @@ Rails.application.routes.draw do
     passwords:     'companies/passwords',
     registrations: 'companies/registrations'
   }
+
+
+  #
+  # エンジニア向け画面
+  #
+  namespace :engineers do
+    get 'my_page'
+  end
+
+  #
+  # スタートアップ向け画面
+  #
+  namespace :companies do
+    get 'my_page'
+  end
+
+  #
+  # スタッフ向け画面
+  #
+  namespace :staffs do
+    get 'my_page'
+  end
 end

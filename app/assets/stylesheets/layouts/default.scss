@@ -1,0 +1,275 @@
+body {
+  padding-top: $navbar-height + 20;
+}
+
+.page-header {
+  a.btn {
+    float: right;
+  }
+
+  a.btn + a.btn {
+    margin-right: 8px;
+  }
+}
+
+.navbar-default {
+  .navbar-brand {
+    // color: $color-main;
+    font-weight: bold;
+  }
+}
+
+// @TODO bootstrap4で定義されていない？
+.nav-text {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+
+// --------------------------------------------------------------------------------
+// テーブル
+// --------------------------------------------------------------------------------
+table.table {
+  thead {
+    tr {
+      th {
+        text-align: center;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      th, td {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .button-1 {
+    width: 100px;
+    text-align: center;
+  }
+
+  .button-2 {
+    width: 190px;
+    text-align: center;
+  }
+
+  .button-3 {
+    width: 280px;
+    text-align: center;
+  }
+
+  .profile-label {
+    width: 120px;
+  }
+}
+
+// --------------------------------------------------------------------------------
+// ボタン
+// --------------------------------------------------------------------------------
+.btn-twitter {
+  background-color: $color-twitter;
+  color: $color-white;
+
+  &:hover {
+    background-color: darken($color-twitter, 10%);
+    color: darken($color-white, 10%);
+  }
+}
+
+.btn-facebook {
+  background-color: $color-facebook;
+  color: $color-white;
+
+  &:hover {
+    background-color: darken($color-facebook, 10%);
+    color: darken($color-white, 10%);
+  }
+}
+
+.btn-google_oauth2 {
+  background-color: $color-google;
+  color: $color-white;
+
+  &:hover {
+    background-color: darken($color-google, 10%);
+    color: darken($color-white, 10%);
+  }
+}
+
+.btn-line {
+  background-color: $color-line;
+  color: $color-white;
+
+  &:hover {
+    background-color: darken($color-line, 10%);
+    color: darken($color-white, 10%);
+  }
+}
+
+.text-base {
+  color: $text-color;
+}
+
+
+// --------------------------------------------------------------------------------
+// FlashメッセージをRailsのものに合わせた
+// --------------------------------------------------------------------------------
+.alert-alert {
+  @extend .alert-danger;
+}
+
+.alert-notice {
+  @extend .alert-info;
+}
+
+
+// --------------------------------------------------------------------------------
+// バリデーションに引っかかったフィールドの下に表示されるエラー・メッセージ
+// --------------------------------------------------------------------------------
+.validation-error {
+  color: $brand-danger;
+}
+
+#error_explanation {
+  color: red;
+
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.m-t-0 { margin-top: 0; }
+.m-t-1 { margin-top: $padding-base-vertical; }
+.m-t-2 { margin-top: $padding-base-vertical * 2; }
+
+.m-b-0 { margin-bottom: 0; }
+.m-b-1 { margin-bottom: $padding-base-vertical; }
+.m-b-2 { margin-bottom: $padding-base-vertical * 2; }
+
+.p-l-1 { padding-left: $padding-base-horizontal; }
+.p-r-1 { padding-right: $padding-base-horizontal; }
+.p-b-1 { padding-bottom: $padding-base-horizontal; }
+
+.b-t-0 {
+  border-top: 0 !important;
+}
+
+.b-b-1 {
+  border-bottom: 1px solid $gray-lighter;
+  padding-bottom: $padding-base-horizontal / 2;
+}
+
+.bg-primary { background-color: $brand-primary; }
+.bg-success { background-color: $brand-success; }
+.bg-info { background-color: $brand-info; }
+.bg-warning { background-color: $brand-warning; }
+.bg-danger { background-color: $brand-danger; }
+
+.bg-primary-light { background-color: lighten($brand-primary, 33.5%); }
+.bg-success-light { background-color: lighten($brand-success, 33.5%); }
+.bg-info-light { background-color: lighten($brand-info, 33.5%); }
+.bg-warning-light { background-color: lighten($brand-warning, 33.5%); }
+.bg-danger-light { background-color: lighten($brand-danger, 33.5%); }
+
+// --------------------------------------------------------------------------------
+// text style
+// --------------------------------------------------------------------------------
+
+.text-sm {
+  font-size: $font-size-base - 2;
+}
+
+.text-xs-left {
+  @media (max-width: $screen-xs-max) {
+    text-align: left;
+  }
+}
+
+// --------------------------------------------------------------------------------
+// sticky footer
+// --------------------------------------------------------------------------------
+$footer-height: 60px;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: $footer-height;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  line-height: $footer-height;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+// --------------------------------------------------------------------------------
+// iOS Safariでshadowを完全に無効化
+// --------------------------------------------------------------------------------
+input[type='text'],
+input[type='email'],
+input[type='url'],
+input[type='tel'],
+input[type='search'],
+textarea
+ {
+  -webkit-appearance: none;
+}
+
+@media (max-width: $screen-xs-max) {
+  $font-size-xs: 8px;
+  $font-size-xs-h1: floor(($font-size-xs * 2.6)) !default;
+  $font-size-xs-h2: floor(($font-size-xs * 2.15)) !default;
+  $font-size-xs-h3: ceil(($font-size-xs * 1.7)) !default;
+  $font-size-xs-h4: ceil(($font-size-xs * 1.25)) !default;
+  $font-size-xs-h5: $font-size-xs !default;
+  $font-size-xs-h6: ceil(($font-size-xs * 0.85)) !default;
+
+  h1 {
+    margin-top: $padding-base-vertical;
+    font-size: $font-size-xs-h1;
+  }
+
+  h2 {
+    font-size: $font-size-xs-h2;
+  }
+
+  h3 {
+    font-size: $font-size-xs-h3;
+  }
+
+  h4 {
+    font-size: $font-size-xs-h4;
+  }
+
+  h5 {
+    font-size: $font-size-xs-h5;
+  }
+
+  h6 {
+    font-size: $font-size-xs-h6;
+  }
+}
+
+.form-control-date-select {
+  display: inline-block;;
+  width: auto;
+}

@@ -39,7 +39,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  private
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -51,13 +51,54 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
 
-  # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  #
+  # ユーザー登録完了後に遷移するパスを指定する
+  #
+  def after_sign_up_path_for(_resource)
+    request.env['omniauth.origin'] || stored_location_for(resource) || companies_my_page_path
+  end
 
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_inactive_sign_up_path_for(_resource)
+    root_path
+  end
+
+  #
+  # アカウント登録時に許可するパラメータの設定
+  #
+  def sign_up_params
+    params.require(:company).permit(:email, :password, :password_confirmation)
+  end
+
+  #
+  # アカウント情報の編集時に許可するパラメータの設定
+  #
+  def account_update_params
+    params.require(:company).permit(
+      :email,
+      :password,
+      :password_confirmation,
+      :current_password,
+      basic_info_attributes: %i(
+        id
+        image name status
+        founded_on
+        zip_code prefecture city street building
+        tel
+        capital
+      ))
+  end
+
+  #
+  # アカウント情報の更新時にはパスワードは不要
+  #
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  #
+  # アカウント情報を更新した後のリダイレクト先を指定
+  #
+  def after_update_path_for(_resource)
+    companies_my_page_path
+  end
 end
