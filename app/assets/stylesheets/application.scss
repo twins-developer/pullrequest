@@ -10,9 +10,44 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
- @import "bootstrap-sprockets";
- @import "bootstrap";
+ // @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+ @import 'variables';
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap-variables';
+ @import 'bootstrap';
+
+ @import 'bootstrap-fileinput/fileinput.min';
+ @import "eonasdan-bootstrap-datetimepicker";
+
+ // Fontawesome
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
+ // Compass
+ // @import 'compass';
+
+ @import 'layouts/default';
+
+ // from bootstrap-generators
+ body {
+   padding-top: $navbar-height + 10px;
+   padding-bottom: 1rem;
+ }
+
+ .page-header {
+   a.btn {
+     float: right;
+   }
+
+   a.btn + a.btn {
+     margin-right: 8px;
+   }
+ }
+
+ .text-center {
+  text-align:center;
+ }

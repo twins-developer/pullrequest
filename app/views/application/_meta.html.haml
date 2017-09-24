@@ -1,0 +1,18 @@
+-# @see https://github.com/kpumuk/meta-tags
+:ruby
+  set_meta_tags site: Settings.meta.site
+  # set_meta_tags title: Settings.meta.title
+  # set_meta_tags description: Settings.meta.description
+  # set_meta_tags keywords: Settings.meta.keywords
+  set_meta_tags og: {
+    title: :title,
+    type: Settings.og.type,
+    image_path: image_url(Settings.og.image_path),
+    url: request.url
+  }
+
+= display_meta_tags
+
+// Launching a page fullscreen from home screen
+%meta{ name: 'apple-mobile-web-app-capable', content: 'yes' }
+%meta{ name: 'mobile-web-app-capable', content: 'yes' }
