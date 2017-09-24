@@ -1,0 +1,50 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header= link_to 'Pullrequest', root_path, class: 'navbar-brand'
+
+    .collapse.navbar-collapse
+      - if engineer_signed_in?
+        %ul.nav.navbar-nav
+          %li= link_to t('engineers.credit_cards.index.title'), '#'
+        %ul.nav.navbar-nav
+          %li= link_to t('engineers.deliveries.index.title'), '#'
+        %ul.nav.navbar-nav
+          %li= link_to t('engineers.tags.index.title'), '#'
+
+      - else
+        %ul.nav.navbar-nav.pull-right
+          %li
+            = link_to new_staff_session_path do
+              = icon 'sign-in'
+              &nbsp;
+              スタッフ
+              = t('helpers.label.engineer.log_in')
+
+        %ul.nav.navbar-nav.pull-right
+          %li
+            = link_to new_company_session_path do
+              = icon 'sign-in'
+              &nbsp;
+              スタートアップ
+              = t('helpers.label.engineer.log_in')
+
+      %ul.nav.navbar-nav.pull-right
+        - if engineer_signed_in?
+
+          %li
+            %p.nav-text= image_tag current_engineer.image.url, size: '36x36', class: 'img-circle'
+          %li= link_to current_engineer.name, '#'
+
+          %li
+            = link_to destroy_engineer_session_path, method: :delete do
+              = icon 'sign-out'
+              &nbsp;
+              エンジニア
+              = t('helpers.label.engineer.log_out')
+        - else
+          %li
+            = link_to new_engineer_session_path do
+              = icon 'sign-in'
+              &nbsp;
+              エンジニア
+              = t('helpers.label.engineer.log_in')

@@ -91,7 +91,6 @@ group :development, :test do
   gem 'timecop'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'dotenv-rails'
   gem 'haml-rails'
   gem 'erb2haml'
   gem 'database_cleaner'
