@@ -39,9 +39,27 @@ class Company < ApplicationRecord
   # -------------------------------------------------------------------------------
   delegate :image, to: :basic_info
   delegate :name, to: :basic_info
+  delegate :founded_on, to: :basic_info
   delegate :prefecture, to: :basic_info
   delegate :zip_code, to: :basic_info
   delegate :city, to: :basic_info
   delegate :street, to: :basic_info
   delegate :building, to: :basic_info
+  delegate :tel, to: :basic_info
+  delegate :capital, to: :basic_info
+
+  # -------------------------------------------------------------------------------
+  # InstanceMethods
+  # -------------------------------------------------------------------------------
+
+  #
+  # 会社情報が全て埋まっているかどうかを返す
+  #
+  # @return [Boolean] 会社情報が全て登録されていればtrue、未登録であればfalse
+  #
+  def set_basic_info?
+    image && name && founded_on && prefecture &&
+    zip_code && prefecture && city && street && building &&
+    tel && capital
+  end
 end

@@ -114,6 +114,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # アカウント情報を更新した後のリダイレクト先を指定
   #
   def after_update_path_for(_resource)
+    return session[:confirm_documents_page] if session[:confirm_documents_page].present?
     companies_my_page_path
   end
 end
