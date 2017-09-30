@@ -1,3 +1,7 @@
+// @TODO datetimepicerのフォーマット指定をcoffeeでする。 -> projects.coffee
+//       noteのテンプレート機能実装する。
+//       下書き機能の実装する。
+
 .col-md-12
   = form_for [:companies, @project], html: { class: 'form-horizontal', role: 'form' } do |f|
 
@@ -14,7 +18,7 @@
 
     .form-group
       %label.col-sm-2.control-label.control-label-required
-        = t('.title')
+        = t('.project_title')
         &nbsp;
         %span.label.label-info= t('.required')
       .col-sm-10
@@ -22,19 +26,21 @@
 
     .form-group
       %label.col-sm-2.control-label.control-label-required
-        = t('.start_at')
+        = t('.start_on')
         &nbsp;
         %span.label.label-info= t('.required')
       .col-sm-10
-        = f.date_select :start_at, class: 'form-control', placeholder: t('.description_example')
+        = f.text_field :start_on, id: 'start_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
+          class: 'form-control'
 
     .form-group
       %label.col-sm-2.control-label.control-label-required
-        = t('.end_at')
+        = t('.end_on')
         &nbsp;
         %span.label.label-info= t('.required')
       .col-sm-10
-        = f.date_select :end_at, class: 'form-control', placeholder: t('.price_unit')
+        = f.text_field :end_on, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
+          class: 'form-control'
 
     .form-group
       %label.col-sm-2.control-label.control-label-required
@@ -42,7 +48,7 @@
         &nbsp;
         %span.label.label-info= t('.required')
       .col-sm-10
-        = f.text_area :note, class: 'form-control', placeholder: t('.price_unit')
+        = f.text_area :note, class: 'form-control', placeholder: t('.note_example')
 
     .form-group
       .col-sm-offset-2.col-sm-10

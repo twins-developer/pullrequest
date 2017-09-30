@@ -20,6 +20,14 @@ class Project < ApplicationRecord
   belongs_to :company
 
   # -------------------------------------------------------------------------------
+  # Validations
+  # -------------------------------------------------------------------------------
+  validates :title, presence: true, length: { in: 10..50 }
+  validates :start_on, presence: true
+  validates :end_on, presence: true
+  validates :note, presence: true, length: { in: 100..10000 }
+
+  # -------------------------------------------------------------------------------
   # Enumerables
   # -------------------------------------------------------------------------------
   # 公開状況
@@ -34,16 +42,10 @@ class Project < ApplicationRecord
     hidden:    3000,
     deleted:   4000
   }
-  enum status: {
-    prepare: 6000,
-    confirmation: 7000,
-    confirmed: 8000,
-    resubmit: 9000
-  }
 
   # -------------------------------------------------------------------------------
   # Attributes
   # -------------------------------------------------------------------------------
 
-  attribute :status, default: statuses[:prepare]
+  attribute :status, default: statuses[:showing]
 end

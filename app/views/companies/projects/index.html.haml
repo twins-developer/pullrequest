@@ -11,7 +11,7 @@
       - @projects.each do |project|
         .panel.panel-default
           .panel-heading= link_to project.title, companies_project_path(project.id)
-          .panel-body= project.note.truncate(100)
+          .panel-body= project.note.truncate(90)
           .panel-footer
             = link_to t('.edit'), edit_companies_project_path(project.id), class: 'btn btn-info'
-            = link_to t('.destroy'), companies_project_path(project.id), method: :delete, class: 'btn btn-danger'
+            = link_to t('.destroy'), [:companies, project], method: :delete, class: 'btn btn-danger'

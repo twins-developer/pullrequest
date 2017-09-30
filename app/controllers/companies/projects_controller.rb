@@ -1,5 +1,5 @@
 #
-# スタートアップの法人確認書類管理
+# スタートアップのプロジェクト管理
 #
 class Companies::ProjectsController < Companies::BaseController
   #
@@ -45,6 +45,15 @@ class Companies::ProjectsController < Companies::BaseController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to [:companies, @project], notice: t('.success') }
+        format.json { render :show, status: :created, location: @project }
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /projects/1
@@ -65,8 +74,8 @@ class Companies::ProjectsController < Companies::BaseController
 
   def project_params
     params.require(:project).permit(
-      :start_at,
-      :end_at,
+      :start_on,
+      :end_on,
       :status,
       :title,
       :note
