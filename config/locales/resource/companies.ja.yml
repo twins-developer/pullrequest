@@ -41,7 +41,6 @@ ja:
     my_page:
       title: マイページ
       basic_info: 基本情報
-      entry: 法人をする
 
     edit_mail:
       title: メールアドレスを変更する
@@ -91,9 +90,10 @@ ja:
           new_password_confirmation: 上記で入力したパスワードと同じものを入力してください
     confirm_documents:
       new:
-        title: 本人確認書類の提出
-        upload: 本人確認書類
-        submit: 本人確認書類を提出する
+        title: 法人確認書類の提出
+        upload: 法人確認書類
+        submit: 法人確認書類を提出する
+        regist_address: 会社情報を登録してください
     projects:
       index:
         title: プロジェクト一覧

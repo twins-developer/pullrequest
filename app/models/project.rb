@@ -25,7 +25,7 @@ class Project < ApplicationRecord
   validates :title, presence: true, length: { in: 10..50 }
   validates :start_on, presence: true
   validates :end_on, presence: true
-  validates :note, presence: true, length: { in: 100..10000 }
+  validates :note, presence: true, length: { maximum: 10000 }
 
   # -------------------------------------------------------------------------------
   # Enumerables

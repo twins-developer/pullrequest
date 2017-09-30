@@ -9,6 +9,7 @@ class Companies::ConfirmDocumentsController < Companies::BaseController
 
   # GET /companies/confirm_documents/new
   def new
+    session[:confirm_documents_page] = nil
     @confirm_document = ConfirmDocument.new
   end
 
@@ -28,8 +29,11 @@ class Companies::ConfirmDocumentsController < Companies::BaseController
   private
 
   def create_unconfirmed_address
-    redirect_to edit_company_registration_url,
-      alert: t('.regist_address') unless current_company.unconfirmed_address
+    if !current_company.set_basic_info?
+      session[:confirm_documents_page] = new_companies_confirm_document_path
+      redirect_to edit_company_registration_url,
+        alert: t('.regist_address')
+    end
   end
 
   def confirm_document_params
