@@ -18,8 +18,8 @@
       - @projects.each do |project|
         %tr
           %td= project.company.name
-          %td= project.start_at
-          %td= project.end_at
+          %td= project.start_on
+          %td= project.end_on
           %td= project.status
           %td= project.title
           %td= project.note
