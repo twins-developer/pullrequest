@@ -190,8 +190,8 @@ ActiveRecord::Schema.define(version: 20170924110558) do
 
   create_table "projects", force: :cascade do |t|
     t.bigint "company_id"
-    t.date "start_at"
-    t.date "end_at"
+    t.date "start_on"
+    t.date "end_on"
     t.integer "status"
     t.string "title"
     t.text "note"

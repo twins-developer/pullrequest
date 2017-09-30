@@ -156,3 +156,8 @@ ja:
 
   breadcrumbs:
     root: トップ
+
+  application:
+    navbar:
+    companies_navbar:
+      project_index: プロジェクト一覧

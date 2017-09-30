@@ -16,8 +16,8 @@
 FactoryGirl.define do
   factory :project do
     company nil
-    start_at Date.today
-    end_at Date.today
+    start_on Date.today
+    end_on Date.today
     status nil
     title { Faker::Commerce.product_name }
     note { Faker::Lorem.paragraph }
