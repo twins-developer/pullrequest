@@ -93,3 +93,10 @@ ja:
         title: 本人確認書類の提出
         upload: 本人確認書類
         submit: 本人確認書類を提出する
+    projects:
+      index:
+        title: プロジェクト一覧
+        edit: 編集する
+        destroy: 削除する
+        new: 募集する
+        

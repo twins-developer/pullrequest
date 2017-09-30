@@ -1,0 +1,17 @@
+.page-header
+  %h1= title t '.title'
+
+.container
+  .row
+    .col-md-3
+      .panel.panel-default
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to t('.new'), new_companies_project_path
+    .col-md-9
+      - @projects.each do |project|
+        .panel.panel-default
+          .panel-heading= link_to project.title, companies_project_path(project.id)
+          .panel-body= project.note.truncate(100)
+          .panel-footer
+            = link_to t('.edit'), edit_companies_project_path(project.id), class: 'btn btn-info'
+            = link_to t('.destroy'), companies_project_path(project.id), method: :delete, class: 'btn btn-danger'
