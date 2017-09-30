@@ -1,6 +1,6 @@
 namespace :app do
   namespace :dev do
-    task reset: %i( RAILS_ENV=production DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:drop db:create db:migrate db:seed app:dev:sample )
+    task reset: %i( pg:reset db:drop db:create db:migrate db:seed app:dev:sample )
 
     task sample: :environment do
       FactoryGirl.create_list(:company, 2, :with_projects)
