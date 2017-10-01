@@ -33,11 +33,12 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :engineers
   has_one :unconfirmed_address, as: :resource, dependent: :destroy
   has_many :projects
+  has_many :applies, dependent: :destroy
 
   # -------------------------------------------------------------------------------
   # Callbacks
   # -------------------------------------------------------------------------------
-  after_save :build_default_associations
+  after_create :build_default_associations
 
   # -------------------------------------------------------------------------------
   # Delegations

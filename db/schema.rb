@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170924110558) do
   create_table "applies", force: :cascade do |t|
     t.bigint "engineer_id"
     t.bigint "company_id"
+    t.bigint "project_id"
     t.date "interviewed_on"
     t.datetime "start_at"
     t.datetime "end_at"
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170924110558) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_applies_on_company_id"
     t.index ["engineer_id"], name: "index_applies_on_engineer_id"
+    t.index ["project_id"], name: "index_applies_on_project_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -287,6 +289,7 @@ ActiveRecord::Schema.define(version: 20170924110558) do
 
   add_foreign_key "applies", "companies"
   add_foreign_key "applies", "engineers"
+  add_foreign_key "applies", "projects"
   add_foreign_key "companies_basic_infos", "companies"
   add_foreign_key "companies_careers", "companies"
   add_foreign_key "companies_engineers", "companies"

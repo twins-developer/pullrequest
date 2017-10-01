@@ -8,13 +8,9 @@ class Engineers::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    resource.build_profile
-    resource.build_setting
-    resource.build_social_account
-    resource.works.build
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -33,12 +29,7 @@ class Engineers::RegistrationsController < Devise::RegistrationsController
       street: engineer.street,
       building: engineer.building
     }
-
-    if engineer.unconfirmed_address
-      engineer.unconfirmed_address.update(attributes)
-    else
-      engineer.build_unconfirmed_address(attributes).save
-    end
+    engineer.unconfirmed_address.update(attributes)
   end
 
   # DELETE /resource

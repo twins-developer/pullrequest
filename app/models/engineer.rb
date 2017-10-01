@@ -28,11 +28,12 @@ class Engineer < ApplicationRecord
   has_one :profile, class_name: 'Engineers::Profile', dependent: :destroy
   accepts_nested_attributes_for :profile
   has_one :unconfirmed_address, as: :resource, dependent: :destroy
+  has_many :applies, dependent: :destroy
 
   # -------------------------------------------------------------------------------
   # Callbacks
   # -------------------------------------------------------------------------------
-  after_save :build_default_associations
+  after_create :build_default_associations
 
   # -------------------------------------------------------------------------------
   # Delegations

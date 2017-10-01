@@ -23,4 +23,7 @@
           %td= project.status
           %td= project.title
           %td= project.note
-          %td= link_to 'Show', companies_project_path(project.id)
+          - if company_signed_in?
+            %td= link_to 'Show', companies_project_path(project.id)
+          - if engineer_signed_in?
+            %td= link_to 'Show', [:engineers, project]

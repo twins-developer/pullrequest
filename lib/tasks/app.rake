@@ -1,7 +1,6 @@
 namespace :app do
   namespace :dev do
     task reset: %i( db:drop db:create db:migrate db:seed app:dev:sample )
-    task heroku: %i( pg:reset db:migrate db:seed app:dev:sample)
     task sample: :environment do
       FactoryGirl.create_list(:company, 2, :with_projects)
       FactoryGirl.create_list(:engineer, 2)

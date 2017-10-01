@@ -18,6 +18,7 @@ class Project < ApplicationRecord
   # Relations
   # -------------------------------------------------------------------------------
   belongs_to :company
+  has_many :applies, dependent: :destroy
 
   # -------------------------------------------------------------------------------
   # Validations

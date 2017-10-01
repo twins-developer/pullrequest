@@ -30,6 +30,12 @@ Rails.application.routes.draw do
   namespace :engineers do
     get 'my_page'
     resources :confirm_documents, only: %i(new create)
+    resources :applies do
+      get 'confirm', on: :collection
+      get 'error', on: :collection      
+    end
+    resources :projects, only: %i(show)
+    resources :companies, only: %i(show)
   end
 
   #

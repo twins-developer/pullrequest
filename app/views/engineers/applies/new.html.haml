@@ -1,0 +1,73 @@
+// @TODO 会社情報
+//       会社が面談時間を事前に作る
+.page-header
+  %h1= title t '.title'
+
+.container
+  .row
+    .col-md-3
+      = link_to (image_tag @project.company.image.thumbnail.url, class: 'img-responsive rounded center-block'),
+        [:engineers, @project.company]
+
+    .col-md-9
+      .panel.panel-default
+        .panel-heading= @project.title
+        .panel-body= @project.note.truncate(90)
+        .panel-footer= link_to '応募する', new_engineers_apply_path(project_id: @project.id),
+          class: 'btn btn-primary'
+  .row
+    %hr
+    .col-md-12
+      = form_for(@apply, url: confirm_engineers_applies_path, method: :get,
+        html: { class: 'form-horizontal', role: 'form' }) do |f|
+
+        - if @apply.errors.any?
+          .alert.alert-danger.alert-dismissable{ role: 'alert' }
+            %button.close{ type: 'button', data: { dismiss: 'alert' } }
+              %span{ aria: { hidden: 'true' } } &times;
+              %span.sr-only Close
+            %h4= "#{pluralize(@apply.errors.count, t('.errors'))}"
+
+            %ul
+              - @apply.errors.full_messages.each do |msg|
+                %li= msg
+
+        = f.hidden_field :project_id, value: @project.id
+        .form-group
+          %label.col-sm-2.control-label.control-label-required
+            = t('.interviewed_on')
+            &nbsp;
+            %span.label.label-info= t('.required')
+          .col-sm-10
+            = f.text_field :interviewed_on, id: 'start_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
+              class: 'form-control'
+
+        .form-group
+          %label.col-sm-2.control-label.control-label-required
+            = t('.start_at')
+            &nbsp;
+            %span.label.label-info= t('.required')
+          .col-sm-10
+            = f.text_field :start_at, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
+              class: 'form-control'
+
+        .form-group
+          %label.col-sm-2.control-label.control-label-required
+            = t('.end_at')
+            &nbsp;
+            %span.label.label-info= t('.required')
+          .col-sm-10
+            = f.text_field :end_at, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
+              class: 'form-control'
+
+        .form-group
+          %label.col-sm-2.control-label.control-label-required
+            = t('.engineer_reason')
+            &nbsp;
+            %span.label.label-info= t('.required')
+          .col-sm-10
+            = f.text_area :engineer_reason, class: 'form-control', placeholder: t('.engineer_reason_example')
+
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            = f.submit class: 'btn btn-primary'
