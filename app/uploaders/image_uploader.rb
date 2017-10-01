@@ -14,6 +14,9 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def default_url
+    "/images/default/#{model.class.to_s.underscore}/#{mounted_as}.png"
+  end
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
@@ -22,16 +25,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+  process :fix_exif_rotation
+
+  #
+  # 何かと使うサムネイル画像を作成しておく
+  #
+  version :thumbnail do
+    process resize_to_fit: [600, 600]
+  end
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
   # def scale(width, height)
   #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -40,10 +46,24 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   %w(jpg jpeg gif png)
   # end
 
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    "#{secure_token}.#{file.extension}" if original_filename.present?
+  end
+
+  #
+  # EXIF情報を削除
+  #
+  def fix_exif_rotation
+    manipulate! do |img|
+      img.tap(&:auto_orient!)
+    end
+  end
+
+  protected
+
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) || model.instance_variable_set(var, Digest::MD5.hexdigest(Time.current.to_f.to_s))
+  end
 
 end

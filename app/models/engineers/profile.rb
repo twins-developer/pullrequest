@@ -60,6 +60,7 @@ class Engineers::Profile < ApplicationRecord
   # Attributes
   # -------------------------------------------------------------------------------
   attribute :gender, :integer, default: 1
+  attribute :last_name, default:'Unknown'
 
   #
   # フルネームを返す

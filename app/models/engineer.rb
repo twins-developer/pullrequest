@@ -27,8 +27,13 @@ class Engineer < ApplicationRecord
   # -------------------------------------------------------------------------------
   has_one :profile, class_name: 'Engineers::Profile', dependent: :destroy
   accepts_nested_attributes_for :profile
-  has_one :unconfirmed_address, as: :resource
-  
+  has_one :unconfirmed_address, as: :resource, dependent: :destroy
+
+  # -------------------------------------------------------------------------------
+  # Callbacks
+  # -------------------------------------------------------------------------------
+  after_save :build_default_associations
+
   # -------------------------------------------------------------------------------
   # Delegations
   # -------------------------------------------------------------------------------
@@ -41,4 +46,13 @@ class Engineer < ApplicationRecord
   delegate :city, to: :profile
   delegate :street, to: :profile
   delegate :building, to: :profile
+
+  #
+  # スタートアップの子モデルを作成する
+  #
+  def build_default_associations
+    engineer = Engineer.find(id)
+    engineer.build_profile.save
+    engineer.build_unconfirmed_address.save
+  end
 end

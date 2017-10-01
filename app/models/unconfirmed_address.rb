@@ -23,14 +23,6 @@ class UnconfirmedAddress < ApplicationRecord
   belongs_to :resource, polymorphic: true
 
   # -------------------------------------------------------------------------------
-  # Validations
-  # -------------------------------------------------------------------------------
-  validates :zip_code, presence: true, format: { with: /\A\d{3}\-?\d{4}\z/ }
-  validates :prefecture, presence: true
-  validates :city, presence: true
-  validates :street, presence: true
-
-  # -------------------------------------------------------------------------------
   # Enumerables
   # -------------------------------------------------------------------------------
   # 申請・審査の状態

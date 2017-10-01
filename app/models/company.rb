@@ -31,8 +31,13 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :career
   has_many :engineers, class_name: 'Companies::Engineer', dependent: :destroy
   accepts_nested_attributes_for :engineers
-  has_one :unconfirmed_address, as: :resource
+  has_one :unconfirmed_address, as: :resource, dependent: :destroy
   has_many :projects
+
+  # -------------------------------------------------------------------------------
+  # Callbacks
+  # -------------------------------------------------------------------------------
+  after_save :build_default_associations
 
   # -------------------------------------------------------------------------------
   # Delegations
@@ -61,5 +66,15 @@ class Company < ApplicationRecord
     image && name && founded_on && prefecture &&
     zip_code && prefecture && city && street && building &&
     tel && capital
+  end
+
+  #
+  # スタートアップの子モデルを作成する
+  #
+  def build_default_associations
+    company = Company.find(id)
+    company.build_basic_info.save
+    company.build_unconfirmed_address.save
+    company.build_career.save
   end
 end

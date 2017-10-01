@@ -8,12 +8,9 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    super
-    resource.build_basic_info
-    resource.build_career
-    resource.build_company
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -32,12 +29,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
       street: company.street,
       building: company.building
     }
-
-    if company.unconfirmed_address
-      company.unconfirmed_address.update(attributes)
-    else
-      company.build_unconfirmed_address(attributes).save
-    end
+    company.unconfirmed_address.update(attributes)
   end
 
   # DELETE /resource
@@ -100,7 +92,13 @@ class Companies::RegistrationsController < Devise::RegistrationsController
         zip_code prefecture city street building
         tel
         capital
-      ))
+      ),
+      unconfirmed_addresses: %i(
+        id
+        resource_id resource_type status
+        zip_code prefecture city street building
+      ),
+    )
   end
 
   #
