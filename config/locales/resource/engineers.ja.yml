@@ -30,6 +30,8 @@ ja:
         street: それ以降の住所（番地まで）
         building: 建物名・部屋番号
         tel: 電話番号
+        country: 国籍
+        message: スタートアップへのメッセージ
 
       address_confirmation_image:
         image: 本人確認書類
@@ -101,6 +103,10 @@ ja:
 
     confirm_documents:
       new:
+        title: 本人確認書類の提出
+        upload: 本人確認書類
+        submit: 本人確認書類を提出する
+        regist_address: プロフィールを登録してください
 
     projects:
       show:
@@ -132,3 +138,5 @@ ja:
         engineer_reason: 応募理由
       error:
         error: 先に応募が埋まってしまいました。お手数ですが、日時を変えて再度ご応募ください
+      index:
+        title: 応募一覧

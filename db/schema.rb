@@ -129,7 +129,6 @@ ActiveRecord::Schema.define(version: 20170924110558) do
     t.string "street"
     t.string "building"
     t.string "tel"
-    t.string "language"
     t.string "country"
     t.string "message"
     t.datetime "created_at", null: false

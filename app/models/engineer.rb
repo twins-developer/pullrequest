@@ -41,12 +41,24 @@ class Engineer < ApplicationRecord
   delegate :image, to: :profile
   delegate :name, to: :profile
   delegate :last_name, to: :profile
+  delegate :last_name_kana, to: :profile
   delegate :first_name, to: :profile
+  delegate :first_name_kana, to: :profile
+  delegate :birthday, to: :profile
+  delegate :gender, to: :profile
   delegate :prefecture, to: :profile
   delegate :zip_code, to: :profile
   delegate :city, to: :profile
   delegate :street, to: :profile
   delegate :building, to: :profile
+  delegate :building, to: :profile
+  delegate :tel, to: :profile
+  delegate :country, to: :profile
+  delegate :message, to: :profile
+
+  # -------------------------------------------------------------------------------
+  # InstanceMethods
+  # -------------------------------------------------------------------------------
 
   #
   # スタートアップの子モデルを作成する
@@ -55,5 +67,17 @@ class Engineer < ApplicationRecord
     engineer = Engineer.find(id)
     engineer.build_profile.save
     engineer.build_unconfirmed_address.save
+  end
+
+  #
+  # プロフィールが全て埋まっているかどうかを返す
+  #
+  # @return [Boolean] プロフィールが全て登録されていればtrue、未登録であればfalse
+  #
+  def set_profile?
+    image && last_name && last_name_kana && first_name && first_name_kana &&
+    birthday && gender &&
+    zip_code && prefecture && city && street && building &&
+    tel && country && message
   end
 end

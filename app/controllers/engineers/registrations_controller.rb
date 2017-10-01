@@ -92,7 +92,7 @@ class Engineers::RegistrationsController < Devise::RegistrationsController
         birthday gender
         zip_code prefecture city street building
         tel
-        language country
+        country
         message
       ))
   end

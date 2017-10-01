@@ -16,7 +16,6 @@ class CreateEngineersProfiles < ActiveRecord::Migration[5.1]
       t.string :street
       t.string :building
       t.string :tel
-      t.string :language
       t.string :country
       t.string :message
 

@@ -1,0 +1,14 @@
+.page-header
+  %h1= title t '.title'
+
+.container
+  .row
+    .col-md-3
+      .panel.panel-default
+        %ul.nav.nav-pills.nav-stacked
+          %li= '保留'
+    .col-md-9
+      - @applies.each do |apply|
+        .panel.panel-default
+          .panel-heading= link_to apply.project.title, [:engineers, apply]
+          .panel-body= apply.project.note.truncate(90)

@@ -9,6 +9,7 @@ class Engineers::ConfirmDocumentsController < Engineers::BaseController
 
   # GET /engineers/confirm_documents/new
   def new
+    session[:confirm_documents_page] = nil
     @confirm_document = ConfirmDocument.new
   end
 
@@ -28,12 +29,15 @@ class Engineers::ConfirmDocumentsController < Engineers::BaseController
   private
 
   def create_unconfirmed_address
-    redirect_to edit_engineer_registration_url,
-      alert: t('.regist_address') unless current_engineer.unconfirmed_address
+    if !current_engineer.set_profile?
+      session[:confirm_documents_page] = new_engineers_confirm_document_path
+      redirect_to edit_engineer_registration_url,
+        alert: t('.regist_address')
+    end
   end
 
   def address_confirmation_image_params
-    params.fetch(:address_confirmation_image, {}).permit(
+    params.fetch(:confirm_document, {}).permit(
       :image
     )
   end

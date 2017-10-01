@@ -4,12 +4,6 @@
 
     .collapse.navbar-collapse
       - if engineer_signed_in?
-        %ul.nav.navbar-nav
-          %li= link_to t('engineers.credit_cards.index.title'), '#'
-        %ul.nav.navbar-nav
-          %li= link_to t('engineers.deliveries.index.title'), '#'
-        %ul.nav.navbar-nav
-          %li= link_to t('engineers.tags.index.title'), '#'
 
       - else
         %ul.nav.navbar-nav.pull-right
