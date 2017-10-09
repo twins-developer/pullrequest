@@ -1,0 +1,14 @@
+.page-header
+  %h1= t('.title')
+
+.container
+  .row
+    .col-md-3
+      .panel.panel-default
+        %ul.nav.nav-pills.nav-stacked
+          %li= link_to t('companies.engineers.index.title'), companies_engineers_path
+    .col-md-9
+      - @engineers.each do |engineer|
+        .panel.panel-default
+          .panel-heading= link_to engineer.name, [:companies, engineer]
+          .panel-body= engineer.message

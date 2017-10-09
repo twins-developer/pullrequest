@@ -1,0 +1,2 @@
+module Companies::ScoutsHelper
+end

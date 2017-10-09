@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'pages#index'
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
     resources :confirm_documents, only: %i(new create)
     resources :applies do
       get 'confirm', on: :collection
-      get 'error', on: :collection      
+      get 'error', on: :collection
     end
     resources :projects, only: %i(show)
     resources :companies, only: %i(show)
@@ -45,6 +46,8 @@ Rails.application.routes.draw do
     get 'my_page'
     resources :confirm_documents, only: %i(new create)
     resources :projects
+    resources :scouts, only: %i(new)
+    resources :engineers, only: %i(index show)
   end
 
   #
