@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924110558) do
+ActiveRecord::Schema.define(version: 20171009125701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,17 @@ ActiveRecord::Schema.define(version: 20170924110558) do
     t.index ["tag_id"], name: "index_engineers_works_on_tag_id"
   end
 
+  create_table "interview_hours", force: :cascade do |t|
+    t.bigint "company_id"
+    t.integer "wday", null: false
+    t.integer "hour", null: false
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id", "wday", "hour"], name: "index_interview_hours_on_company_id_and_wday_and_hour", unique: true
+    t.index ["company_id"], name: "index_interview_hours_on_company_id"
+  end
+
   create_table "project_tags", force: :cascade do |t|
     t.bigint "tag_id"
     t.bigint "project_id"
@@ -300,6 +311,7 @@ ActiveRecord::Schema.define(version: 20170924110558) do
   add_foreign_key "engineers_social_accounts", "engineers"
   add_foreign_key "engineers_works", "engineers"
   add_foreign_key "engineers_works", "tags"
+  add_foreign_key "interview_hours", "companies"
   add_foreign_key "project_tags", "companies"
   add_foreign_key "project_tags", "projects"
   add_foreign_key "project_tags", "tags"

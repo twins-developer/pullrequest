@@ -119,3 +119,6 @@ ja:
         project_title: プロジェクト名
         title_example: 〇〇な人のソリューション！〇〇サイトのレビュアーを募集します！
         note_example: ご覧いただきありがとうございます。弊社は〇〇分野の新技術で〇〇を実現するために開発をしています〇〇会社と申します。
+    interview_hours:
+      index:
+        title: 面談日時一覧

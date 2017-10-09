@@ -33,13 +33,13 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :engineers
   has_one :unconfirmed_address, as: :resource, dependent: :destroy
   has_many :projects
+  has_many :interview_hours
   has_many :applies, dependent: :destroy
 
   # -------------------------------------------------------------------------------
   # Callbacks
   # -------------------------------------------------------------------------------
-  after_create :build_default_associations
-
+  after_create :build_default_associations, :create_default_interview_hours
   # -------------------------------------------------------------------------------
   # Delegations
   # -------------------------------------------------------------------------------
@@ -77,5 +77,21 @@ class Company < ApplicationRecord
     company.build_basic_info.save
     company.build_unconfirmed_address.save
     company.build_career.save
+  end
+
+  #
+  # 全時間InterviewHoursデータを作成する
+  #
+  def create_default_interview_hours
+    company = Company.find(id)
+    InterviewHour.wdays.values.to_a.each do |wday|
+      8.upto(21).each do |hour|
+        interview_hour = company.interview_hours.new(
+          wday: wday,
+          hour: hour
+        )
+        interview_hour.save
+      end
+    end
   end
 end

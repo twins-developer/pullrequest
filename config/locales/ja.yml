@@ -161,3 +161,7 @@ ja:
     navbar:
     companies_navbar:
       project_index: プロジェクト一覧
+
+  pages:
+    index:
+      title: タイムライン

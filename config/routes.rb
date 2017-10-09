@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'pages#index'
@@ -48,6 +47,7 @@ Rails.application.routes.draw do
     resources :projects
     resources :scouts, only: %i(new)
     resources :engineers, only: %i(index show)
+    resources :interview_hours
   end
 
   #
