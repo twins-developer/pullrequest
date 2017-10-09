@@ -1,5 +1,5 @@
 .page-header
-  %h1= title t('.title')
+  %h1= title t '.title'
 
 .container
   .row
@@ -14,8 +14,8 @@
   .row
     %hr
     .col-md-12
-      = form_for(@scout, url: confirm_companies_scouts_path, method: :get,
-        html: { class: 'form-horizontal', role: 'form' }) do |f|
+      = form_for [:companies, @scout],
+        html: { class: 'form-horizontal', role: 'form' } do |f|
 
         - if @scout.errors.any?
           .alert.alert-danger.alert-dismissable{ role: 'alert' }
@@ -29,15 +29,14 @@
                 %li= msg
 
         = f.hidden_field :engineer_id, value: @engineer.id
-        
         .form-group
           %label.col-sm-2.control-label.control-label-required
-            = t '.interviewed_on'
+            = t('.interviewed_on')
             &nbsp;
             %span.label.label-info= t('.required')
           .col-sm-10
-            = f.text_field :interviewed_on, id: 'start_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
-              class: 'form-control'
+            = f.hidden_field :interviewed_on
+            = @scout.interviewed_on
 
         .form-group
           %label.col-sm-2.control-label.control-label-required
@@ -64,7 +63,6 @@
             %span.label.label-info= t('.required')
           .col-sm-10
             = f.text_area :note, class: 'form-control', placeholder: t('.note_example')
-
         .form-group
           .col-sm-offset-2.col-sm-10
-            = f.submit t('.scout'), class: 'btn btn-primary'
+            = f.submit class: 'btn btn-primary'

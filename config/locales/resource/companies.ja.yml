@@ -122,3 +122,20 @@ ja:
     interview_hours:
       index:
         title: 面談日時一覧
+    engineers:
+      index:
+        title: エンジニア一覧
+      show:
+        title: エンジニア詳細
+        basic_info: 基本情報
+        prefecture: 在住
+    scouts:
+      new:
+        title: スカウト情報入力
+        interviewed_on: 面談日
+        start_at: 開始時間
+        end_at: 終了時間
+        note: スカウト理由
+        required: 必須
+        note_example: 貴殿の経験スキルと弊社の求めるスキルが一致しているため...
+        scout: スカウトする

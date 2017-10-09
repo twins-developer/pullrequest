@@ -1,0 +1,30 @@
+// @TODO 会社情報
+//       他の応募一覧とか？
+
+.page-header
+  %h1= title t '.title'
+
+.container
+  .row
+    .col-md-3
+      = link_to (image_tag @engineer.image.thumbnail.url, class: 'img-responsive rounded center-block'),
+        [:companies, @engineer]
+    .col-md-9
+      .panel.panel-default
+        .panel-heading= @engineer.name
+  .row
+    %hr
+    %table.table.table-bordered
+      %tbody
+        %tr
+          %th= t('.interviewed_on')
+          %td= @scout.interviewed_on
+        %tr
+          %th= t('.start_at')
+          %td= @scout.start_at
+        %tr
+          %th= t('.end_at')
+          %td= @scout.end_at
+        %tr
+          %th= t('.note')
+          %td= @scout.note

@@ -45,7 +45,10 @@ Rails.application.routes.draw do
     get 'my_page'
     resources :confirm_documents, only: %i(new create)
     resources :projects
-    resources :scouts, only: %i(new)
+    resources :scouts, only: %i(new create show) do
+      get 'confirm', on: :collection
+      get 'error', on: :collection
+    end
     resources :engineers, only: %i(index show)
     resources :interview_hours
   end

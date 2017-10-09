@@ -49,8 +49,8 @@ class Engineers::AppliesController < Engineers::BaseController
         end
       end
     end
-  rescue
-      return redirect_to error_engineers_applies_url
+    rescue
+        return redirect_to error_engineers_applies_url
   end
 
   # GET /engineers/applies/:1
