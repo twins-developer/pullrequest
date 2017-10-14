@@ -18,11 +18,18 @@
 #  street          :string
 #  building        :string
 #  tel             :string
-#  language        :string
 #  country         :string
 #  message         :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#
+# Indexes
+#
+#  index_engineers_profiles_on_engineer_id  (engineer_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (engineer_id => engineers.id)
 #
 
 FactoryGirl.define do

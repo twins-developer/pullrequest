@@ -121,7 +121,6 @@ ja:
         title: 応募情報入力
         interviewed_on: 面談日
         start_at: 開始
-        end_at: 終了
         engineer_reason: 応募理由
         required: 必須
         engineer_reason_example: 御社の〇〇の事業を以前担当しており、興味を持ちました…
@@ -129,7 +128,6 @@ ja:
         title: 応募情報確認
         interviewed_on: 面談日
         start_at: 開始
-        end_at: 終了
         engineer_reason: 応募理由
       create:
         success: 応募が完了しました
@@ -137,7 +135,6 @@ ja:
         title: 応募詳細
         interviewed_on: 面談日
         start_at: 開始
-        end_at: 終了
         engineer_reason: 応募理由
       error:
         error: 先に応募が埋まってしまいました。お手数ですが、日時を変えて再度ご応募ください

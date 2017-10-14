@@ -67,7 +67,6 @@ class Companies::ScoutsController < ApplicationController
       :engineer_id,
       :interviewed_on,
       :start_at,
-      :end_at,
       :note
     )
   end

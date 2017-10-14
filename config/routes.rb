@@ -50,7 +50,8 @@ Rails.application.routes.draw do
       get 'error', on: :collection
     end
     resources :engineers, only: %i(index show)
-    resources :interview_hours
+    resources :interview_hour_masters, only: :index
+    resources :interview_hours, only: %i(index create)
   end
 
   #

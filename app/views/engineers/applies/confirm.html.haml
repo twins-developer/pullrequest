@@ -11,7 +11,7 @@
       .panel.panel-default
         .panel-heading= @project.title
         .panel-body= @project.note.truncate(90)
-        
+
   .row
     %hr
     .col-md-12
@@ -34,7 +34,7 @@
           %label.col-sm-2.control-label.control-label-required
             = t('.interviewed_on')
             &nbsp;
-            %span.label.label-info= t('.required')
+            %span.label.label-info= t('helpers.labels.required')
           .col-sm-10
             = f.hidden_field :interviewed_on
             = @apply.interviewed_on
@@ -43,27 +43,19 @@
           %label.col-sm-2.control-label.control-label-required
             = t('.start_at')
             &nbsp;
-            %span.label.label-info= t('.required')
+            %span.label.label-info= t('helpers.labels.required')
           .col-sm-10
-            = f.text_field :start_at, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
-              class: 'form-control'
-
-        .form-group
-          %label.col-sm-2.control-label.control-label-required
-            = t('.end_at')
-            &nbsp;
-            %span.label.label-info= t('.required')
-          .col-sm-10
-            = f.text_field :end_at, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
-              class: 'form-control'
+            = f.hidden_field :start_at
+            = @apply.start_at
 
         .form-group
           %label.col-sm-2.control-label.control-label-required
             = t('.engineer_reason')
             &nbsp;
-            %span.label.label-info= t('.required')
+            %span.label.label-info= t('helpers.labels.required')
           .col-sm-10
-            = f.text_area :engineer_reason, class: 'form-control', placeholder: t('.note_example')
+            = f.hidden_field :engineer_reason
+            = @apply.engineer_reason
         .form-group
           .col-sm-offset-2.col-sm-10
             = f.submit class: 'btn btn-primary'

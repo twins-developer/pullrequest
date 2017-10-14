@@ -16,6 +16,11 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
+# Indexes
+#
+#  index_companies_on_email                 (email) UNIQUE
+#  index_companies_on_reset_password_token  (reset_password_token) UNIQUE
+#
 
 FactoryGirl.define do
   factory :company do

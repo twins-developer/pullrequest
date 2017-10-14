@@ -44,17 +44,8 @@
             &nbsp;
             %span.label.label-info= t('helpers.labels.required')
           .col-sm-10
-            = f.text_field :start_at, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
-              class: 'form-control'
-
-        .form-group
-          %label.col-sm-2.control-label.control-label-required
-            = t('activerecord.attributes.scouts.end_at')
-            &nbsp;
-            %span.label.label-info= t('helpers.labels.required')
-          .col-sm-10
-            = f.text_field :end_at, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
-              class: 'form-control'
+            = f.hidden_field :start_at
+            = @scout.start_at
 
         .form-group
           %label.col-sm-2.control-label.control-label-required
@@ -62,7 +53,8 @@
             &nbsp;
             %span.label.label-info= t('helpers.labels.required')
           .col-sm-10
-            = f.text_area :note, class: 'form-control', placeholder: t('.note_example')
+            = f.hidden_field :note
+            = @scout.note
         .form-group
           .col-sm-offset-2.col-sm-10
             = f.submit t('.submit'), class: 'btn btn-primary'

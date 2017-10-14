@@ -9,6 +9,18 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
+# Indexes
+#
+#  index_work_tags_on_engineer_id        (engineer_id)
+#  index_work_tags_on_engineers_work_id  (engineers_work_id)
+#  index_work_tags_on_tag_id             (tag_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (engineer_id => engineers.id)
+#  fk_rails_...  (engineers_work_id => engineers_works.id)
+#  fk_rails_...  (tag_id => tags.id)
+#
 
 require 'rails_helper'
 

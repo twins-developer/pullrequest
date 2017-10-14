@@ -9,6 +9,16 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+# Indexes
+#
+#  index_companies_engineers_on_company_id   (company_id)
+#  index_companies_engineers_on_engineer_id  (engineer_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
+#  fk_rails_...  (engineer_id => engineers.id)
+#
 
 class Companies::Engineer < ApplicationRecord
 end

@@ -8,6 +8,14 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
+# Indexes
+#
+#  index_confirm_documents_on_unconfirmed_address_id  (unconfirmed_address_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (unconfirmed_address_id => unconfirmed_addresses.id)
+#
 
 class ConfirmDocument < ApplicationRecord
   # -------------------------------------------------------------------------------

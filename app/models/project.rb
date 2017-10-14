@@ -12,6 +12,14 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_projects_on_company_id  (company_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
+#
 
 class Project < ApplicationRecord
   # -------------------------------------------------------------------------------
