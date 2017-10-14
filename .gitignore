@@ -20,4 +20,7 @@
 /node_modules
 /yarn-error.log
 
+# .DS_Store banished!
+.DS_Store
+
 .byebug_history
