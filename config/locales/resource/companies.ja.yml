@@ -35,6 +35,12 @@ ja:
       address_confirmation_image:
         image: 法人確認書類
 
+      scouts:
+        interviewed_on: 面談日
+        start_at: 開始時間
+        end_at: 終了時間
+        note: スカウト理由
+
   companies:
     index:
       title: マイページ
@@ -132,10 +138,11 @@ ja:
     scouts:
       new:
         title: スカウト情報入力
-        interviewed_on: 面談日
-        start_at: 開始時間
-        end_at: 終了時間
-        note: スカウト理由
-        required: 必須
         note_example: 貴殿の経験スキルと弊社の求めるスキルが一致しているため...
-        scout: スカウトする
+      confirm:
+        title: 入力情報の確認
+        submit: スカウトする
+      create:
+        success: スカウトしました
+      show:
+        title: スカウト詳細

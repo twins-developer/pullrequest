@@ -8,6 +8,7 @@ class Companies::ScoutsController < ApplicationController
   before_action :set_engineer, only: %i(new confirm create show)
   before_action :set_scout_merge_engineer, only: %i(confirm create)
   before_action :set_scout, only: %i(show)
+
   # GET /companies/scouts/new
   def new
     @scout = Scout.new
@@ -28,14 +29,15 @@ class Companies::ScoutsController < ApplicationController
     ActiveRecord::Base.transaction do
       respond_to do |format|
         if @scout.save!
-          format.html { redirect_to [:companies, @scout], notice: t('.success') }
+          format.html { redirect_to [:companies, @scout,
+            engineer_id: @scout.engineer_id], notice: t('.success') }
         else
           format.html { render :new }
         end
       end
     end
     rescue
-        return redirect_to error_companies_scouts_url
+      return redirect_to error_companies_scouts_url
   end
 
   # GET /engineers/scouts/:1
@@ -49,7 +51,7 @@ class Companies::ScoutsController < ApplicationController
   private
 
   def set_engineer
-    @engineer = Engineer.find(params[:id] || params[:scout][:engineer_id])
+    @engineer = Engineer.find(params[:engineer_id] || params[:scout][:engineer_id])
   end
 
   def set_scout

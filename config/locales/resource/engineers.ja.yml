@@ -11,6 +11,9 @@ ja:
         sign_in_count: ログイン回数
         created_at: 登録日時
         last_sign_in_at: 前回ログイン時刻
+        name: 名前
+        image: 画像
+        prefecture: 居住地
 
       engineers/profile:
         engineer: エンジニア

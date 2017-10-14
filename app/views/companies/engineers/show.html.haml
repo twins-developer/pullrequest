@@ -19,4 +19,4 @@
           %td.profile-label= t 'activerecord.attributes.engineer.prefecture'
           %td= @engineer.prefecture
   .col-md-8
-    .col-xs-12.col-md-4.btn-group= link_to t('companies.scouts.new.scout'), new_companies_scout_path(id: @engineer.id), class: 'btn btn-primary btn-block'
+    .col-xs-12.col-md-4.btn-group= link_to t('companies.scouts.confirm.submit'), new_companies_scout_path(engineer_id: @engineer.id), class: 'btn btn-primary btn-block'

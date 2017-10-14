@@ -7,3 +7,13 @@
 ## インデント
 
 ## 関数
+
+### アクションにはパスをコメントする
+
+```
+  # GET /engineers/applies
+  # GET /engineers/applies.json
+  def index
+    @applies = current_engineer.applies.page(params[:page])
+  end
+```
