@@ -38,7 +38,7 @@ export default moment.defineLocale('gom-latn', {
         LLLL : 'dddd, MMMM[achea] Do, YYYY, A h:mm [vazta]',
         llll: 'ddd, D MMM YYYY, A h:mm [vazta]'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Aiz] LT',
         nextDay: '[Faleam] LT',
         nextWeek: '[Ieta to] dddd[,] LT',

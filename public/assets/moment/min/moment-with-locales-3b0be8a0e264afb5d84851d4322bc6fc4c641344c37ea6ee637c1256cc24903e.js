@@ -406,7 +406,7 @@ if (Object.keys) {
 
 var keys$1 = keys;
 
-var defaultCalendar = {
+var defaultinterview_hour = {
     sameDay : '[Today at] LT',
     nextDay : '[Tomorrow at] LT',
     nextWeek : 'dddd [at] LT',
@@ -415,8 +415,8 @@ var defaultCalendar = {
     sameElse : 'L'
 };
 
-function calendar (key, mom, now) {
-    var output = this._calendar[key] || this._calendar['sameElse'];
+function interview_hour (key, mom, now) {
+    var output = this._interview_hour[key] || this._interview_hour['sameElse'];
     return isFunction(output) ? output.call(mom, now) : output;
 }
 
@@ -1759,7 +1759,7 @@ var getSetHour = makeGetSet('Hours', true);
 // weekdays
 // meridiem
 var baseConfig = {
-    calendar: defaultCalendar,
+    interview_hour: defaultinterview_hour,
     longDateFormat: defaultLongDateFormat,
     invalidDate: defaultInvalidDate,
     ordinal: defaultOrdinal,
@@ -3106,7 +3106,7 @@ function addSubtract (mom, duration, isAdding, updateOffset) {
 var add      = createAdder(1, 'add');
 var subtract = createAdder(-1, 'subtract');
 
-function getCalendarFormat(myMoment, now) {
+function getinterview_hourFormat(myMoment, now) {
     var diff = myMoment.diff(now, 'days', true);
     return diff < -6 ? 'sameElse' :
             diff < -1 ? 'lastWeek' :
@@ -3116,16 +3116,16 @@ function getCalendarFormat(myMoment, now) {
             diff < 7 ? 'nextWeek' : 'sameElse';
 }
 
-function calendar$1 (time, formats) {
+function interview_hour$1 (time, formats) {
     // We want to compare the start of today, vs this.
     // Getting start-of-today depends on whether we're local/utc/offset or not.
     var now = time || createLocal(),
         sod = cloneWithOffset(now, this).startOf('day'),
-        format = hooks.calendarFormat(this, sod) || 'sameElse';
+        format = hooks.interview_hourFormat(this, sod) || 'sameElse';
 
     var output = formats && (isFunction(formats[format]) ? formats[format].call(this, now) : formats[format]);
 
-    return this.format(output || this.localeData().calendar(format, this, createLocal(now)));
+    return this.format(output || this.localeData().interview_hour(format, this, createLocal(now)));
 }
 
 function clone () {
@@ -3779,7 +3779,7 @@ function getZoneName () {
 var proto = Moment.prototype;
 
 proto.add               = add;
-proto.calendar          = calendar$1;
+proto.interview_hour          = interview_hour$1;
 proto.clone             = clone;
 proto.diff              = diff;
 proto.endOf             = endOf;
@@ -3894,7 +3894,7 @@ function preParsePostFormat (string) {
 
 var proto$1 = Locale.prototype;
 
-proto$1.calendar        = calendar;
+proto$1.interview_hour        = interview_hour;
 proto$1.longDateFormat  = longDateFormat;
 proto$1.invalidDate     = invalidDate;
 proto$1.ordinal         = ordinal;
@@ -4454,7 +4454,7 @@ hooks.weekdaysShort         = listWeekdaysShort;
 hooks.normalizeUnits        = normalizeUnits;
 hooks.relativeTimeRounding = getSetRelativeTimeRounding;
 hooks.relativeTimeThreshold = getSetRelativeTimeThreshold;
-hooks.calendarFormat        = getCalendarFormat;
+hooks.interview_hourFormat        = getinterview_hourFormat;
 hooks.prototype             = proto;
 
 //! moment.js locale configuration
@@ -4486,7 +4486,7 @@ hooks.defineLocale('af', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Vandag om] LT',
         nextDay : '[Môre om] LT',
         nextWeek : 'dddd [om] LT',
@@ -4538,7 +4538,7 @@ hooks.defineLocale('ar-dz', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -4586,7 +4586,7 @@ hooks.defineLocale('ar-kw', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -4693,7 +4693,7 @@ hooks.defineLocale('ar-ly', {
             return 'م';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم عند الساعة] LT',
         nextDay: '[غدًا عند الساعة] LT',
         nextWeek: 'dddd [عند الساعة] LT',
@@ -4750,7 +4750,7 @@ hooks.defineLocale('ar-ma', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -4834,7 +4834,7 @@ hooks.defineLocale('ar-sa', {
             return 'م';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -4892,7 +4892,7 @@ hooks.defineLocale('ar-tn', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -5013,7 +5013,7 @@ hooks.defineLocale('ar', {
             return 'م';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم عند الساعة] LT',
         nextDay: '[غدًا عند الساعة] LT',
         nextWeek: 'dddd [عند الساعة] LT',
@@ -5092,7 +5092,7 @@ hooks.defineLocale('az', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[bugün saat] LT',
         nextDay : '[sabah saat] LT',
         nextWeek : '[gələn həftə] dddd [saat] LT',
@@ -5196,7 +5196,7 @@ hooks.defineLocale('be', {
         LLL : 'D MMMM YYYY г., HH:mm',
         LLLL : 'dddd, D MMMM YYYY г., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Сёння ў] LT',
         nextDay: '[Заўтра ў] LT',
         lastDay: '[Учора ў] LT',
@@ -5287,7 +5287,7 @@ hooks.defineLocale('bg', {
         LLL : 'D MMMM YYYY H:mm',
         LLLL : 'dddd, D MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Днес в] LT',
         nextDay : '[Утре в] LT',
         nextWeek : 'dddd [в] LT',
@@ -5391,7 +5391,7 @@ hooks.defineLocale('bn', {
         LLL : 'D MMMM YYYY, A h:mm সময়',
         LLLL : 'dddd, D MMMM YYYY, A h:mm সময়'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[আজ] LT',
         nextDay : '[আগামীকাল] LT',
         nextWeek : 'dddd, LT',
@@ -5499,7 +5499,7 @@ hooks.defineLocale('bo', {
         LLL : 'D MMMM YYYY, A h:mm',
         LLLL : 'dddd, D MMMM YYYY, A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[དི་རིང] LT',
         nextDay : '[སང་ཉིན] LT',
         nextWeek : '[བདུན་ཕྲག་རྗེས་མ], LT',
@@ -5627,7 +5627,7 @@ hooks.defineLocale('br', {
         LLL : 'D [a viz] MMMM YYYY h[e]mm A',
         LLLL : 'dddd, D [a viz] MMMM YYYY h[e]mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hiziv da] LT',
         nextDay : '[Warc\'hoazh da] LT',
         nextWeek : 'dddd [da] LT',
@@ -5735,7 +5735,7 @@ hooks.defineLocale('bs', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[danas u] LT',
         nextDay  : '[sutra u] LT',
         nextWeek : function () {
@@ -5820,7 +5820,7 @@ hooks.defineLocale('ca', {
         LLLL : '[el] dddd D MMMM [de] YYYY [a les] H:mm',
         llll : 'ddd D MMM YYYY, H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[avui a ' + ((this.hours() !== 1) ? 'les' : 'la') + '] LT';
         },
@@ -5969,7 +5969,7 @@ hooks.defineLocale('cs', {
         LLLL : 'dddd D. MMMM YYYY H:mm',
         l : 'D. M. YYYY'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[dnes v] LT',
         nextDay: '[zítra v] LT',
         nextWeek: function () {
@@ -6049,7 +6049,7 @@ hooks.defineLocale('cv', {
         LLL : 'YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm',
         LLLL : 'dddd, YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Паян] LT [сехетре]',
         nextDay: '[Ыран] LT [сехетре]',
         lastDay: '[Ӗнер] LT [сехетре]',
@@ -6104,7 +6104,7 @@ hooks.defineLocale('cy', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[Heddiw am] LT',
         nextDay: '[Yfory am] LT',
         nextWeek: 'dddd [am] LT',
@@ -6171,7 +6171,7 @@ hooks.defineLocale('da', {
         LLL : 'D. MMMM YYYY HH:mm',
         LLLL : 'dddd [d.] D. MMMM YYYY [kl.] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[i dag kl.] LT',
         nextDay : '[i morgen kl.] LT',
         nextWeek : 'på dddd [kl.] LT',
@@ -6239,7 +6239,7 @@ hooks.defineLocale('de-at', {
         LLL : 'D. MMMM YYYY HH:mm',
         LLLL : 'dddd, D. MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[heute um] LT [Uhr]',
         sameElse: 'L',
         nextDay: '[morgen um] LT [Uhr]',
@@ -6306,7 +6306,7 @@ hooks.defineLocale('de-ch', {
         LLL : 'D. MMMM YYYY HH.mm',
         LLLL : 'dddd, D. MMMM YYYY HH.mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[heute um] LT [Uhr]',
         sameElse: 'L',
         nextDay: '[morgen um] LT [Uhr]',
@@ -6373,7 +6373,7 @@ hooks.defineLocale('de', {
         LLL : 'D. MMMM YYYY HH:mm',
         LLLL : 'dddd, D. MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[heute um] LT [Uhr]',
         sameElse: 'L',
         nextDay: '[morgen um] LT [Uhr]',
@@ -6458,7 +6458,7 @@ hooks.defineLocale('dv', {
             return 'މފ';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[މިއަދު] LT',
         nextDay : '[މާދަމާ] LT',
         nextWeek : 'dddd LT',
@@ -6532,7 +6532,7 @@ hooks.defineLocale('el', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendarEl : {
+    interview_hourEl : {
         sameDay : '[Σήμερα {}] LT',
         nextDay : '[Αύριο {}] LT',
         nextWeek : 'dddd [{}] LT',
@@ -6547,8 +6547,8 @@ hooks.defineLocale('el', {
         },
         sameElse : 'L'
     },
-    calendar : function (key, mom) {
-        var output = this._calendarEl[key],
+    interview_hour : function (key, mom) {
+        var output = this._interview_hourEl[key],
             hours = mom && mom.hours();
         if (isFunction(output)) {
             output = output.apply(mom);
@@ -6596,7 +6596,7 @@ hooks.defineLocale('en-au', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -6652,7 +6652,7 @@ hooks.defineLocale('en-ca', {
         LLL : 'MMMM D, YYYY h:mm A',
         LLLL : 'dddd, MMMM D, YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -6704,7 +6704,7 @@ hooks.defineLocale('en-gb', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -6760,7 +6760,7 @@ hooks.defineLocale('en-ie', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -6816,7 +6816,7 @@ hooks.defineLocale('en-nz', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -6885,7 +6885,7 @@ hooks.defineLocale('eo', {
             return isLower ? 'a.t.m.' : 'A.T.M.';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hodiaŭ je] LT',
         nextDay : '[Morgaŭ je] LT',
         nextWeek : 'dddd [je] LT',
@@ -6946,7 +6946,7 @@ hooks.defineLocale('es-do', {
         LLL : 'D [de] MMMM [de] YYYY h:mm A',
         LLLL : 'dddd, D [de] MMMM [de] YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
         },
@@ -7018,7 +7018,7 @@ hooks.defineLocale('es', {
         LLL : 'D [de] MMMM [de] YYYY H:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
         },
@@ -7097,7 +7097,7 @@ hooks.defineLocale('et', {
         LLL  : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[Täna,] LT',
         nextDay  : '[Homme,] LT',
         nextWeek : '[Järgmine] dddd LT',
@@ -7152,7 +7152,7 @@ hooks.defineLocale('eu', {
         lll : 'YYYY[ko] MMM D[a] HH:mm',
         llll : 'ddd, YYYY[ko] MMM D[a] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[gaur] LT[etan]',
         nextDay : '[bihar] LT[etan]',
         nextWeek : 'dddd LT[etan]',
@@ -7238,7 +7238,7 @@ hooks.defineLocale('fa', {
             return 'بعد از ظهر';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[امروز ساعت] LT',
         nextDay : '[فردا ساعت] LT',
         nextWeek : 'dddd [ساعت] LT',
@@ -7344,7 +7344,7 @@ hooks.defineLocale('fi', {
         lll : 'Do MMM YYYY, [klo] HH.mm',
         llll : 'ddd, Do MMM YYYY, [klo] HH.mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[tänään] [klo] LT',
         nextDay : '[huomenna] [klo] LT',
         nextWeek : 'dddd [klo] LT',
@@ -7393,7 +7393,7 @@ hooks.defineLocale('fo', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D. MMMM, YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Í dag kl.] LT',
         nextDay : '[Í morgin kl.] LT',
         nextWeek : 'dddd [kl.] LT',
@@ -7444,7 +7444,7 @@ hooks.defineLocale('fr-ca', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Aujourd’hui à] LT',
         nextDay : '[Demain à] LT',
         nextWeek : 'dddd [à] LT',
@@ -7507,7 +7507,7 @@ hooks.defineLocale('fr-ch', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Aujourd’hui à] LT',
         nextDay : '[Demain à] LT',
         nextWeek : 'dddd [à] LT',
@@ -7574,7 +7574,7 @@ hooks.defineLocale('fr', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Aujourd’hui à] LT',
         nextDay : '[Demain à] LT',
         nextWeek : 'dddd [à] LT',
@@ -7657,7 +7657,7 @@ hooks.defineLocale('fy', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[hjoed om] LT',
         nextDay: '[moarn om] LT',
         nextWeek: 'dddd [om] LT',
@@ -7721,7 +7721,7 @@ hooks.defineLocale('gd', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[An-diugh aig] LT',
         nextDay : '[A-màireach aig] LT',
         nextWeek : 'dddd [aig] LT',
@@ -7775,7 +7775,7 @@ hooks.defineLocale('gl', {
         LLL : 'D [de] MMMM [de] YYYY H:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[hoxe ' + ((this.hours() !== 1) ? 'ás' : 'á') + '] LT';
         },
@@ -7859,7 +7859,7 @@ hooks.defineLocale('gom-latn', {
         LLLL : 'dddd, MMMM[achea] Do, YYYY, A h:mm [vazta]',
         llll: 'ddd, D MMM YYYY, A h:mm [vazta]'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Aiz] LT',
         nextDay: '[Faleam] LT',
         nextWeek: '[Ieta to] dddd[,] LT',
@@ -7956,7 +7956,7 @@ hooks.defineLocale('he', {
         lll : 'D MMM YYYY HH:mm',
         llll : 'ddd, D MMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[היום ב־]LT',
         nextDay : '[מחר ב־]LT',
         nextWeek : 'dddd [בשעה] LT',
@@ -8064,7 +8064,7 @@ hooks.defineLocale('hi', {
         LLL : 'D MMMM YYYY, A h:mm बजे',
         LLLL : 'dddd, D MMMM YYYY, A h:mm बजे'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[कल] LT',
         nextWeek : 'dddd, LT',
@@ -8209,7 +8209,7 @@ hooks.defineLocale('hr', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[danas u] LT',
         nextDay  : '[sutra u] LT',
         nextWeek : function () {
@@ -8330,7 +8330,7 @@ hooks.defineLocale('hu', {
             return isLower === true ? 'du' : 'DU';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ma] LT[-kor]',
         nextDay : '[holnap] LT[-kor]',
         nextWeek : function () {
@@ -8386,7 +8386,7 @@ hooks.defineLocale('hy-am', {
         LLL : 'D MMMM YYYY թ., HH:mm',
         LLLL : 'dddd, D MMMM YYYY թ., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[այսօր] LT',
         nextDay: '[վաղը] LT',
         lastDay: '[երեկ] LT',
@@ -8492,7 +8492,7 @@ hooks.defineLocale('id', {
             return 'malam';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hari ini pukul] LT',
         nextDay : '[Besok pukul] LT',
         nextWeek : 'dddd [pukul] LT',
@@ -8606,7 +8606,7 @@ hooks.defineLocale('is', {
         LLL : 'D. MMMM YYYY [kl.] H:mm',
         LLLL : 'dddd, D. MMMM YYYY [kl.] H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[í dag kl.] LT',
         nextDay : '[á morgun kl.] LT',
         nextWeek : 'dddd [kl.] LT',
@@ -8656,7 +8656,7 @@ hooks.defineLocale('it', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Oggi alle] LT',
         nextDay: '[Domani alle] LT',
         nextWeek: 'dddd [alle] LT',
@@ -8729,7 +8729,7 @@ hooks.defineLocale('ja', {
             return '午後';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今日] LT',
         nextDay : '[明日] LT',
         nextWeek : '[来週]dddd LT',
@@ -8808,7 +8808,7 @@ hooks.defineLocale('jv', {
             return 'ndalu';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Dinten puniko pukul] LT',
         nextDay : '[Mbenjang pukul] LT',
         nextWeek : 'dddd [pukul] LT',
@@ -8862,7 +8862,7 @@ hooks.defineLocale('ka', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[დღეს] LT[-ზე]',
         nextDay : '[ხვალ] LT[-ზე]',
         lastDay : '[გუშინ] LT[-ზე]',
@@ -8956,7 +8956,7 @@ hooks.defineLocale('kk', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Бүгін сағат] LT',
         nextDay : '[Ертең сағат] LT',
         nextWeek : 'dddd [сағат] LT',
@@ -9009,7 +9009,7 @@ hooks.defineLocale('km', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[ថ្ងៃនេះ ម៉ោង] LT',
         nextDay: '[ស្អែក ម៉ោង] LT',
         nextWeek: 'dddd [ម៉ោង] LT',
@@ -9082,7 +9082,7 @@ hooks.defineLocale('kn', {
         LLL : 'D MMMM YYYY, A h:mm',
         LLLL : 'dddd, D MMMM YYYY, A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ಇಂದು] LT',
         nextDay : '[ನಾಳೆ] LT',
         nextWeek : 'dddd, LT',
@@ -9176,7 +9176,7 @@ hooks.defineLocale('ko', {
         lll : 'YYYY년 MMMM D일 A h:mm',
         llll : 'YYYY년 MMMM D일 dddd A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '오늘 LT',
         nextDay : '내일 LT',
         nextWeek : 'dddd LT',
@@ -9253,7 +9253,7 @@ hooks.defineLocale('ky', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Бүгүн саат] LT',
         nextDay : '[Эртең саат] LT',
         nextWeek : 'dddd [саат] LT',
@@ -9374,7 +9374,7 @@ hooks.defineLocale('lb', {
         LLL: 'D. MMMM YYYY H:mm [Auer]',
         LLLL: 'dddd, D. MMMM YYYY H:mm [Auer]'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[Haut um] LT',
         sameElse: 'L',
         nextDay: '[Muer um] LT',
@@ -9444,7 +9444,7 @@ hooks.defineLocale('lo', {
             return 'ຕອນແລງ';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ມື້ນີ້ເວລາ] LT',
         nextDay : '[ມື້ອື່ນເວລາ] LT',
         nextWeek : '[ວັນ]dddd[ໜ້າເວລາ] LT',
@@ -9546,7 +9546,7 @@ hooks.defineLocale('lt', {
         lll : 'YYYY [m.] MMMM D [d.], HH:mm [val.]',
         llll : 'YYYY [m.] MMMM D [d.], ddd, HH:mm [val.]'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Šiandien] LT',
         nextDay : '[Rytoj] LT',
         nextWeek : 'dddd LT',
@@ -9634,7 +9634,7 @@ hooks.defineLocale('lv', {
         LLL : 'YYYY. [gada] D. MMMM, HH:mm',
         LLLL : 'YYYY. [gada] D. MMMM, dddd, HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Šodien pulksten] LT',
         nextDay : '[Rīt pulksten] LT',
         nextWeek : 'dddd [pulksten] LT',
@@ -9708,7 +9708,7 @@ hooks.defineLocale('me', {
         LLL: 'D. MMMM YYYY H:mm',
         LLLL: 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[danas u] LT',
         nextDay: '[sjutra u] LT',
 
@@ -9787,7 +9787,7 @@ hooks.defineLocale('mi', {
         LLL: 'D MMMM YYYY [i] HH:mm',
         LLLL: 'dddd, D MMMM YYYY [i] HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[i teie mahana, i] LT',
         nextDay: '[apopo i] LT',
         nextWeek: 'dddd [i] LT',
@@ -9836,7 +9836,7 @@ hooks.defineLocale('mk', {
         LLL : 'D MMMM YYYY H:mm',
         LLLL : 'dddd, D MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Денес во] LT',
         nextDay : '[Утре во] LT',
         nextWeek : '[Во] dddd [во] LT',
@@ -9916,7 +9916,7 @@ hooks.defineLocale('ml', {
         LLL : 'D MMMM YYYY, A h:mm -നു',
         LLLL : 'dddd, D MMMM YYYY, A h:mm -നു'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ഇന്ന്] LT',
         nextDay : '[നാളെ] LT',
         nextWeek : 'dddd, LT',
@@ -10048,7 +10048,7 @@ hooks.defineLocale('mr', {
         LLL : 'D MMMM YYYY, A h:mm वाजता',
         LLLL : 'dddd, D MMMM YYYY, A h:mm वाजता'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[उद्या] LT',
         nextWeek : 'dddd, LT',
@@ -10158,7 +10158,7 @@ hooks.defineLocale('ms-my', {
             return 'malam';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hari ini pukul] LT',
         nextDay : '[Esok pukul] LT',
         nextWeek : 'dddd [pukul] LT',
@@ -10229,7 +10229,7 @@ hooks.defineLocale('ms', {
             return 'malam';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hari ini pukul] LT',
         nextDay : '[Esok pukul] LT',
         nextWeek : 'dddd [pukul] LT',
@@ -10304,7 +10304,7 @@ hooks.defineLocale('my', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[ယနေ.] LT [မှာ]',
         nextDay: '[မနက်ဖြန်] LT [မှာ]',
         nextWeek: 'dddd LT [မှာ]',
@@ -10364,7 +10364,7 @@ hooks.defineLocale('nb', {
         LLL : 'D. MMMM YYYY [kl.] HH:mm',
         LLLL : 'dddd D. MMMM YYYY [kl.] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[i dag kl.] LT',
         nextDay: '[i morgen kl.] LT',
         nextWeek: 'dddd [kl.] LT',
@@ -10478,7 +10478,7 @@ hooks.defineLocale('ne', {
             return 'राति';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[भोलि] LT',
         nextWeek : '[आउँदो] dddd[,] LT',
@@ -10551,7 +10551,7 @@ hooks.defineLocale('nl-be', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[vandaag om] LT',
         nextDay: '[morgen om] LT',
         nextWeek: 'dddd [om] LT',
@@ -10628,7 +10628,7 @@ hooks.defineLocale('nl', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[vandaag om] LT',
         nextDay: '[morgen om] LT',
         nextWeek: 'dddd [om] LT',
@@ -10679,7 +10679,7 @@ hooks.defineLocale('nn', {
         LLL : 'D. MMMM YYYY [kl.] H:mm',
         LLLL : 'dddd D. MMMM YYYY [kl.] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[I dag klokka] LT',
         nextDay: '[I morgon klokka] LT',
         nextWeek: 'dddd [klokka] LT',
@@ -10754,7 +10754,7 @@ hooks.defineLocale('pa-in', {
         LLL : 'D MMMM YYYY, A h:mm ਵਜੇ',
         LLLL : 'dddd, D MMMM YYYY, A h:mm ਵਜੇ'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ਅਜ] LT',
         nextDay : '[ਕਲ] LT',
         nextWeek : 'dddd, LT',
@@ -10877,7 +10877,7 @@ hooks.defineLocale('pl', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Dziś o] LT',
         nextDay: '[Jutro o] LT',
         nextWeek: '[W] dddd [o] LT',
@@ -10938,7 +10938,7 @@ hooks.defineLocale('pt-br', {
         LLL : 'D [de] MMMM [de] YYYY [às] HH:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY [às] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Hoje às] LT',
         nextDay: '[Amanhã às] LT',
         nextWeek: 'dddd [às] LT',
@@ -10988,7 +10988,7 @@ hooks.defineLocale('pt', {
         LLL : 'D [de] MMMM [de] YYYY HH:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Hoje às] LT',
         nextDay: '[Amanhã às] LT',
         nextWeek: 'dddd [às] LT',
@@ -11058,7 +11058,7 @@ hooks.defineLocale('ro', {
         LLL : 'D MMMM YYYY H:mm',
         LLLL : 'dddd, D MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[azi la] LT',
         nextDay: '[mâine la] LT',
         nextWeek: 'dddd [la] LT',
@@ -11157,7 +11157,7 @@ hooks.defineLocale('ru', {
         LLL : 'D MMMM YYYY г., HH:mm',
         LLLL : 'dddd, D MMMM YYYY г., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Сегодня в] LT',
         nextDay: '[Завтра в] LT',
         lastDay: '[Вчера в] LT',
@@ -11311,7 +11311,7 @@ hooks.defineLocale('sd', {
         }
         return 'شام';
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[اڄ] LT',
         nextDay : '[سڀاڻي] LT',
         nextWeek : 'dddd [اڳين هفتي تي] LT',
@@ -11365,7 +11365,7 @@ hooks.defineLocale('se', {
         LLL : 'MMMM D. [b.] YYYY [ti.] HH:mm',
         LLLL : 'dddd, MMMM D. [b.] YYYY [ti.] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[otne ti] LT',
         nextDay: '[ihttin ti] LT',
         nextWeek: 'dddd [ti] LT',
@@ -11416,7 +11416,7 @@ hooks.defineLocale('si', {
         LLL : 'YYYY MMMM D, a h:mm',
         LLLL : 'YYYY MMMM D [වැනි] dddd, a h:mm:ss'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[අද] LT[ට]',
         nextDay : '[හෙට] LT[ට]',
         nextWeek : 'dddd LT[ට]',
@@ -11533,7 +11533,7 @@ hooks.defineLocale('sk', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[dnes o] LT',
         nextDay: '[zajtra o] LT',
         nextWeek: function () {
@@ -11686,7 +11686,7 @@ hooks.defineLocale('sl', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[danes ob] LT',
         nextDay  : '[jutri ob] LT',
 
@@ -11774,7 +11774,7 @@ hooks.defineLocale('sq', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Sot në] LT',
         nextDay : '[Nesër në] LT',
         nextWeek : 'dddd [në] LT',
@@ -11848,7 +11848,7 @@ hooks.defineLocale('sr-cyrl', {
         LLL: 'D. MMMM YYYY H:mm',
         LLLL: 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[данас у] LT',
         nextDay: '[сутра у] LT',
         nextWeek: function () {
@@ -11947,7 +11947,7 @@ hooks.defineLocale('sr', {
         LLL: 'D. MMMM YYYY H:mm',
         LLLL: 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[danas u] LT',
         nextDay: '[sutra u] LT',
         nextWeek: function () {
@@ -12023,7 +12023,7 @@ hooks.defineLocale('ss', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Namuhla nga] LT',
         nextDay : '[Kusasa nga] LT',
         nextWeek : 'dddd [nga] LT',
@@ -12101,7 +12101,7 @@ hooks.defineLocale('sv', {
         lll : 'D MMM YYYY HH:mm',
         llll : 'ddd D MMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Idag] LT',
         nextDay: '[Imorgon] LT',
         lastDay: '[Igår] LT',
@@ -12158,7 +12158,7 @@ hooks.defineLocale('sw', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[leo saa] LT',
         nextDay : '[kesho saa] LT',
         nextWeek : '[wiki ijayo] dddd [saat] LT',
@@ -12230,7 +12230,7 @@ hooks.defineLocale('ta', {
         LLL : 'D MMMM YYYY, HH:mm',
         LLLL : 'dddd, D MMMM YYYY, HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[இன்று] LT',
         nextDay : '[நாளை] LT',
         nextWeek : 'dddd, LT',
@@ -12325,7 +12325,7 @@ hooks.defineLocale('te', {
         LLL : 'D MMMM YYYY, A h:mm',
         LLLL : 'dddd, D MMMM YYYY, A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[నేడు] LT',
         nextDay : '[రేపు] LT',
         nextWeek : 'dddd, LT',
@@ -12403,7 +12403,7 @@ hooks.defineLocale('tet', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Ohin iha] LT',
         nextDay: '[Aban iha] LT',
         nextWeek: 'dddd [iha] LT',
@@ -12472,7 +12472,7 @@ hooks.defineLocale('th', {
             return 'หลังเที่ยง';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[วันนี้ เวลา] LT',
         nextDay : '[พรุ่งนี้ เวลา] LT',
         nextWeek : 'dddd[หน้า เวลา] LT',
@@ -12515,7 +12515,7 @@ hooks.defineLocale('tl-ph', {
         LLL : 'MMMM D, YYYY HH:mm',
         LLLL : 'dddd, MMMM DD, YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: 'LT [ngayong araw]',
         nextDay: '[Bukas ng] LT',
         nextWeek: 'LT [sa susunod na] dddd',
@@ -12626,7 +12626,7 @@ hooks.defineLocale('tlh', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[DaHjaj] LT',
         nextDay: '[wa’leS] LT',
         nextWeek: 'LLL',
@@ -12697,7 +12697,7 @@ hooks.defineLocale('tr', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[bugün saat] LT',
         nextDay : '[yarın saat] LT',
         nextWeek : '[haftaya] dddd [saat] LT',
@@ -12768,7 +12768,7 @@ hooks.defineLocale('tzl', {
             return isLower ? 'd\'a' : 'D\'A';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[oxhi à] LT',
         nextDay : '[demà à] LT',
         nextWeek : 'dddd [à] LT',
@@ -12834,7 +12834,7 @@ hooks.defineLocale('tzm-latn', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[asdkh g] LT',
         nextDay: '[aska g] LT',
         nextWeek: 'dddd [g] LT',
@@ -12881,7 +12881,7 @@ hooks.defineLocale('tzm', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[ⴰⵙⴷⵅ ⴴ] LT',
         nextDay: '[ⴰⵙⴽⴰ ⴴ] LT',
         nextWeek: 'dddd [ⴴ] LT',
@@ -12978,7 +12978,7 @@ hooks.defineLocale('uk', {
         LLL : 'D MMMM YYYY р., HH:mm',
         LLLL : 'dddd, D MMMM YYYY р., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: processHoursFunction('[Сьогодні '),
         nextDay: processHoursFunction('[Завтра '),
         lastDay: processHoursFunction('[Вчора '),
@@ -13103,7 +13103,7 @@ hooks.defineLocale('ur', {
         }
         return 'شام';
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[آج بوقت] LT',
         nextDay : '[کل بوقت] LT',
         nextWeek : 'dddd [بوقت] LT',
@@ -13156,7 +13156,7 @@ hooks.defineLocale('uz-latn', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'D MMMM YYYY, dddd HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Bugun soat] LT [da]',
         nextDay : '[Ertaga] LT [da]',
         nextWeek : 'dddd [kuni soat] LT [da]',
@@ -13203,7 +13203,7 @@ hooks.defineLocale('uz', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'D MMMM YYYY, dddd HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Бугун соат] LT [да]',
         nextDay : '[Эртага] LT [да]',
         nextWeek : 'dddd [куни соат] LT [да]',
@@ -13267,7 +13267,7 @@ hooks.defineLocale('vi', {
         lll : 'D MMM YYYY HH:mm',
         llll : 'ddd, D MMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Hôm nay lúc] LT',
         nextDay: '[Ngày mai lúc] LT',
         nextWeek: 'dddd [tuần tới lúc] LT',
@@ -13319,7 +13319,7 @@ hooks.defineLocale('x-pseudo', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[T~ódá~ý át] LT',
         nextDay : '[T~ómó~rró~w át] LT',
         nextWeek : 'dddd [át] LT',
@@ -13375,7 +13375,7 @@ hooks.defineLocale('yo', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Ònì ni] LT',
         nextDay : '[Ọ̀la ni] LT',
         nextWeek : 'dddd [Ọsẹ̀ tón\'bọ] [ni] LT',
@@ -13460,7 +13460,7 @@ hooks.defineLocale('zh-cn', {
             return '晚上';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今天]LT',
         nextDay : '[明天]LT',
         nextWeek : '[下]ddddLT',
@@ -13559,7 +13559,7 @@ hooks.defineLocale('zh-hk', {
             return '晚上';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今天]LT',
         nextDay : '[明天]LT',
         nextWeek : '[下]ddddLT',
@@ -13652,7 +13652,7 @@ hooks.defineLocale('zh-tw', {
             return '晚上';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今天]LT',
         nextDay : '[明天]LT',
         nextWeek : '[下]ddddLT',

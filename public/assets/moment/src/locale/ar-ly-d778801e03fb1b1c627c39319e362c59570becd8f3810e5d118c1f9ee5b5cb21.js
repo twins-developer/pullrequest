@@ -74,7 +74,7 @@ export default moment.defineLocale('ar-ly', {
             return 'م';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم عند الساعة] LT',
         nextDay: '[غدًا عند الساعة] LT',
         nextWeek: 'dddd [عند الساعة] LT',

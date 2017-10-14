@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009125701) do
+ActiveRecord::Schema.define(version: 20171014130446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20171009125701) do
     t.bigint "project_id"
     t.date "interviewed_on"
     t.datetime "start_at"
-    t.datetime "end_at"
     t.integer "status"
     t.text "engineer_reason"
     t.text "company_reason"
@@ -168,15 +167,29 @@ ActiveRecord::Schema.define(version: 20171009125701) do
     t.index ["tag_id"], name: "index_engineers_works_on_tag_id"
   end
 
-  create_table "interview_hours", force: :cascade do |t|
+  create_table "interview_hour_masters", force: :cascade do |t|
     t.bigint "company_id"
     t.integer "wday", null: false
     t.integer "hour", null: false
     t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id", "wday", "hour"], name: "index_interview_hours_on_company_id_and_wday_and_hour", unique: true
+    t.index ["company_id", "wday", "hour"], name: "index_interview_hour_masters_on_company_id_and_wday_and_hour", unique: true
+    t.index ["company_id"], name: "index_interview_hour_masters_on_company_id"
+  end
+
+  create_table "interview_hours", force: :cascade do |t|
+    t.bigint "company_id"
+    t.bigint "scout_id"
+    t.bigint "apply_id"
+    t.date "interviewed_on", null: false
+    t.integer "wday", null: false
+    t.integer "hour", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apply_id"], name: "index_interview_hours_on_apply_id"
     t.index ["company_id"], name: "index_interview_hours_on_company_id"
+    t.index ["scout_id"], name: "index_interview_hours_on_scout_id"
   end
 
   create_table "project_tags", force: :cascade do |t|
@@ -225,8 +238,8 @@ ActiveRecord::Schema.define(version: 20171009125701) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "title"
-    t.date "start_at"
-    t.date "end_at"
+    t.date "started_on"
+    t.date "ended_on"
     t.text "note"
     t.text "code"
     t.datetime "created_at", null: false
@@ -238,7 +251,6 @@ ActiveRecord::Schema.define(version: 20171009125701) do
     t.bigint "company_id"
     t.date "interviewed_on"
     t.datetime "start_at"
-    t.datetime "end_at"
     t.integer "status"
     t.text "note"
     t.datetime "created_at", null: false
@@ -311,7 +323,10 @@ ActiveRecord::Schema.define(version: 20171009125701) do
   add_foreign_key "engineers_social_accounts", "engineers"
   add_foreign_key "engineers_works", "engineers"
   add_foreign_key "engineers_works", "tags"
+  add_foreign_key "interview_hour_masters", "companies"
+  add_foreign_key "interview_hours", "applies"
   add_foreign_key "interview_hours", "companies"
+  add_foreign_key "interview_hours", "scouts"
   add_foreign_key "project_tags", "companies"
   add_foreign_key "project_tags", "projects"
   add_foreign_key "project_tags", "tags"

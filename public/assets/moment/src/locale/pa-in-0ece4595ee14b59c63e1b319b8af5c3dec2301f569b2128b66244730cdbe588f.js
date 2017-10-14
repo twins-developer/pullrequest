@@ -44,7 +44,7 @@ export default moment.defineLocale('pa-in', {
         LLL : 'D MMMM YYYY, A h:mm ਵਜੇ',
         LLLL : 'dddd, D MMMM YYYY, A h:mm ਵਜੇ'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ਅਜ] LT',
         nextDay : '[ਕਲ] LT',
         nextWeek : 'dddd, LT',

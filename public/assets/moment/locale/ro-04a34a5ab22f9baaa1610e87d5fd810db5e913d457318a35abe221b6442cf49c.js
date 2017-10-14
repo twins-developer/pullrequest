@@ -41,7 +41,7 @@ var ro = moment.defineLocale('ro', {
         LLL : 'D MMMM YYYY H:mm',
         LLLL : 'dddd, D MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[azi la] LT',
         nextDay: '[mâine la] LT',
         nextWeek: 'dddd [la] LT',

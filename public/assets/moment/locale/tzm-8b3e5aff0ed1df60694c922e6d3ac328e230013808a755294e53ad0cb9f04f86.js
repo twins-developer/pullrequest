@@ -24,7 +24,7 @@ var tzm = moment.defineLocale('tzm', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[ⴰⵙⴷⵅ ⴴ] LT',
         nextDay: '[ⴰⵙⴽⴰ ⴴ] LT',
         nextWeek: 'dddd [ⴴ] LT',

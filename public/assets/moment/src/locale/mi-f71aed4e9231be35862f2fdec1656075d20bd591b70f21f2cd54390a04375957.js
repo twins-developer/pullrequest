@@ -22,7 +22,7 @@ export default moment.defineLocale('mi', {
         LLL: 'D MMMM YYYY [i] HH:mm',
         LLLL: 'dddd, D MMMM YYYY [i] HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[i teie mahana, i] LT',
         nextDay: '[apopo i] LT',
         nextWeek: 'dddd [i] LT',

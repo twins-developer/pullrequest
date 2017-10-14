@@ -49,7 +49,7 @@ var ta = moment.defineLocale('ta', {
         LLL : 'D MMMM YYYY, HH:mm',
         LLLL : 'dddd, D MMMM YYYY, HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[இன்று] LT',
         nextDay : '[நாளை] LT',
         nextWeek : 'dddd, LT',

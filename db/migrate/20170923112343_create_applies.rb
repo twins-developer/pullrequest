@@ -6,7 +6,6 @@ class CreateApplies < ActiveRecord::Migration[5.1]
       t.belongs_to :project, foreign_key: true
       t.date :interviewed_on
       t.datetime :start_at
-      t.datetime :end_at
       t.integer :status
       t.text :engineer_reason, limit: 100
       t.text :company_reason, limit: 100

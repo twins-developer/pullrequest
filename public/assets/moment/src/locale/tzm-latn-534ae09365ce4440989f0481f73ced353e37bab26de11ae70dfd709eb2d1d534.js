@@ -18,7 +18,7 @@ export default moment.defineLocale('tzm-latn', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[asdkh g] LT',
         nextDay: '[aska g] LT',
         nextWeek: 'dddd [g] LT',

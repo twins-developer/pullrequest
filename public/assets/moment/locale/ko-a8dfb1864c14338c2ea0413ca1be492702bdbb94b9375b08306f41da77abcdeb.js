@@ -29,7 +29,7 @@ var ko = moment.defineLocale('ko', {
         lll : 'YYYY년 MMMM D일 A h:mm',
         llll : 'YYYY년 MMMM D일 dddd A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '오늘 LT',
         nextDay : '내일 LT',
         nextWeek : 'dddd LT',

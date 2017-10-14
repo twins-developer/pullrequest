@@ -81,7 +81,7 @@ export default moment.defineLocale('mr', {
         LLL : 'D MMMM YYYY, A h:mm वाजता',
         LLLL : 'dddd, D MMMM YYYY, A h:mm वाजता'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[उद्या] LT',
         nextWeek : 'dddd, LT',

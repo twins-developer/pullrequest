@@ -38,7 +38,7 @@ var tzl = moment.defineLocale('tzl', {
             return isLower ? 'd\'a' : 'D\'A';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[oxhi à] LT',
         nextDay : '[demà à] LT',
         nextWeek : 'dddd [à] LT',

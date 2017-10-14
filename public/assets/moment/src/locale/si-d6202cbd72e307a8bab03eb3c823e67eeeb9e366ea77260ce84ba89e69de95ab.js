@@ -20,7 +20,7 @@ export default moment.defineLocale('si', {
         LLL : 'YYYY MMMM D, a h:mm',
         LLLL : 'YYYY MMMM D [වැනි] dddd, a h:mm:ss'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[අද] LT[ට]',
         nextDay : '[හෙට] LT[ට]',
         nextWeek : 'dddd LT[ට]',

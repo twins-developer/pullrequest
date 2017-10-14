@@ -78,7 +78,7 @@ export default moment.defineLocale('tlh', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[DaHjaj] LT',
         nextDay: '[wa’leS] LT',
         nextWeek: 'LLL',

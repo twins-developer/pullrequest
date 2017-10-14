@@ -18,7 +18,7 @@ export default moment.defineLocale('tl-ph', {
         LLL : 'MMMM D, YYYY HH:mm',
         LLLL : 'dddd, MMMM DD, YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: 'LT [ngayong araw]',
         nextDay: '[Bukas ng] LT',
         nextWeek: 'LT [sa susunod na] dddd',

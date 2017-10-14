@@ -954,7 +954,7 @@ th {
 }
 
 /* line 612, /Users/keiga/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/rails-assets-bootstrap-3.3.7/app/assets/stylesheets/bootstrap/bootstrap.scss */
-.glyphicon-calendar:before {
+.glyphicon-interview_hour:before {
   content: "\e109";
 }
 
@@ -11459,7 +11459,7 @@ button.close {
 }
 
 /* line 122, /Users/keiga/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/font-awesome-sass-4.7.0/assets/stylesheets/font-awesome/_icons.scss */
-.fa-calendar:before {
+.fa-interview_hour:before {
   content: "";
 }
 
@@ -12314,7 +12314,7 @@ button.close {
 }
 
 /* line 313, /Users/keiga/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/font-awesome-sass-4.7.0/assets/stylesheets/font-awesome/_icons.scss */
-.fa-calendar-o:before {
+.fa-interview_hour-o:before {
   content: "";
 }
 
@@ -13850,22 +13850,22 @@ button.close {
 }
 
 /* line 665, /Users/keiga/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/font-awesome-sass-4.7.0/assets/stylesheets/font-awesome/_icons.scss */
-.fa-calendar-plus-o:before {
+.fa-interview_hour-plus-o:before {
   content: "";
 }
 
 /* line 666, /Users/keiga/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/font-awesome-sass-4.7.0/assets/stylesheets/font-awesome/_icons.scss */
-.fa-calendar-minus-o:before {
+.fa-interview_hour-minus-o:before {
   content: "";
 }
 
 /* line 667, /Users/keiga/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/font-awesome-sass-4.7.0/assets/stylesheets/font-awesome/_icons.scss */
-.fa-calendar-times-o:before {
+.fa-interview_hour-times-o:before {
   content: "";
 }
 
 /* line 668, /Users/keiga/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/font-awesome-sass-4.7.0/assets/stylesheets/font-awesome/_icons.scss */
-.fa-calendar-check-o:before {
+.fa-interview_hour-check-o:before {
   content: "";
 }
 

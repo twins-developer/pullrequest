@@ -33,7 +33,7 @@ export default moment.defineLocale('ja', {
             return '午後';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今日] LT',
         nextDay : '[明日] LT',
         nextWeek : '[来週]dddd LT',

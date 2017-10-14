@@ -27,7 +27,7 @@ var hyAm = moment.defineLocale('hy-am', {
         LLL : 'D MMMM YYYY թ., HH:mm',
         LLLL : 'dddd, D MMMM YYYY թ., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[այսօր] LT',
         nextDay: '[վաղը] LT',
         lastDay: '[երեկ] LT',

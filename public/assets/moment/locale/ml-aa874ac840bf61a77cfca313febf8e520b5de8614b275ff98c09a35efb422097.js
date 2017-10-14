@@ -25,7 +25,7 @@ var ml = moment.defineLocale('ml', {
         LLL : 'D MMMM YYYY, A h:mm -നു',
         LLLL : 'dddd, D MMMM YYYY, A h:mm -നു'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ഇന്ന്] LT',
         nextDay : '[നാളെ] LT',
         nextWeek : 'dddd, LT',

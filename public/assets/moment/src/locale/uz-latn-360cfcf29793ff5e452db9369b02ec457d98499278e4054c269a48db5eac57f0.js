@@ -18,7 +18,7 @@ export default moment.defineLocale('uz-latn', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'D MMMM YYYY, dddd HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Bugun soat] LT [da]',
         nextDay : '[Ertaga] LT [da]',
         nextWeek : 'dddd [kuni soat] LT [da]',

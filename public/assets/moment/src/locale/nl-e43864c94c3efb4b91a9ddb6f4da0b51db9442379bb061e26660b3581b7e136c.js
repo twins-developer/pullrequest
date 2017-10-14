@@ -44,7 +44,7 @@ export default moment.defineLocale('nl', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[vandaag om] LT',
         nextDay: '[morgen om] LT',
         nextWeek: 'dddd [om] LT',

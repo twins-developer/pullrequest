@@ -43,7 +43,7 @@ export default moment.defineLocale('bo', {
         LLL : 'D MMMM YYYY, A h:mm',
         LLLL : 'dddd, D MMMM YYYY, A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[དི་རིང] LT',
         nextDay : '[སང་ཉིན] LT',
         nextWeek : '[བདུན་ཕྲག་རྗེས་མ], LT',

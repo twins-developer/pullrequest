@@ -31,7 +31,7 @@ var ka = moment.defineLocale('ka', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[დღეს] LT[-ზე]',
         nextDay : '[ხვალ] LT[-ზე]',
         lastDay : '[გუშინ] LT[-ზე]',

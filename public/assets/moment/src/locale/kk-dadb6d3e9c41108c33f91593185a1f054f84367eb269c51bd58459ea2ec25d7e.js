@@ -41,7 +41,7 @@ export default moment.defineLocale('kk', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Бүгін сағат] LT',
         nextDay : '[Ертең сағат] LT',
         nextWeek : 'dddd [сағат] LT',

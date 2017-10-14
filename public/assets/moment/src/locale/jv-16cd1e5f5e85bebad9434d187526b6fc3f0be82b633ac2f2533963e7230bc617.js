@@ -43,7 +43,7 @@ export default moment.defineLocale('jv', {
             return 'ndalu';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Dinten puniko pukul] LT',
         nextDay : '[Mbenjang pukul] LT',
         nextWeek : 'dddd [pukul] LT',

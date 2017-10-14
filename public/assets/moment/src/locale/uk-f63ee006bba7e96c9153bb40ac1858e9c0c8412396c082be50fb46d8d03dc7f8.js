@@ -68,7 +68,7 @@ export default moment.defineLocale('uk', {
         LLL : 'D MMMM YYYY р., HH:mm',
         LLLL : 'dddd, D MMMM YYYY р., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: processHoursFunction('[Сьогодні '),
         nextDay: processHoursFunction('[Завтра '),
         lastDay: processHoursFunction('[Вчора '),

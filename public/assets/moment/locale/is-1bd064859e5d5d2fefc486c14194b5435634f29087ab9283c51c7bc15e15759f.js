@@ -91,7 +91,7 @@ var is = moment.defineLocale('is', {
         LLL : 'D. MMMM YYYY [kl.] H:mm',
         LLLL : 'dddd, D. MMMM YYYY [kl.] H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[í dag kl.] LT',
         nextDay : '[á morgun kl.] LT',
         nextWeek : 'dddd [kl.] LT',

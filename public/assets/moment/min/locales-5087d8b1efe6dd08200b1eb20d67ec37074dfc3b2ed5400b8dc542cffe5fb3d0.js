@@ -34,7 +34,7 @@ moment.defineLocale('af', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Vandag om] LT',
         nextDay : '[Môre om] LT',
         nextWeek : 'dddd [om] LT',
@@ -86,7 +86,7 @@ moment.defineLocale('ar-dz', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -134,7 +134,7 @@ moment.defineLocale('ar-kw', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -241,7 +241,7 @@ moment.defineLocale('ar-ly', {
             return 'م';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم عند الساعة] LT',
         nextDay: '[غدًا عند الساعة] LT',
         nextWeek: 'dddd [عند الساعة] LT',
@@ -298,7 +298,7 @@ moment.defineLocale('ar-ma', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -382,7 +382,7 @@ moment.defineLocale('ar-sa', {
             return 'م';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -440,7 +440,7 @@ moment.defineLocale('ar-tn', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',
@@ -561,7 +561,7 @@ moment.defineLocale('ar', {
             return 'م';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم عند الساعة] LT',
         nextDay: '[غدًا عند الساعة] LT',
         nextWeek: 'dddd [عند الساعة] LT',
@@ -640,7 +640,7 @@ moment.defineLocale('az', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[bugün saat] LT',
         nextDay : '[sabah saat] LT',
         nextWeek : '[gələn həftə] dddd [saat] LT',
@@ -744,7 +744,7 @@ moment.defineLocale('be', {
         LLL : 'D MMMM YYYY г., HH:mm',
         LLLL : 'dddd, D MMMM YYYY г., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Сёння ў] LT',
         nextDay: '[Заўтра ў] LT',
         lastDay: '[Учора ў] LT',
@@ -835,7 +835,7 @@ moment.defineLocale('bg', {
         LLL : 'D MMMM YYYY H:mm',
         LLLL : 'dddd, D MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Днес в] LT',
         nextDay : '[Утре в] LT',
         nextWeek : 'dddd [в] LT',
@@ -939,7 +939,7 @@ moment.defineLocale('bn', {
         LLL : 'D MMMM YYYY, A h:mm সময়',
         LLLL : 'dddd, D MMMM YYYY, A h:mm সময়'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[আজ] LT',
         nextDay : '[আগামীকাল] LT',
         nextWeek : 'dddd, LT',
@@ -1047,7 +1047,7 @@ moment.defineLocale('bo', {
         LLL : 'D MMMM YYYY, A h:mm',
         LLLL : 'dddd, D MMMM YYYY, A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[དི་རིང] LT',
         nextDay : '[སང་ཉིན] LT',
         nextWeek : '[བདུན་ཕྲག་རྗེས་མ], LT',
@@ -1175,7 +1175,7 @@ moment.defineLocale('br', {
         LLL : 'D [a viz] MMMM YYYY h[e]mm A',
         LLLL : 'dddd, D [a viz] MMMM YYYY h[e]mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hiziv da] LT',
         nextDay : '[Warc\'hoazh da] LT',
         nextWeek : 'dddd [da] LT',
@@ -1283,7 +1283,7 @@ moment.defineLocale('bs', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[danas u] LT',
         nextDay  : '[sutra u] LT',
         nextWeek : function () {
@@ -1368,7 +1368,7 @@ moment.defineLocale('ca', {
         LLLL : '[el] dddd D MMMM [de] YYYY [a les] H:mm',
         llll : 'ddd D MMM YYYY, H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[avui a ' + ((this.hours() !== 1) ? 'les' : 'la') + '] LT';
         },
@@ -1517,7 +1517,7 @@ moment.defineLocale('cs', {
         LLLL : 'dddd D. MMMM YYYY H:mm',
         l : 'D. M. YYYY'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[dnes v] LT',
         nextDay: '[zítra v] LT',
         nextWeek: function () {
@@ -1597,7 +1597,7 @@ moment.defineLocale('cv', {
         LLL : 'YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm',
         LLLL : 'dddd, YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Паян] LT [сехетре]',
         nextDay: '[Ыран] LT [сехетре]',
         lastDay: '[Ӗнер] LT [сехетре]',
@@ -1652,7 +1652,7 @@ moment.defineLocale('cy', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[Heddiw am] LT',
         nextDay: '[Yfory am] LT',
         nextWeek: 'dddd [am] LT',
@@ -1719,7 +1719,7 @@ moment.defineLocale('da', {
         LLL : 'D. MMMM YYYY HH:mm',
         LLLL : 'dddd [d.] D. MMMM YYYY [kl.] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[i dag kl.] LT',
         nextDay : '[i morgen kl.] LT',
         nextWeek : 'på dddd [kl.] LT',
@@ -1787,7 +1787,7 @@ moment.defineLocale('de-at', {
         LLL : 'D. MMMM YYYY HH:mm',
         LLLL : 'dddd, D. MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[heute um] LT [Uhr]',
         sameElse: 'L',
         nextDay: '[morgen um] LT [Uhr]',
@@ -1854,7 +1854,7 @@ moment.defineLocale('de-ch', {
         LLL : 'D. MMMM YYYY HH.mm',
         LLLL : 'dddd, D. MMMM YYYY HH.mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[heute um] LT [Uhr]',
         sameElse: 'L',
         nextDay: '[morgen um] LT [Uhr]',
@@ -1921,7 +1921,7 @@ moment.defineLocale('de', {
         LLL : 'D. MMMM YYYY HH:mm',
         LLLL : 'dddd, D. MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[heute um] LT [Uhr]',
         sameElse: 'L',
         nextDay: '[morgen um] LT [Uhr]',
@@ -2006,7 +2006,7 @@ moment.defineLocale('dv', {
             return 'މފ';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[މިއަދު] LT',
         nextDay : '[މާދަމާ] LT',
         nextWeek : 'dddd LT',
@@ -2084,7 +2084,7 @@ moment.defineLocale('el', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendarEl : {
+    interview_hourEl : {
         sameDay : '[Σήμερα {}] LT',
         nextDay : '[Αύριο {}] LT',
         nextWeek : 'dddd [{}] LT',
@@ -2099,8 +2099,8 @@ moment.defineLocale('el', {
         },
         sameElse : 'L'
     },
-    calendar : function (key, mom) {
-        var output = this._calendarEl[key],
+    interview_hour : function (key, mom) {
+        var output = this._interview_hourEl[key],
             hours = mom && mom.hours();
         if (isFunction(output)) {
             output = output.apply(mom);
@@ -2148,7 +2148,7 @@ moment.defineLocale('en-au', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -2204,7 +2204,7 @@ moment.defineLocale('en-ca', {
         LLL : 'MMMM D, YYYY h:mm A',
         LLLL : 'dddd, MMMM D, YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -2256,7 +2256,7 @@ moment.defineLocale('en-gb', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -2312,7 +2312,7 @@ moment.defineLocale('en-ie', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -2368,7 +2368,7 @@ moment.defineLocale('en-nz', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',
@@ -2437,7 +2437,7 @@ moment.defineLocale('eo', {
             return isLower ? 'a.t.m.' : 'A.T.M.';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hodiaŭ je] LT',
         nextDay : '[Morgaŭ je] LT',
         nextWeek : 'dddd [je] LT',
@@ -2498,7 +2498,7 @@ moment.defineLocale('es-do', {
         LLL : 'D [de] MMMM [de] YYYY h:mm A',
         LLLL : 'dddd, D [de] MMMM [de] YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
         },
@@ -2570,7 +2570,7 @@ moment.defineLocale('es', {
         LLL : 'D [de] MMMM [de] YYYY H:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
         },
@@ -2649,7 +2649,7 @@ moment.defineLocale('et', {
         LLL  : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[Täna,] LT',
         nextDay  : '[Homme,] LT',
         nextWeek : '[Järgmine] dddd LT',
@@ -2704,7 +2704,7 @@ moment.defineLocale('eu', {
         lll : 'YYYY[ko] MMM D[a] HH:mm',
         llll : 'ddd, YYYY[ko] MMM D[a] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[gaur] LT[etan]',
         nextDay : '[bihar] LT[etan]',
         nextWeek : 'dddd LT[etan]',
@@ -2790,7 +2790,7 @@ moment.defineLocale('fa', {
             return 'بعد از ظهر';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[امروز ساعت] LT',
         nextDay : '[فردا ساعت] LT',
         nextWeek : 'dddd [ساعت] LT',
@@ -2896,7 +2896,7 @@ moment.defineLocale('fi', {
         lll : 'Do MMM YYYY, [klo] HH.mm',
         llll : 'ddd, Do MMM YYYY, [klo] HH.mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[tänään] [klo] LT',
         nextDay : '[huomenna] [klo] LT',
         nextWeek : 'dddd [klo] LT',
@@ -2945,7 +2945,7 @@ moment.defineLocale('fo', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D. MMMM, YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Í dag kl.] LT',
         nextDay : '[Í morgin kl.] LT',
         nextWeek : 'dddd [kl.] LT',
@@ -2996,7 +2996,7 @@ moment.defineLocale('fr-ca', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Aujourd’hui à] LT',
         nextDay : '[Demain à] LT',
         nextWeek : 'dddd [à] LT',
@@ -3059,7 +3059,7 @@ moment.defineLocale('fr-ch', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Aujourd’hui à] LT',
         nextDay : '[Demain à] LT',
         nextWeek : 'dddd [à] LT',
@@ -3126,7 +3126,7 @@ moment.defineLocale('fr', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Aujourd’hui à] LT',
         nextDay : '[Demain à] LT',
         nextWeek : 'dddd [à] LT',
@@ -3209,7 +3209,7 @@ moment.defineLocale('fy', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[hjoed om] LT',
         nextDay: '[moarn om] LT',
         nextWeek: 'dddd [om] LT',
@@ -3273,7 +3273,7 @@ moment.defineLocale('gd', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[An-diugh aig] LT',
         nextDay : '[A-màireach aig] LT',
         nextWeek : 'dddd [aig] LT',
@@ -3327,7 +3327,7 @@ moment.defineLocale('gl', {
         LLL : 'D [de] MMMM [de] YYYY H:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[hoxe ' + ((this.hours() !== 1) ? 'ás' : 'á') + '] LT';
         },
@@ -3411,7 +3411,7 @@ moment.defineLocale('gom-latn', {
         LLLL : 'dddd, MMMM[achea] Do, YYYY, A h:mm [vazta]',
         llll: 'ddd, D MMM YYYY, A h:mm [vazta]'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Aiz] LT',
         nextDay: '[Faleam] LT',
         nextWeek: '[Ieta to] dddd[,] LT',
@@ -3508,7 +3508,7 @@ moment.defineLocale('he', {
         lll : 'D MMM YYYY HH:mm',
         llll : 'ddd, D MMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[היום ב־]LT',
         nextDay : '[מחר ב־]LT',
         nextWeek : 'dddd [בשעה] LT',
@@ -3616,7 +3616,7 @@ moment.defineLocale('hi', {
         LLL : 'D MMMM YYYY, A h:mm बजे',
         LLLL : 'dddd, D MMMM YYYY, A h:mm बजे'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[कल] LT',
         nextWeek : 'dddd, LT',
@@ -3761,7 +3761,7 @@ moment.defineLocale('hr', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[danas u] LT',
         nextDay  : '[sutra u] LT',
         nextWeek : function () {
@@ -3882,7 +3882,7 @@ moment.defineLocale('hu', {
             return isLower === true ? 'du' : 'DU';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ma] LT[-kor]',
         nextDay : '[holnap] LT[-kor]',
         nextWeek : function () {
@@ -3938,7 +3938,7 @@ moment.defineLocale('hy-am', {
         LLL : 'D MMMM YYYY թ., HH:mm',
         LLLL : 'dddd, D MMMM YYYY թ., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[այսօր] LT',
         nextDay: '[վաղը] LT',
         lastDay: '[երեկ] LT',
@@ -4044,7 +4044,7 @@ moment.defineLocale('id', {
             return 'malam';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hari ini pukul] LT',
         nextDay : '[Besok pukul] LT',
         nextWeek : 'dddd [pukul] LT',
@@ -4158,7 +4158,7 @@ moment.defineLocale('is', {
         LLL : 'D. MMMM YYYY [kl.] H:mm',
         LLLL : 'dddd, D. MMMM YYYY [kl.] H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[í dag kl.] LT',
         nextDay : '[á morgun kl.] LT',
         nextWeek : 'dddd [kl.] LT',
@@ -4208,7 +4208,7 @@ moment.defineLocale('it', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Oggi alle] LT',
         nextDay: '[Domani alle] LT',
         nextWeek: 'dddd [alle] LT',
@@ -4281,7 +4281,7 @@ moment.defineLocale('ja', {
             return '午後';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今日] LT',
         nextDay : '[明日] LT',
         nextWeek : '[来週]dddd LT',
@@ -4360,7 +4360,7 @@ moment.defineLocale('jv', {
             return 'ndalu';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Dinten puniko pukul] LT',
         nextDay : '[Mbenjang pukul] LT',
         nextWeek : 'dddd [pukul] LT',
@@ -4414,7 +4414,7 @@ moment.defineLocale('ka', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[დღეს] LT[-ზე]',
         nextDay : '[ხვალ] LT[-ზე]',
         lastDay : '[გუშინ] LT[-ზე]',
@@ -4508,7 +4508,7 @@ moment.defineLocale('kk', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Бүгін сағат] LT',
         nextDay : '[Ертең сағат] LT',
         nextWeek : 'dddd [сағат] LT',
@@ -4561,7 +4561,7 @@ moment.defineLocale('km', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[ថ្ងៃនេះ ម៉ោង] LT',
         nextDay: '[ស្អែក ម៉ោង] LT',
         nextWeek: 'dddd [ម៉ោង] LT',
@@ -4634,7 +4634,7 @@ moment.defineLocale('kn', {
         LLL : 'D MMMM YYYY, A h:mm',
         LLLL : 'dddd, D MMMM YYYY, A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ಇಂದು] LT',
         nextDay : '[ನಾಳೆ] LT',
         nextWeek : 'dddd, LT',
@@ -4728,7 +4728,7 @@ moment.defineLocale('ko', {
         lll : 'YYYY년 MMMM D일 A h:mm',
         llll : 'YYYY년 MMMM D일 dddd A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '오늘 LT',
         nextDay : '내일 LT',
         nextWeek : 'dddd LT',
@@ -4805,7 +4805,7 @@ moment.defineLocale('ky', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Бүгүн саат] LT',
         nextDay : '[Эртең саат] LT',
         nextWeek : 'dddd [саат] LT',
@@ -4926,7 +4926,7 @@ moment.defineLocale('lb', {
         LLL: 'D. MMMM YYYY H:mm [Auer]',
         LLLL: 'dddd, D. MMMM YYYY H:mm [Auer]'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[Haut um] LT',
         sameElse: 'L',
         nextDay: '[Muer um] LT',
@@ -4996,7 +4996,7 @@ moment.defineLocale('lo', {
             return 'ຕອນແລງ';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ມື້ນີ້ເວລາ] LT',
         nextDay : '[ມື້ອື່ນເວລາ] LT',
         nextWeek : '[ວັນ]dddd[ໜ້າເວລາ] LT',
@@ -5098,7 +5098,7 @@ moment.defineLocale('lt', {
         lll : 'YYYY [m.] MMMM D [d.], HH:mm [val.]',
         llll : 'YYYY [m.] MMMM D [d.], ddd, HH:mm [val.]'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Šiandien] LT',
         nextDay : '[Rytoj] LT',
         nextWeek : 'dddd LT',
@@ -5186,7 +5186,7 @@ moment.defineLocale('lv', {
         LLL : 'YYYY. [gada] D. MMMM, HH:mm',
         LLLL : 'YYYY. [gada] D. MMMM, dddd, HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Šodien pulksten] LT',
         nextDay : '[Rīt pulksten] LT',
         nextWeek : 'dddd [pulksten] LT',
@@ -5260,7 +5260,7 @@ moment.defineLocale('me', {
         LLL: 'D. MMMM YYYY H:mm',
         LLLL: 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[danas u] LT',
         nextDay: '[sjutra u] LT',
 
@@ -5339,7 +5339,7 @@ moment.defineLocale('mi', {
         LLL: 'D MMMM YYYY [i] HH:mm',
         LLLL: 'dddd, D MMMM YYYY [i] HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[i teie mahana, i] LT',
         nextDay: '[apopo i] LT',
         nextWeek: 'dddd [i] LT',
@@ -5388,7 +5388,7 @@ moment.defineLocale('mk', {
         LLL : 'D MMMM YYYY H:mm',
         LLLL : 'dddd, D MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Денес во] LT',
         nextDay : '[Утре во] LT',
         nextWeek : '[Во] dddd [во] LT',
@@ -5468,7 +5468,7 @@ moment.defineLocale('ml', {
         LLL : 'D MMMM YYYY, A h:mm -നു',
         LLLL : 'dddd, D MMMM YYYY, A h:mm -നു'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ഇന്ന്] LT',
         nextDay : '[നാളെ] LT',
         nextWeek : 'dddd, LT',
@@ -5600,7 +5600,7 @@ moment.defineLocale('mr', {
         LLL : 'D MMMM YYYY, A h:mm वाजता',
         LLLL : 'dddd, D MMMM YYYY, A h:mm वाजता'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[उद्या] LT',
         nextWeek : 'dddd, LT',
@@ -5710,7 +5710,7 @@ moment.defineLocale('ms-my', {
             return 'malam';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hari ini pukul] LT',
         nextDay : '[Esok pukul] LT',
         nextWeek : 'dddd [pukul] LT',
@@ -5781,7 +5781,7 @@ moment.defineLocale('ms', {
             return 'malam';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hari ini pukul] LT',
         nextDay : '[Esok pukul] LT',
         nextWeek : 'dddd [pukul] LT',
@@ -5856,7 +5856,7 @@ moment.defineLocale('my', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[ယနေ.] LT [မှာ]',
         nextDay: '[မနက်ဖြန်] LT [မှာ]',
         nextWeek: 'dddd LT [မှာ]',
@@ -5916,7 +5916,7 @@ moment.defineLocale('nb', {
         LLL : 'D. MMMM YYYY [kl.] HH:mm',
         LLLL : 'dddd D. MMMM YYYY [kl.] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[i dag kl.] LT',
         nextDay: '[i morgen kl.] LT',
         nextWeek: 'dddd [kl.] LT',
@@ -6030,7 +6030,7 @@ moment.defineLocale('ne', {
             return 'राति';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[भोलि] LT',
         nextWeek : '[आउँदो] dddd[,] LT',
@@ -6103,7 +6103,7 @@ moment.defineLocale('nl-be', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[vandaag om] LT',
         nextDay: '[morgen om] LT',
         nextWeek: 'dddd [om] LT',
@@ -6180,7 +6180,7 @@ moment.defineLocale('nl', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[vandaag om] LT',
         nextDay: '[morgen om] LT',
         nextWeek: 'dddd [om] LT',
@@ -6231,7 +6231,7 @@ moment.defineLocale('nn', {
         LLL : 'D. MMMM YYYY [kl.] H:mm',
         LLLL : 'dddd D. MMMM YYYY [kl.] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[I dag klokka] LT',
         nextDay: '[I morgon klokka] LT',
         nextWeek: 'dddd [klokka] LT',
@@ -6306,7 +6306,7 @@ moment.defineLocale('pa-in', {
         LLL : 'D MMMM YYYY, A h:mm ਵਜੇ',
         LLLL : 'dddd, D MMMM YYYY, A h:mm ਵਜੇ'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ਅਜ] LT',
         nextDay : '[ਕਲ] LT',
         nextWeek : 'dddd, LT',
@@ -6429,7 +6429,7 @@ moment.defineLocale('pl', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Dziś o] LT',
         nextDay: '[Jutro o] LT',
         nextWeek: '[W] dddd [o] LT',
@@ -6490,7 +6490,7 @@ moment.defineLocale('pt-br', {
         LLL : 'D [de] MMMM [de] YYYY [às] HH:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY [às] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Hoje às] LT',
         nextDay: '[Amanhã às] LT',
         nextWeek: 'dddd [às] LT',
@@ -6540,7 +6540,7 @@ moment.defineLocale('pt', {
         LLL : 'D [de] MMMM [de] YYYY HH:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Hoje às] LT',
         nextDay: '[Amanhã às] LT',
         nextWeek: 'dddd [às] LT',
@@ -6610,7 +6610,7 @@ moment.defineLocale('ro', {
         LLL : 'D MMMM YYYY H:mm',
         LLLL : 'dddd, D MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[azi la] LT',
         nextDay: '[mâine la] LT',
         nextWeek: 'dddd [la] LT',
@@ -6709,7 +6709,7 @@ moment.defineLocale('ru', {
         LLL : 'D MMMM YYYY г., HH:mm',
         LLLL : 'dddd, D MMMM YYYY г., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Сегодня в] LT',
         nextDay: '[Завтра в] LT',
         lastDay: '[Вчера в] LT',
@@ -6863,7 +6863,7 @@ moment.defineLocale('sd', {
         }
         return 'شام';
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[اڄ] LT',
         nextDay : '[سڀاڻي] LT',
         nextWeek : 'dddd [اڳين هفتي تي] LT',
@@ -6917,7 +6917,7 @@ moment.defineLocale('se', {
         LLL : 'MMMM D. [b.] YYYY [ti.] HH:mm',
         LLLL : 'dddd, MMMM D. [b.] YYYY [ti.] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[otne ti] LT',
         nextDay: '[ihttin ti] LT',
         nextWeek: 'dddd [ti] LT',
@@ -6968,7 +6968,7 @@ moment.defineLocale('si', {
         LLL : 'YYYY MMMM D, a h:mm',
         LLLL : 'YYYY MMMM D [වැනි] dddd, a h:mm:ss'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[අද] LT[ට]',
         nextDay : '[හෙට] LT[ට]',
         nextWeek : 'dddd LT[ට]',
@@ -7085,7 +7085,7 @@ moment.defineLocale('sk', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[dnes o] LT',
         nextDay: '[zajtra o] LT',
         nextWeek: function () {
@@ -7238,7 +7238,7 @@ moment.defineLocale('sl', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[danes ob] LT',
         nextDay  : '[jutri ob] LT',
 
@@ -7326,7 +7326,7 @@ moment.defineLocale('sq', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Sot në] LT',
         nextDay : '[Nesër në] LT',
         nextWeek : 'dddd [në] LT',
@@ -7400,7 +7400,7 @@ moment.defineLocale('sr-cyrl', {
         LLL: 'D. MMMM YYYY H:mm',
         LLLL: 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[данас у] LT',
         nextDay: '[сутра у] LT',
         nextWeek: function () {
@@ -7499,7 +7499,7 @@ moment.defineLocale('sr', {
         LLL: 'D. MMMM YYYY H:mm',
         LLLL: 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[danas u] LT',
         nextDay: '[sutra u] LT',
         nextWeek: function () {
@@ -7575,7 +7575,7 @@ moment.defineLocale('ss', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Namuhla nga] LT',
         nextDay : '[Kusasa nga] LT',
         nextWeek : 'dddd [nga] LT',
@@ -7653,7 +7653,7 @@ moment.defineLocale('sv', {
         lll : 'D MMM YYYY HH:mm',
         llll : 'ddd D MMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Idag] LT',
         nextDay: '[Imorgon] LT',
         lastDay: '[Igår] LT',
@@ -7710,7 +7710,7 @@ moment.defineLocale('sw', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[leo saa] LT',
         nextDay : '[kesho saa] LT',
         nextWeek : '[wiki ijayo] dddd [saat] LT',
@@ -7782,7 +7782,7 @@ moment.defineLocale('ta', {
         LLL : 'D MMMM YYYY, HH:mm',
         LLLL : 'dddd, D MMMM YYYY, HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[இன்று] LT',
         nextDay : '[நாளை] LT',
         nextWeek : 'dddd, LT',
@@ -7877,7 +7877,7 @@ moment.defineLocale('te', {
         LLL : 'D MMMM YYYY, A h:mm',
         LLLL : 'dddd, D MMMM YYYY, A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[నేడు] LT',
         nextDay : '[రేపు] LT',
         nextWeek : 'dddd, LT',
@@ -7955,7 +7955,7 @@ moment.defineLocale('tet', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Ohin iha] LT',
         nextDay: '[Aban iha] LT',
         nextWeek: 'dddd [iha] LT',
@@ -8024,7 +8024,7 @@ moment.defineLocale('th', {
             return 'หลังเที่ยง';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[วันนี้ เวลา] LT',
         nextDay : '[พรุ่งนี้ เวลา] LT',
         nextWeek : 'dddd[หน้า เวลา] LT',
@@ -8067,7 +8067,7 @@ moment.defineLocale('tl-ph', {
         LLL : 'MMMM D, YYYY HH:mm',
         LLLL : 'dddd, MMMM DD, YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: 'LT [ngayong araw]',
         nextDay: '[Bukas ng] LT',
         nextWeek: 'LT [sa susunod na] dddd',
@@ -8178,7 +8178,7 @@ moment.defineLocale('tlh', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[DaHjaj] LT',
         nextDay: '[wa’leS] LT',
         nextWeek: 'LLL',
@@ -8249,7 +8249,7 @@ moment.defineLocale('tr', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[bugün saat] LT',
         nextDay : '[yarın saat] LT',
         nextWeek : '[haftaya] dddd [saat] LT',
@@ -8320,7 +8320,7 @@ moment.defineLocale('tzl', {
             return isLower ? 'd\'a' : 'D\'A';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[oxhi à] LT',
         nextDay : '[demà à] LT',
         nextWeek : 'dddd [à] LT',
@@ -8386,7 +8386,7 @@ moment.defineLocale('tzm-latn', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[asdkh g] LT',
         nextDay: '[aska g] LT',
         nextWeek: 'dddd [g] LT',
@@ -8433,7 +8433,7 @@ moment.defineLocale('tzm', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[ⴰⵙⴷⵅ ⴴ] LT',
         nextDay: '[ⴰⵙⴽⴰ ⴴ] LT',
         nextWeek: 'dddd [ⴴ] LT',
@@ -8530,7 +8530,7 @@ moment.defineLocale('uk', {
         LLL : 'D MMMM YYYY р., HH:mm',
         LLLL : 'dddd, D MMMM YYYY р., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: processHoursFunction('[Сьогодні '),
         nextDay: processHoursFunction('[Завтра '),
         lastDay: processHoursFunction('[Вчора '),
@@ -8655,7 +8655,7 @@ moment.defineLocale('ur', {
         }
         return 'شام';
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[آج بوقت] LT',
         nextDay : '[کل بوقت] LT',
         nextWeek : 'dddd [بوقت] LT',
@@ -8708,7 +8708,7 @@ moment.defineLocale('uz-latn', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'D MMMM YYYY, dddd HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Bugun soat] LT [da]',
         nextDay : '[Ertaga] LT [da]',
         nextWeek : 'dddd [kuni soat] LT [da]',
@@ -8755,7 +8755,7 @@ moment.defineLocale('uz', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'D MMMM YYYY, dddd HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Бугун соат] LT [да]',
         nextDay : '[Эртага] LT [да]',
         nextWeek : 'dddd [куни соат] LT [да]',
@@ -8819,7 +8819,7 @@ moment.defineLocale('vi', {
         lll : 'D MMM YYYY HH:mm',
         llll : 'ddd, D MMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Hôm nay lúc] LT',
         nextDay: '[Ngày mai lúc] LT',
         nextWeek: 'dddd [tuần tới lúc] LT',
@@ -8871,7 +8871,7 @@ moment.defineLocale('x-pseudo', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[T~ódá~ý át] LT',
         nextDay : '[T~ómó~rró~w át] LT',
         nextWeek : 'dddd [át] LT',
@@ -8927,7 +8927,7 @@ moment.defineLocale('yo', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Ònì ni] LT',
         nextDay : '[Ọ̀la ni] LT',
         nextWeek : 'dddd [Ọsẹ̀ tón\'bọ] [ni] LT',
@@ -9012,7 +9012,7 @@ moment.defineLocale('zh-cn', {
             return '晚上';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今天]LT',
         nextDay : '[明天]LT',
         nextWeek : '[下]ddddLT',
@@ -9111,7 +9111,7 @@ moment.defineLocale('zh-hk', {
             return '晚上';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今天]LT',
         nextDay : '[明天]LT',
         nextWeek : '[下]ddddLT',
@@ -9204,7 +9204,7 @@ moment.defineLocale('zh-tw', {
             return '晚上';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今天]LT',
         nextDay : '[明天]LT',
         nextWeek : '[下]ddddLT',

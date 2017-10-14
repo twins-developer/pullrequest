@@ -18,7 +18,7 @@ export default moment.defineLocale('en-gb', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',

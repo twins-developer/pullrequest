@@ -31,7 +31,7 @@ export default moment.defineLocale('eo', {
             return isLower ? 'a.t.m.' : 'A.T.M.';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hodiaŭ je] LT',
         nextDay : '[Morgaŭ je] LT',
         nextWeek : 'dddd [je] LT',

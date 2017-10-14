@@ -30,7 +30,7 @@ export default moment.defineLocale('es-do', {
         LLL : 'D [de] MMMM [de] YYYY h:mm A',
         LLLL : 'dddd, D [de] MMMM [de] YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
         },

@@ -33,7 +33,7 @@ var ca = moment.defineLocale('ca', {
         LLLL : '[el] dddd D MMMM [de] YYYY [a les] H:mm',
         llll : 'ddd D MMM YYYY, H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : function () {
             return '[avui a ' + ((this.hours() !== 1) ? 'les' : 'la') + '] LT';
         },

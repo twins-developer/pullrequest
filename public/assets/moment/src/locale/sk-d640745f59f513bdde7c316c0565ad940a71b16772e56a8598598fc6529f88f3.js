@@ -77,7 +77,7 @@ export default moment.defineLocale('sk', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[dnes o] LT',
         nextDay: '[zajtra o] LT',
         nextWeek: function () {

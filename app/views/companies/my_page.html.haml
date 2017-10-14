@@ -4,24 +4,30 @@
 %h1= title t '.title'
 %br
 %h4= t '.basic_info'
-.row
-  .col-xs-12.col-md-4
-    %table.table.table-bordered
-      %tbody
-        %tr
-          %td.profile-label= t 'activerecord.attributes.user.email'
-          %td= current_company.email
-        %tr
-          %td.profile-label= t 'activerecord.attributes.user.name'
-          %td= current_company.name
-        %tr
-          %td.profile-label= t 'activerecord.attributes.user.image'
-          %td= image_tag current_company.image.url, size: '23x23'
 
-%hr
-.row
-  .btn-group.btn-group-justified
-    .col-xs-12.col-md-4.btn-group= link_to t('companies.interview_hours.index.title'), companies_interview_hours_path, class: 'btn btn-primary btn-block'
-    .col-xs-12.col-md-4.btn-group= link_to t('companies.confirm_documents.new.title'), new_companies_confirm_document_path, class: 'btn btn-primary btn-block'
-    .col-xs-12.col-md-4.btn-group= link_to t('helpers.links.edit'), edit_company_registration_path, class: 'btn btn-primary btn-block'
-    .col-xs-12.col-md-4.btn-group= link_to t('companies.projects.index.title'), companies_projects_path, class: 'btn btn-primary btn-block'
+.container
+  .row
+    .col-xs-12.col-md-4
+      %table.table.table-bordered
+        %tbody
+          %tr
+            %td.profile-label= t 'activerecord.attributes.user.email'
+            %td= current_company.email
+          %tr
+            %td.profile-label= t 'activerecord.attributes.user.name'
+            %td= current_company.name
+          %tr
+            %td.profile-label= t 'activerecord.attributes.user.image'
+            %td= image_tag current_company.image.url, size: '23x23'
+
+  %hr
+  .row
+    .btn-group.btn-group-justified
+      .col-xs-12.col-md-4.btn-group= link_to t('companies.interview_hour_masters.index.title'), companies_interview_hour_masters_path, class: 'btn btn-primary btn-block'
+      .col-xs-12.col-md-4.btn-group= link_to t('companies.confirm_documents.new.title'), new_companies_confirm_document_path, class: 'btn btn-primary btn-block'
+      .col-xs-12.col-md-4.btn-group= link_to t('helpers.links.edit'), edit_company_registration_path, class: 'btn btn-primary btn-block'
+      .col-xs-12.col-md-4.btn-group= link_to t('companies.projects.index.title'), companies_projects_path, class: 'btn btn-primary btn-block'
+  %hr
+  .row
+    .btn-group.btn-group-justified
+      .col-xs-12.col-md-4.btn-group= link_to t('companies.interview_hours.index.title'), companies_interview_hours_path, class: 'btn btn-primary btn-block'

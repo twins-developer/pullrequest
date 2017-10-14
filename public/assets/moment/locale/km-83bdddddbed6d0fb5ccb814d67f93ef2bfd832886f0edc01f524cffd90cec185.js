@@ -24,7 +24,7 @@ var km = moment.defineLocale('km', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[ថ្ងៃនេះ ម៉ោង] LT',
         nextDay: '[ស្អែក ម៉ោង] LT',
         nextWeek: 'dddd [ម៉ោង] LT',

@@ -1,19 +1,26 @@
-.page-header
-  %h1= title t('.title')
+// @TODO 時間をクリックしたら編集ページに遷移
+//       日付/時間をフォーマット
+//       前週・翌週・月ごとにページを変更できるようにする
+
+.container
+  .page-header
+    = link_to companies_interview_hours_path, method: :post, class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      反映する
+    %h1= title t '.title'
 
 .container
   .row
-    .table-responsive
+    .table-responsive.col-md-12
       %table.table.table-striped.table-bordered.table-condensed.table-hover
         %thead
           %tr
             %th
-            - t('date.abbr_day_names').each do |week_day|
+            - find_one_week.each do |week_day|
               %th= week_day
         %tbody
           - 8.upto(21) do |hour|
             %tr
               %td.text-center= format '%02d', hour
-              - t('date.abbr_day_names').each.with_index(0) do |week_day, wday|
-                %td{ class: filled_hour?(@interview_hours, wday, hour) ? 'bg-warning' : '' }
-                  %div#edit_index-modal.modal.fade{ tabindex: '-1', role: 'dialog', 'aria-hidden': 'true' }
+              - find_one_week.each.with_index(0) do |day|
+                %td{ class: filled_interview_hour?(@interview_hours, day, hour) ? 'bg-warning' : '' }

@@ -1,7 +1,7 @@
 import { hooks } from '../utils/hooks';
 import { createDate, createUTCDate } from './date-from-array';
 import { daysInYear } from '../units/year';
-import { weekOfYear, weeksInYear, dayOfYearFromWeeks } from '../units/week-calendar-utils';
+import { weekOfYear, weeksInYear, dayOfYearFromWeeks } from '../units/week-interview_hour-utils';
 import { YEAR, MONTH, DATE, HOUR, MINUTE, SECOND, MILLISECOND } from '../units/constants';
 import { createLocal } from './local';
 import defaults from '../utils/defaults';

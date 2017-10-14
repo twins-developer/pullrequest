@@ -37,7 +37,7 @@ var th = moment.defineLocale('th', {
             return 'หลังเที่ยง';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[วันนี้ เวลา] LT',
         nextDay : '[พรุ่งนี้ เวลา] LT',
         nextWeek : 'dddd[หน้า เวลา] LT',

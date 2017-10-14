@@ -24,7 +24,7 @@ export default moment.defineLocale('eu', {
         lll : 'YYYY[ko] MMM D[a] HH:mm',
         llll : 'ddd, YYYY[ko] MMM D[a] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[gaur] LT[etan]',
         nextDay : '[bihar] LT[etan]',
         nextWeek : 'dddd LT[etan]',

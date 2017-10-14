@@ -63,7 +63,7 @@ export default moment.defineLocale('hu', {
             return isLower === true ? 'du' : 'DU';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ma] LT[-kor]',
         nextDay : '[holnap] LT[-kor]',
         nextWeek : function () {

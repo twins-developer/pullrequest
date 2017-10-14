@@ -43,7 +43,7 @@ export default moment.defineLocale('ms-my', {
             return 'malam';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hari ini pukul] LT',
         nextDay : '[Esok pukul] LT',
         nextWeek : 'dddd [pukul] LT',

@@ -54,7 +54,7 @@ export default moment.defineLocale('zh-cn', {
             return '晚上';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[今天]LT',
         nextDay : '[明天]LT',
         nextWeek : '[下]ddddLT',

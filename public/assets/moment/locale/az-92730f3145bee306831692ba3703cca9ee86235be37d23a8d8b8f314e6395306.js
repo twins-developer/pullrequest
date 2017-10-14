@@ -46,7 +46,7 @@ var az = moment.defineLocale('az', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[bugün saat] LT',
         nextDay : '[sabah saat] LT',
         nextWeek : '[gələn həftə] dddd [saat] LT',

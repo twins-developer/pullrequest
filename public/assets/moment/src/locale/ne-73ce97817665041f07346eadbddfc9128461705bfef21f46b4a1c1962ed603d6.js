@@ -83,7 +83,7 @@ export default moment.defineLocale('ne', {
             return 'राति';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[भोलि] LT',
         nextWeek : '[आउँदो] dddd[,] LT',

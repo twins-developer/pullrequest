@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InterviewHoursController, type: :controller do
+RSpec.describe Companies::InterviewHourMastersController, type: :controller do
 
   describe "GET #index" do
     it "returns http success" do

@@ -9,6 +9,16 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_project_targets_on_company_id  (company_id)
+#  index_project_targets_on_project_id  (project_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
+#  fk_rails_...  (project_id => projects.id)
+#
 
 require 'rails_helper'
 

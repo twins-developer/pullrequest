@@ -1,4 +1,4 @@
-import { defaultCalendar } from './calendar';
+import { defaultinterview_hour } from './interview_hour';
 import { defaultLongDateFormat } from './formats';
 import { defaultInvalidDate } from './invalid';
 import { defaultOrdinal, defaultDayOfMonthOrdinalParse } from './ordinal';
@@ -24,7 +24,7 @@ import {
 import { defaultLocaleMeridiemParse } from '../units/hour';
 
 export var baseConfig = {
-    calendar: defaultCalendar,
+    interview_hour: defaultinterview_hour,
     longDateFormat: defaultLongDateFormat,
     invalidDate: defaultInvalidDate,
     ordinal: defaultOrdinal,

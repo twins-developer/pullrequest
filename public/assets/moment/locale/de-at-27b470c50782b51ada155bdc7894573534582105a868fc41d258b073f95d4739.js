@@ -43,7 +43,7 @@ var deAt = moment.defineLocale('de-at', {
         LLL : 'D. MMMM YYYY HH:mm',
         LLLL : 'dddd, D. MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[heute um] LT [Uhr]',
         sameElse: 'L',
         nextDay: '[morgen um] LT [Uhr]',

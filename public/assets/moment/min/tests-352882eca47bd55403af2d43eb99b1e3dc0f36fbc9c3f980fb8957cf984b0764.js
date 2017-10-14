@@ -406,53 +406,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'oor 5 dae', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Vandag om 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Vandag om 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Vandag om 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Môre om 12:00',       'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Vandag om 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Gister om 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Vandag om 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Vandag om 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Vandag om 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Môre om 12:00',       'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Vandag om 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Gister om 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Laas] dddd [om] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Laas] dddd [om] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Laas] dddd [om] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Laas] dddd [om] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Laas] dddd [om] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Laas] dddd [om] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -873,53 +873,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'في 5 أيام', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'اليوم على الساعة 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'اليوم على الساعة 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'اليوم على الساعة 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'غدا على الساعة 12:00',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'اليوم على الساعة 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'أمس على الساعة 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'اليوم على الساعة 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'اليوم على الساعة 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'اليوم على الساعة 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'غدا على الساعة 12:00',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'اليوم على الساعة 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'أمس على الساعة 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -1340,53 +1340,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'في 5 أيام', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'اليوم على الساعة 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'اليوم على الساعة 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'اليوم على الساعة 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'غدا على الساعة 12:00',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'اليوم على الساعة 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'أمس على الساعة 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'اليوم على الساعة 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'اليوم على الساعة 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'اليوم على الساعة 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'غدا على الساعة 12:00',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'اليوم على الساعة 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'أمس على الساعة 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -1822,53 +1822,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'بعد 5 أيام', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'اليوم عند الساعة 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'اليوم عند الساعة 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'اليوم عند الساعة 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'غدًا عند الساعة 12:00',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'اليوم عند الساعة 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'أمس عند الساعة 12:00',       'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'اليوم عند الساعة 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'اليوم عند الساعة 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'اليوم عند الساعة 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'غدًا عند الساعة 12:00',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'اليوم عند الساعة 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'أمس عند الساعة 12:00',       'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting wednesday custom', function (assert) {
@@ -2307,53 +2307,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'في 5 أيام', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'اليوم على الساعة 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'اليوم على الساعة 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'اليوم على الساعة 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'غدا على الساعة 12:00',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'اليوم على الساعة 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'أمس على الساعة 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'اليوم على الساعة 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'اليوم على الساعة 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'اليوم على الساعة 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'غدا على الساعة 12:00',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'اليوم على الساعة 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'أمس على الساعة 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -2774,53 +2774,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'في ٥ أيام', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'اليوم على الساعة ١٢:٠٠',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'اليوم على الساعة ١٢:٢٥',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'اليوم على الساعة ١٣:٠٠',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'غدا على الساعة ١٢:٠٠',       'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'اليوم على الساعة ١١:٠٠',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'أمس على الساعة ١٢:٠٠',      'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'اليوم على الساعة ١٢:٠٠',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'اليوم على الساعة ١٢:٢٥',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'اليوم على الساعة ١٣:٠٠',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'غدا على الساعة ١٢:٠٠',       'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'اليوم على الساعة ١١:٠٠',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'أمس على الساعة ١٢:٠٠',      'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [على الساعة] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting wednesday custom', function (assert) {
@@ -3312,46 +3312,46 @@ test('fromNow', function (assert) {
     }).fromNow(), 'في 5 أيام', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                  'اليوم على الساعة 12:00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),     'اليوم على الساعة 12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),      'اليوم على الساعة 13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),      'غدا على الساعة 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(), 'اليوم على الساعة 11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(), 'أمس على الساعة 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                  'اليوم على الساعة 12:00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),     'اليوم على الساعة 12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),      'اليوم على الساعة 13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),      'غدا على الساعة 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(), 'اليوم على الساعة 11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(), 'أمس على الساعة 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({
             d: i
         });
-        assert.equal(m.calendar(), m.format('dddd [على الساعة] LT'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [على الساعة] LT'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [على الساعة] LT'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [على الساعة] LT'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [على الساعة] LT'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [على الساعة] LT'), 'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({
             d: i
         });
-        assert.equal(m.calendar(), m.format('dddd [على الساعة] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [على الساعة] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [على الساعة] LT'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [على الساعة] LT'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [على الساعة] LT'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [على الساعة] LT'), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({
             w: 1
         }),
@@ -3359,8 +3359,8 @@ test('calendar all else', function (assert) {
             w: 1
         });
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '1 week ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 1 week');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 1 week');
 
     weeksAgo = moment().subtract({
         w: 2
@@ -3369,8 +3369,8 @@ test('calendar all else', function (assert) {
         w: 2
     });
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -3806,53 +3806,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'بعد ٥ أيام', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'اليوم عند الساعة ١٢:٠٠',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'اليوم عند الساعة ١٢:٢٥',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'اليوم عند الساعة ١٣:٠٠',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'غدًا عند الساعة ١٢:٠٠',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'اليوم عند الساعة ١١:٠٠',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'أمس عند الساعة ١٢:٠٠',       'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'اليوم عند الساعة ١٢:٠٠',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'اليوم عند الساعة ١٢:٢٥',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'اليوم عند الساعة ١٣:٠٠',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'غدًا عند الساعة ١٢:٠٠',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'اليوم عند الساعة ١١:٠٠',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'أمس عند الساعة ١٢:٠٠',       'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [عند الساعة] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting wednesday custom', function (assert) {
@@ -4301,53 +4301,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 gün sonra', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'bugün saat 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'bugün saat 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'bugün saat 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'sabah saat 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'bugün saat 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'dünən 12:00',          'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'bugün saat 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'bugün saat 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'bugün saat 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'sabah saat 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'bugün saat 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'dünən 12:00',          'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[gələn həftə] dddd [saat] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[gələn həftə] dddd [saat] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[gələn həftə] dddd [saat] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[gələn həftə] dddd [saat] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[gələn həftə] dddd [saat] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[gələn həftə] dddd [saat] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[keçən həftə] dddd [saat] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[keçən həftə] dddd [saat] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[keçən həftə] dddd [saat] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[keçən həftə] dddd [saat] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[keçən həftə] dddd [saat] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[keçən həftə] dddd [saat] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -4804,18 +4804,18 @@ test('fromNow', function (assert) {
     assert.equal(moment().subtract({m: 31}).fromNow(), '31 хвіліну таму', '31 minutes ago = 31 minutes ago');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Сёння ў 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Сёння ў 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Сёння ў 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Заўтра ў 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Сёння ў 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Учора ў 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Сёння ў 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Сёння ў 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Сёння ў 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Заўтра ў 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Сёння ў 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Учора ў 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     function makeFormat(d) {
         return '[У] dddd [ў] LT';
@@ -4823,15 +4823,15 @@ test('calendar next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -4850,26 +4850,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -5290,30 +5290,30 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'след 5 дни', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Днес в 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Днес в 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Днес в 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Утре в 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Днес в 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Вчера в 12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Днес в 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Днес в 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Днес в 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Утре в 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Днес в 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Вчера в 12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [в] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [в] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [в] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [в] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [в] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [в] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -5332,26 +5332,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -5770,54 +5770,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '৫ দিন পরে', '৫ দিন পরে');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'আজ দুপুর ১২:০০ সময়',       'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'আজ দুপুর ১২:২৫ সময়',       'Now plus 25 min');
-    assert.equal(moment(a).add({h: 3}).calendar(),       'আজ দুপুর ৩:০০ সময়',        'Now plus 3 hours');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'আগামীকাল দুপুর ১২:০০ সময়', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'আজ দুপুর ১১:০০ সময়',       'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'গতকাল দুপুর ১২:০০ সময়',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'আজ দুপুর ১২:০০ সময়',       'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'আজ দুপুর ১২:২৫ সময়',       'Now plus 25 min');
+    assert.equal(moment(a).add({h: 3}).interview_hour(),       'আজ দুপুর ৩:০০ সময়',        'Now plus 3 hours');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'আগামীকাল দুপুর ১২:০০ সময়', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'আজ দুপুর ১১:০০ সময়',       'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'গতকাল দুপুর ১২:০০ সময়',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[গত] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[গত] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[গত] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[গত] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[গত] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[গত] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -6253,54 +6253,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '༥ ཉིན་ ལ་', '༥ ཉིན་ ལ་');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'དི་རིང ཉིན་གུང ༡༢:༠༠',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'དི་རིང ཉིན་གུང ༡༢:༢༥',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 3}).calendar(),       'དི་རིང ཉིན་གུང ༣:༠༠',   'Now plus 3 hours');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'སང་ཉིན ཉིན་གུང ༡༢:༠༠',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'དི་རིང ཉིན་གུང ༡༡:༠༠',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ཁ་སང ཉིན་གུང ༡༢:༠༠',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'དི་རིང ཉིན་གུང ༡༢:༠༠',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'དི་རིང ཉིན་གུང ༡༢:༢༥',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 3}).interview_hour(),       'དི་རིང ཉིན་གུང ༣:༠༠',   'Now plus 3 hours');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'སང་ཉིན ཉིན་གུང ༡༢:༠༠',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'དི་རིང ཉིན་གུང ༡༡:༠༠',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ཁ་སང ཉིན་གུང ༡༢:༠༠',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[བདུན་ཕྲག་རྗེས་མ][,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[བདུན་ཕྲག་རྗེས་མ][,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[བདུན་ཕྲག་རྗེས་མ][,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[བདུན་ཕྲག་རྗེས་མ][,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[བདུན་ཕྲག་རྗེས་མ][,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[བདུན་ཕྲག་རྗེས་མ][,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[བདུན་ཕྲག་མཐའ་མ] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[བདུན་ཕྲག་མཐའ་མ] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[བདུན་ཕྲག་མཐའ་མ] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[བདུན་ཕྲག་མཐའ་མ] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[བདུན་ཕྲག་མཐའ་མ] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[བདུན་ཕྲག་མཐའ་མ] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -6738,60 +6738,60 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'a-benn 5 devezh', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     moment.locale('br');
 
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Hiziv da 12e00 PM',        'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Hiziv da 12e25 PM',        'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Hiziv da 1e00 PM',         'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Warc\'hoazh da 12e00 PM',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Hiziv da 11e00 AM',        'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Dec\'h da 12e00 PM',       'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Hiziv da 12e00 PM',        'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Hiziv da 12e25 PM',        'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Hiziv da 1e00 PM',         'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Warc\'hoazh da 12e00 PM',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Hiziv da 11e00 AM',        'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Dec\'h da 12e00 PM',       'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     moment.locale('br');
 
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [da] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [da] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [da] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [da] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [da] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [da] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     moment.locale('br');
 
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [paset da] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [paset da] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [paset da] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [paset da] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [paset da] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [paset da] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     moment.locale('br');
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('special mutations for years', function (assert) {
@@ -7220,18 +7220,18 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'za 5 dana', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'danas u 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'danas u 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'danas u 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'sutra u 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'danas u 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'jučer u 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'danas u 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'danas u 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'danas u 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'sutra u 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'danas u 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'jučer u 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -7252,15 +7252,15 @@ test('calendar next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -7280,26 +7280,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -7719,54 +7719,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'd\'aquí 5 dies', 'd\'aquí 5 dies');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                       'avui a les 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),          'avui a les 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),           'avui a les 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),           'demà a les 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).add({d: 1, h : -1}).calendar(),   'demà a les 11:00',     'tomorrow minus 1 hour');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),      'avui a les 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),      'ahir a les 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                       'avui a les 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),          'avui a les 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),           'avui a les 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),           'demà a les 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).add({d: 1, h : -1}).interview_hour(),   'demà a les 11:00',     'tomorrow minus 1 hour');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),      'avui a les 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),      'ahir a les 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[el] dddd [passat a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [passat a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[el] dddd [passat a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [passat a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[el] dddd [passat a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [passat a ' + ((m.hours() !== 1) ? 'les' : 'la') + '] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -8235,18 +8235,18 @@ test('fromNow (past)', function (assert) {
     assert.equal(moment().subtract({y: 10}).fromNow(), 'před 10 lety', '10 years ago');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'dnes v 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'dnes v 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'dnes v 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'zítra v 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'dnes v 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'včera v 12:00',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'dnes v 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'dnes v 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'dnes v 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'zítra v 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'dnes v 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'včera v 12:00',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m, nextDay;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
@@ -8274,15 +8274,15 @@ test('calendar next week', function (assert) {
                 nextDay = 'v sobotu';
                 break;
         }
-        assert.equal(m.calendar(),       m.format('[' + nextDay + '] [v] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[' + nextDay + '] [v] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[' + nextDay + '] [v] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[' + nextDay + '] [v] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[' + nextDay + '] [v] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[' + nextDay + '] [v] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m, lastDay;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
@@ -8310,26 +8310,26 @@ test('calendar last week', function (assert) {
                 lastDay = 'minulou sobotu';
                 break;
         }
-        assert.equal(m.calendar(),       m.format('[' + lastDay + '] [v] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[' + lastDay + '] [v] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[' + lastDay + '] [v] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[' + lastDay + '] [v] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[' + lastDay + '] [v] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[' + lastDay + '] [v] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('humanize duration', function (assert) {
@@ -8758,54 +8758,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({y: 3}).fromNow(), '3 ҫултан', 'in 3 years, the right suffix!');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
-    assert.equal(moment(a).calendar(),                   'Паян 12:00 сехетре',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Паян 12:25 сехетре',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Паян 13:00 сехетре',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Ыран 12:00 сехетре',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Паян 11:00 сехетре',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Ӗнер 12:00 сехетре',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Паян 12:00 сехетре',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Паян 12:25 сехетре',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Паян 13:00 сехетре',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Ыран 12:00 сехетре',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Паян 11:00 сехетре',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Ӗнер 12:00 сехетре',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[Ҫитес] dddd LT [сехетре]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Ҫитес] dddd LT [сехетре]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Ҫитес] dddd LT [сехетре]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Ҫитес] dddd LT [сехетре]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Ҫитес] dddd LT [сехетре]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Ҫитес] dddd LT [сехетре]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Иртнӗ] dddd LT [сехетре]'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Иртнӗ] dddd LT [сехетре]'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Иртнӗ] dddd LT [сехетре]'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Иртнӗ] dddd LT [сехетре]'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Иртнӗ] dddd LT [сехетре]'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Иртнӗ] dddd LT [сехетре]'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 // Monday is the first day of the week.
@@ -9225,55 +9225,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'mewn 5 diwrnod', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Heddiw am 12:00',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Heddiw am 12:25',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Heddiw am 13:00',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Yfory am 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Heddiw am 11:00',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Ddoe am 12:00',      'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Heddiw am 12:00',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Heddiw am 12:25',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Heddiw am 13:00',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Yfory am 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Heddiw am 11:00',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Ddoe am 12:00',      'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [am] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [am] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [am] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [am] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [am] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [am] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [diwethaf am] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [diwethaf am] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [diwethaf am] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [diwethaf am] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [diwethaf am] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [diwethaf am] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -9694,55 +9694,55 @@ test('fromNow', function (assert) {
 });
 
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'i dag kl. 12:00',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'i dag kl. 12:25',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'i dag kl. 13:00',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'i morgen kl. 12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'i dag kl. 11:00',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'i går kl. 12:00',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'i dag kl. 12:00',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'i dag kl. 12:25',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'i dag kl. 13:00',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'i morgen kl. 12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'i dag kl. 11:00',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'i går kl. 12:00',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('på dddd [kl.] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('på dddd [kl.] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('på dddd [kl.] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('på dddd [kl.] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('på dddd [kl.] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('på dddd [kl.] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[i] dddd[s kl.] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[i] dddd[s kl.] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[i] dddd[s kl.] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[i] dddd[s kl.] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[i] dddd[s kl.] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[i] dddd[s kl.] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -10159,53 +10159,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 Tagen', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                  'heute um 12:00 Uhr',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),     'heute um 12:25 Uhr',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),      'heute um 13:00 Uhr',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),      'morgen um 12:00 Uhr',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(), 'heute um 11:00 Uhr',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(), 'gestern um 12:00 Uhr', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                  'heute um 12:00 Uhr',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),     'heute um 12:25 Uhr',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),      'heute um 13:00 Uhr',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),      'morgen um 12:00 Uhr',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(), 'heute um 11:00 Uhr',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(), 'gestern um 12:00 Uhr', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(), m.format('dddd [um] LT [Uhr]'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [um] LT [Uhr]'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [um] LT [Uhr]'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [um] LT [Uhr]'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [um] LT [Uhr]'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [um] LT [Uhr]'), 'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format('[letzten] dddd [um] LT [Uhr]'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('[letzten] dddd [um] LT [Uhr]'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('[letzten] dddd [um] LT [Uhr]'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('[letzten] dddd [um] LT [Uhr]'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('[letzten] dddd [um] LT [Uhr]'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('[letzten] dddd [um] LT [Uhr]'), 'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '1 week ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 1 week');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -10621,53 +10621,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 Tagen', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'heute um 12.00 Uhr',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'heute um 12.25 Uhr',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'heute um 13.00 Uhr',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'morgen um 12.00 Uhr',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'heute um 11.00 Uhr',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'gestern um 12.00 Uhr', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'heute um 12.00 Uhr',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'heute um 12.25 Uhr',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'heute um 13.00 Uhr',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'morgen um 12.00 Uhr',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'heute um 11.00 Uhr',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'gestern um 12.00 Uhr', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -11083,53 +11083,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 Tagen', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'heute um 12:00 Uhr',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'heute um 12:25 Uhr',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'heute um 13:00 Uhr',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'morgen um 12:00 Uhr',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'heute um 11:00 Uhr',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'gestern um 12:00 Uhr', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'heute um 12:00 Uhr',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'heute um 12:25 Uhr',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'heute um 13:00 Uhr',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'morgen um 12:00 Uhr',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'heute um 11:00 Uhr',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'gestern um 12:00 Uhr', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT [Uhr]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[letzten] dddd [um] LT [Uhr]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -11545,53 +11545,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'ތެރޭގައި ދުވަސް 5', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'މިއަދު 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'މިއަދު 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'މިއަދު 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'މާދަމާ 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'މިއަދު 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'އިއްޔެ 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'މިއަދު 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'މިއަދު 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'މިއަދު 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'މާދަމާ 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'މިއަދު 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'އިއްޔެ 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[ފާއިތުވި] dddd LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[ފާއިތުވި] dddd LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[ފާއިތުވި] dddd LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[ފާއިތުވި] dddd LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[ފާއިތުވި] dddd LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[ފާއިތުވި] dddd LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -12059,56 +12059,56 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'σε 5 μέρες', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Σήμερα στις 12:00 ΜΜ',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Σήμερα στις 12:25 ΜΜ',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Σήμερα στη 1:00 ΜΜ',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Αύριο στις 12:00 ΜΜ',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Σήμερα στις 11:00 ΠΜ',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Χθες στις 12:00 ΜΜ',       'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Σήμερα στις 12:00 ΜΜ',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Σήμερα στις 12:25 ΜΜ',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Σήμερα στη 1:00 ΜΜ',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Αύριο στις 12:00 ΜΜ',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Σήμερα στις 11:00 ΠΜ',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Χθες στις 12:00 ΜΜ',       'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [' + (m.hours() % 12 === 1 ? 'στη' : 'στις') + '] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [' + (m.hours() % 12 === 1 ? 'στη' : 'στις') + '] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [στις] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [στις] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [στις] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [στις] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m, dayString;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
         dayString = m.day() === 6 ? '[το προηγούμενο Σάββατο]' : '[την προηγούμενη] dddd';
-        assert.equal(m.calendar(),       m.format(dayString + ' [' + (m.hours() % 12 === 1 ? 'στη' : 'στις') + '] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(dayString + ' [' + (m.hours() % 12 === 1 ? 'στη' : 'στις') + '] LT'),  'Today - ' + i + ' days current time');
         m.hours(1).minutes(30).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(dayString + ' [στη] LT'),  'Today - ' + i + ' days one o clock');
+        assert.equal(m.interview_hour(),       m.format(dayString + ' [στη] LT'),  'Today - ' + i + ' days one o clock');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(dayString + ' [στις] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(dayString + ' [στις] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(dayString + ' [στις] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(dayString + ' [στις] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -12528,54 +12528,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 days', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Today at 12:00 PM',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Today at 12:25 PM',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Today at 1:00 PM',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Tomorrow at 12:00 PM',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Today at 11:00 AM',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Yesterday at 12:00 PM', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Today at 12:00 PM',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Today at 12:25 PM',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Today at 1:00 PM',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Tomorrow at 12:00 PM',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Today at 11:00 AM',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Yesterday at 12:00 PM', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -13003,55 +13003,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 days', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Today at 12:00 PM',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Today at 12:25 PM',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Today at 1:00 PM',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Tomorrow at 12:00 PM',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Today at 11:00 AM',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Yesterday at 12:00 PM', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Today at 12:00 PM',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Today at 12:25 PM',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Today at 1:00 PM',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Tomorrow at 12:00 PM',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Today at 11:00 AM',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Yesterday at 12:00 PM', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -13471,54 +13471,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 days', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Today at 12:00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Today at 12:25',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Today at 13:00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Tomorrow at 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Today at 11:00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Yesterday at 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Today at 12:00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Today at 12:25',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Today at 13:00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Tomorrow at 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Today at 11:00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Yesterday at 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -13938,54 +13938,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 days', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Today at 12:00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Today at 12:25',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Today at 13:00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Tomorrow at 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Today at 11:00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Yesterday at 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Today at 12:00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Today at 12:25',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Today at 13:00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Tomorrow at 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Today at 11:00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Yesterday at 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -14405,54 +14405,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 days', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Today at 12:00 PM',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Today at 12:25 PM',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Today at 1:00 PM',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Tomorrow at 12:00 PM',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Today at 11:00 AM',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Yesterday at 12:00 PM', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Today at 12:00 PM',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Today at 12:25 PM',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Today at 1:00 PM',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Tomorrow at 12:00 PM',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Today at 11:00 AM',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Yesterday at 12:00 PM', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -14881,55 +14881,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'in 5 days', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Today at 12:00 PM',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Today at 12:25 PM',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Today at 1:00 PM',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Tomorrow at 12:00 PM',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Today at 11:00 AM',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Yesterday at 12:00 PM', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Today at 12:00 PM',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Today at 12:25 PM',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Today at 1:00 PM',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Tomorrow at 12:00 PM',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Today at 11:00 AM',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Yesterday at 12:00 PM', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [at] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Last] dddd [at] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -15364,55 +15364,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'post 5 tagoj', 'post 5 tagoj');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Hodiaŭ je 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Hodiaŭ je 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Hodiaŭ je 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Morgaŭ je 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Hodiaŭ je 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Hieraŭ je 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Hodiaŭ je 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Hodiaŭ je 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Hodiaŭ je 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Morgaŭ je 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Hodiaŭ je 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Hieraŭ je 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [je] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [je] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [je] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [je] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [je] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [je] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[pasinta] dddd [je] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[pasinta] dddd [je] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[pasinta] dddd [je] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[pasinta] dddd [je] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[pasinta] dddd [je] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[pasinta] dddd [je] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -15833,56 +15833,56 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'en 5 días', 'en 5 días');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                       'hoy a las 12:00 PM',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),          'hoy a las 12:25 PM',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),           'hoy a las 1:00 PM',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),           'mañana a las 12:00 PM',  'tomorrow at the same time');
-    assert.equal(moment(a).add({d: 1, h : -1}).calendar(),   'mañana a las 11:00 AM',   'tomorrow minus 1 hour');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),      'hoy a las 11:00 AM',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),      'ayer a las 12:00 PM',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                       'hoy a las 12:00 PM',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),          'hoy a las 12:25 PM',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),           'hoy a las 1:00 PM',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),           'mañana a las 12:00 PM',  'tomorrow at the same time');
+    assert.equal(moment(a).add({d: 1, h : -1}).interview_hour(),   'mañana a las 11:00 AM',   'tomorrow minus 1 hour');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),      'hoy a las 11:00 AM',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),      'ayer a las 12:00 PM',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -16303,56 +16303,56 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'en 5 días', 'en 5 días');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                       'hoy a las 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),          'hoy a las 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),           'hoy a las 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),           'mañana a las 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).add({d: 1, h : -1}).calendar(),   'mañana a las 11:00',   'tomorrow minus 1 hour');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),      'hoy a las 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),      'ayer a las 12:00',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                       'hoy a las 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),          'hoy a las 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),           'hoy a las 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),           'mañana a las 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).add({d: 1, h : -1}).interview_hour(),   'mañana a las 11:00',   'tomorrow minus 1 hour');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),      'hoy a las 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),      'ayer a las 12:00',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[el] dddd [pasado a la' + ((m.hours() !== 1) ? 's' : '') + '] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -16796,53 +16796,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().subtract({y: 5}).fromNow(), '5 aastat tagasi', '5 years ago');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Täna, 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Täna, 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Täna, 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Homme, 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Täna, 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Eile, 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Täna, 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Täna, 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Täna, 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Homme, 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Täna, 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Eile, 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[Järgmine] dddd LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Järgmine] dddd LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Järgmine] dddd LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Järgmine] dddd LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Järgmine] dddd LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Järgmine] dddd LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Eelmine] dddd LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Eelmine] dddd LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Eelmine] dddd LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Eelmine] dddd LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Eelmine] dddd LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Eelmine] dddd LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 nädal tagasi');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  '1 nädala pärast');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 nädal tagasi');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  '1 nädala pärast');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 nädalat tagasi');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  '2 nädala pärast');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 nädalat tagasi');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  '2 nädala pärast');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -17262,53 +17262,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 egun barru', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'gaur 12:00etan',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'gaur 12:25etan',  'now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'gaur 13:00etan',  'now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'bihar 12:00etan', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'gaur 11:00etan',  'now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'atzo 12:00etan',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'gaur 12:00etan',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'gaur 12:25etan',  'now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'gaur 13:00etan',  'now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'bihar 12:00etan', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'gaur 11:00etan',  'now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'atzo 12:00etan',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd LT[etan]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd LT[etan]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd LT[etan]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT[etan]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd LT[etan]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT[etan]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[aurreko] dddd LT[etan]'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[aurreko] dddd LT[etan]'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[aurreko] dddd LT[etan]'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[aurreko] dddd LT[etan]'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[aurreko] dddd LT[etan]'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[aurreko] dddd LT[etan]'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -17721,53 +17721,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'در ۵ روز', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'امروز ساعت ۱۲:۰۰', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'امروز ساعت ۱۲:۲۵', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'امروز ساعت ۱۳:۰۰', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'فردا ساعت ۱۲:۰۰', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'امروز ساعت ۱۱:۰۰', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'دیروز ساعت ۱۲:۰۰', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'امروز ساعت ۱۲:۰۰', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'امروز ساعت ۱۲:۲۵', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'امروز ساعت ۱۳:۰۰', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'فردا ساعت ۱۲:۰۰', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'امروز ساعت ۱۱:۰۰', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'دیروز ساعت ۱۲:۰۰', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [ساعت] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [ساعت] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [ساعت] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [ساعت] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [ساعت] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [ساعت] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [پیش ساعت] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [پیش ساعت] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [پیش ساعت] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [پیش ساعت] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [پیش ساعت] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [پیش ساعت] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -18187,54 +18187,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'viiden päivän päästä', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'tänään klo 12.00',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'tänään klo 12.25',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'tänään klo 13.00',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'huomenna klo 12.00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'tänään klo 11.00',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'eilen klo 12.00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'tänään klo 12.00',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'tänään klo 12.25',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'tänään klo 13.00',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'huomenna klo 12.00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'tänään klo 11.00',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'eilen klo 12.00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [klo] LT'),  'today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [klo] LT'),  'today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [klo] LT'),  'today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [klo] LT'),  'today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [klo] LT'),  'today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [klo] LT'),  'today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[viime] dddd[na] [klo] LT'),  'today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[viime] dddd[na] [klo] LT'),  'today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[viime] dddd[na] [klo] LT'),  'today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[viime] dddd[na] [klo] LT'),  'today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[viime] dddd[na] [klo] LT'),  'today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[viime] dddd[na] [klo] LT'),  'today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  'yksi viikko sitten');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'yhden viikon päästä');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  'yksi viikko sitten');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'yhden viikon päästä');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  'kaksi viikkoa sitten');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'kaden viikon päästä');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  'kaksi viikkoa sitten');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'kaden viikon päästä');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -18655,54 +18655,54 @@ test('fromNow', function (assert) {
 });
 
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Í dag kl. 12:00',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Í dag kl. 12:25',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Í dag kl. 13:00',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Í morgin kl. 12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Í dag kl. 11:00',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Í gjár kl. 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Í dag kl. 12:00',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Í dag kl. 12:25',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Í dag kl. 13:00',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Í morgin kl. 12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Í dag kl. 11:00',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Í gjár kl. 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[síðstu] dddd [kl] LT'),  'today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[síðstu] dddd [kl] LT'),  'today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[síðstu] dddd [kl] LT'),  'today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[síðstu] dddd [kl] LT'),  'today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[síðstu] dddd [kl] LT'),  'today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[síðstu] dddd [kl] LT'),  'today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  'yksi viikko sitten');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'yhden viikon päästä');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  'yksi viikko sitten');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'yhden viikon päästä');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  'kaksi viikkoa sitten');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'kaden viikon päästä');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  'kaksi viikkoa sitten');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'kaden viikon päästä');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -19146,12 +19146,12 @@ test('fromNow', function (assert) {
 test('same day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                  'Aujourd’hui à 12:00', 'Today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),     'Aujourd’hui à 12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),      'Aujourd’hui à 13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),      'Demain à 12:00',      'Tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(), 'Aujourd’hui à 11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(), 'Hier à 12:00',        'Yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                  'Aujourd’hui à 12:00', 'Today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),     'Aujourd’hui à 12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),      'Aujourd’hui à 13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),      'Demain à 12:00',      'Tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(), 'Aujourd’hui à 11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(), 'Hier à 12:00',        'Yesterday at the same time');
 });
 
 test('same next week', function (assert) {
@@ -19159,11 +19159,11 @@ test('same next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days end of day');
     }
 });
 
@@ -19172,11 +19172,11 @@ test('same last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days end of day');
     }
 });
 
@@ -19184,14 +19184,14 @@ test('same all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),     weeksAgo.format('L'),     '1 week ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),     weeksAgo.format('L'),     '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),     weeksAgo.format('L'),     '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),     weeksAgo.format('L'),     '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -19635,12 +19635,12 @@ test('fromNow', function (assert) {
 test('same day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                  'Aujourd’hui à 12:00', 'Today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),     'Aujourd’hui à 12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),      'Aujourd’hui à 13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),      'Demain à 12:00',      'Tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(), 'Aujourd’hui à 11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(), 'Hier à 12:00',        'Yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                  'Aujourd’hui à 12:00', 'Today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),     'Aujourd’hui à 12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),      'Aujourd’hui à 13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),      'Demain à 12:00',      'Tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(), 'Aujourd’hui à 11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(), 'Hier à 12:00',        'Yesterday at the same time');
 });
 
 test('same next week', function (assert) {
@@ -19648,11 +19648,11 @@ test('same next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days end of day');
     }
 });
 
@@ -19661,11 +19661,11 @@ test('same last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days end of day');
     }
 });
 
@@ -19673,14 +19673,14 @@ test('same all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),     weeksAgo.format('L'),     '1 week ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),     weeksAgo.format('L'),     '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),     weeksAgo.format('L'),     '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),     weeksAgo.format('L'),     '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -20124,12 +20124,12 @@ test('fromNow', function (assert) {
 test('same day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                  'Aujourd’hui à 12:00', 'Today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),     'Aujourd’hui à 12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),      'Aujourd’hui à 13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),      'Demain à 12:00',      'Tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(), 'Aujourd’hui à 11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(), 'Hier à 12:00',        'Yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                  'Aujourd’hui à 12:00', 'Today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),     'Aujourd’hui à 12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),      'Aujourd’hui à 13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),      'Demain à 12:00',      'Tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(), 'Aujourd’hui à 11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(), 'Hier à 12:00',        'Yesterday at the same time');
 });
 
 test('same next week', function (assert) {
@@ -20137,11 +20137,11 @@ test('same next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [à] LT'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [à] LT'), 'Today + ' + i + ' days end of day');
     }
 });
 
@@ -20150,11 +20150,11 @@ test('same last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [dernier à] LT'), 'Today - ' + i + ' days end of day');
     }
 });
 
@@ -20162,14 +20162,14 @@ test('same all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),     weeksAgo.format('L'),     '1 week ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),     weeksAgo.format('L'),     '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),     weeksAgo.format('L'),     '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),     weeksAgo.format('L'),     '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -20589,53 +20589,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'oer 5 dagen', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'hjoed om 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'hjoed om 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'hjoed om 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'moarn om 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'hjoed om 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'juster om 12:00',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'hjoed om 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'hjoed om 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'hjoed om 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'moarn om 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'hjoed om 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'juster om 12:00',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[ôfrûne] dddd [om] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[ôfrûne] dddd [om] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[ôfrûne] dddd [om] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[ôfrûne] dddd [om] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[ôfrûne] dddd [om] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[ôfrûne] dddd [om] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('month abbreviation', function (assert) {
@@ -21072,54 +21072,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'ann an 5 latha', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                  'An-diugh aig 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),     'An-diugh aig 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),      'An-diugh aig 13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),      'A-màireach aig 12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(), 'An-diugh aig 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(), 'An-dè aig 12:00',      'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                  'An-diugh aig 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),     'An-diugh aig 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),      'An-diugh aig 13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),      'A-màireach aig 12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(), 'An-diugh aig 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(), 'An-dè aig 12:00',      'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(), m.format('dddd [aig] LT'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [aig] LT'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [aig] LT'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [aig] LT'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [aig] LT'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [aig] LT'), 'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format('dddd [seo chaidh] [aig] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [seo chaidh] [aig] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [seo chaidh] [aig] LT'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [seo chaidh] [aig] LT'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [seo chaidh] [aig] LT'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [seo chaidh] [aig] LT'), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
        weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '1 week ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 1 week');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -21541,60 +21541,60 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'en 5 días', 'en 5 días');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                       'hoxe ás 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),          'hoxe ás 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),           'hoxe ás 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),           'mañá ás 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).add({d: 1, h : -1}).calendar(),   'mañá ás 11:00',   'tomorrow minus 1 hour');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),      'hoxe ás 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),      'onte á 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                       'hoxe ás 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),          'hoxe ás 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),           'hoxe ás 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),           'mañá ás 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).add({d: 1, h : -1}).interview_hour(),   'mañá ás 11:00',   'tomorrow minus 1 hour');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),      'hoxe ás 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),      'onte á 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[o] dddd [pasado ' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[o] dddd [pasado ' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[o] dddd [pasado ' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[o] dddd [pasado ' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[o] dddd [pasado ' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[o] dddd [pasado ' + ((m.hours() !== 1) ? 'ás' : 'a') + '] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('regression tests', function (assert) {
     var lastWeek = moment().subtract({d: 4}).hours(1);
-    assert.equal(lastWeek.calendar(), lastWeek.format('[o] dddd [pasado a] LT'), '1 o\'clock bug');
+    assert.equal(lastWeek.interview_hour(), lastWeek.format('[o] dddd [pasado a] LT'), '1 o\'clock bug');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -22023,55 +22023,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 dis', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Aiz donparam 12:00 vazta',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Aiz donparam 12:25 vazta',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Aiz donparam 1:00 vazta',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Faleam donparam 12:00 vazta',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Aiz sokalli 11:00 vazta',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Kal donparam 12:00 vazta', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Aiz donparam 12:00 vazta',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Aiz donparam 12:25 vazta',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Aiz donparam 1:00 vazta',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Faleam donparam 12:00 vazta',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Aiz sokalli 11:00 vazta',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Kal donparam 12:00 vazta', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[Ieta to] dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Ieta to] dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Ieta to] dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Ieta to] dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Ieta to] dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Ieta to] dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Fatlo] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Fatlo] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Fatlo] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Fatlo] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Fatlo] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Fatlo] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -22456,53 +22456,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'בעוד 5 ימים', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'היום ב־12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'היום ב־12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'היום ב־13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'מחר ב־12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'היום ב־11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'אתמול ב־12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'היום ב־12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'היום ב־12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'היום ב־13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'מחר ב־12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'היום ב־11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'אתמול ב־12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [בשעה] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [בשעה] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [בשעה] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [בשעה] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [בשעה] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [בשעה] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[ביום] dddd [האחרון בשעה] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[ביום] dddd [האחרון בשעה] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[ביום] dddd [האחרון בשעה] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[ביום] dddd [האחרון בשעה] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[ביום] dddd [האחרון בשעה] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[ביום] dddd [האחרון בשעה] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -22921,54 +22921,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '५ दिन में', '५ दिन में');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'आज दोपहर १२:०० बजे',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'आज दोपहर १२:२५ बजे',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 3}).calendar(),       'आज दोपहर ३:०० बजे',     'Now plus 3 hours');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'कल दोपहर १२:०० बजे',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'आज दोपहर ११:०० बजे',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'कल दोपहर १२:०० बजे',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'आज दोपहर १२:०० बजे',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'आज दोपहर १२:२५ बजे',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 3}).interview_hour(),       'आज दोपहर ३:०० बजे',     'Now plus 3 hours');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'कल दोपहर १२:०० बजे',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'आज दोपहर ११:०० बजे',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'कल दोपहर १२:०० बजे',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[पिछले] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[पिछले] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[पिछले] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[पिछले] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[पिछले] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[पिछले] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -23404,18 +23404,18 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'za 5 dana', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'danas u 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'danas u 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'danas u 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'sutra u 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'danas u 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'jučer u 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'danas u 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'danas u 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'danas u 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'sutra u 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'danas u 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'jučer u 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -23436,15 +23436,15 @@ test('calendar next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -23464,26 +23464,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -23916,54 +23916,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 nap múlva', '5 nap múlva');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'ma 12:00-kor',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'ma 12:25-kor',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'ma 13:00-kor',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'holnap 12:00-kor', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'ma 11:00-kor',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'tegnap 12:00-kor', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'ma 12:00-kor',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'ma 12:25-kor',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'ma 13:00-kor',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'holnap 12:00-kor', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'ma 11:00-kor',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'tegnap 12:00-kor', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m, days = 'vasárnap_hétfőn_kedden_szerdán_csütörtökön_pénteken_szombaton'.split('_');
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[' + days[m.day()] + '] LT[-kor]'),  'today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[' + days[m.day()] + '] LT[-kor]'),  'today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[' + days[m.day()] + '] LT[-kor]'),  'today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[' + days[m.day()] + '] LT[-kor]'),  'today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[' + days[m.day()] + '] LT[-kor]'),  'today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[' + days[m.day()] + '] LT[-kor]'),  'today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m, days = 'vasárnap_hétfőn_kedden_szerdán_csütörtökön_pénteken_szombaton'.split('_');
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[múlt ' + days[m.day()] + '] LT[-kor]'),  'today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[múlt ' + days[m.day()] + '] LT[-kor]'),  'today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[múlt ' + days[m.day()] + '] LT[-kor]'),  'today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[múlt ' + days[m.day()] + '] LT[-kor]'),  'today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[múlt ' + days[m.day()] + '] LT[-kor]'),  'today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[múlt ' + days[m.day()] + '] LT[-kor]'),  'today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  'egy héte');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'egy hét múlva');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  'egy héte');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'egy hét múlva');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 hete');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  '2 hét múlva');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 hete');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  '2 hét múlva');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -24444,18 +24444,18 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 օր հետո', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'այսօր 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'այսօր 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'այսօր 13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'վաղը 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'այսօր 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'երեկ 12:00',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'այսօր 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'այսօր 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'այսօր 13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'վաղը 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'այսօր 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'երեկ 12:00',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     function makeFormat(d) {
         return 'dddd [օրը ժամը] LT';
@@ -24463,15 +24463,15 @@ test('calendar next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -24480,26 +24480,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -24882,53 +24882,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'dalam 5 hari', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Hari ini pukul 12.00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Hari ini pukul 12.25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Hari ini pukul 13.00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Besok pukul 12.00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Hari ini pukul 11.00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Kemarin pukul 12.00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Hari ini pukul 12.00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Hari ini pukul 12.25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Hari ini pukul 13.00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Besok pukul 12.00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Hari ini pukul 11.00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Kemarin pukul 12.00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [lalu pukul] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [lalu pukul] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [lalu pukul] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [lalu pukul] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [lalu pukul] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [lalu pukul] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -25354,54 +25354,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'eftir 5 daga', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'í dag kl. 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'í dag kl. 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'í dag kl. 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'á morgun kl. 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'í dag kl. 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'í gær kl. 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'í dag kl. 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'í dag kl. 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'í dag kl. 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'á morgun kl. 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'í dag kl. 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'í gær kl. 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[síðasta] dddd [kl.] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[síðasta] dddd [kl.] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[síðasta] dddd [kl.] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[síðasta] dddd [kl.] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[síðasta] dddd [kl.] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[síðasta] dddd [kl.] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -25817,56 +25817,56 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'tra 5 giorni', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Oggi alle 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Oggi alle 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Oggi alle 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Domani alle 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Oggi alle 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Ieri alle 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Oggi alle 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Oggi alle 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Oggi alle 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Domani alle 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Oggi alle 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Ieri alle 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [alle] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [alle] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [alle] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [alle] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [alle] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [alle] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m, weekday, datestring;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
         // Different date string
         weekday = parseInt(m.format('d'), 10);
         datestring = (weekday === 0) ? '[la scorsa] dddd [alle] LT' : '[lo scorso] dddd [alle] LT';
-        assert.equal(m.calendar(), m.format(datestring), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format(datestring), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format(datestring), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format(datestring), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format(datestring), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format(datestring), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -26249,53 +26249,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5日後', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   '今日 12:00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      '今日 12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       '今日 13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       '明日 12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  '今日 11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  '昨日 12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   '今日 12:00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      '今日 12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       '今日 13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       '明日 12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  '今日 11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  '昨日 12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[来週]dddd LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[来週]dddd LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[来週]dddd LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[来週]dddd LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[来週]dddd LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[来週]dddd LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[前週]dddd LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[前週]dddd LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[前週]dddd LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[前週]dddd LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[前週]dddd LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[前週]dddd LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -26678,53 +26678,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'wonten ing 5 dinten', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Dinten puniko pukul 12.00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Dinten puniko pukul 12.25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Dinten puniko pukul 13.00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Mbenjang pukul 12.00',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Dinten puniko pukul 11.00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Kala wingi pukul 12.00',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Dinten puniko pukul 12.00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Dinten puniko pukul 12.25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Dinten puniko pukul 13.00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Mbenjang pukul 12.00',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Dinten puniko pukul 11.00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Kala wingi pukul 12.00',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [kepengker pukul] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [kepengker pukul] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [kepengker pukul] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kepengker pukul] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [kepengker pukul] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kepengker pukul] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 // Monday is the first day of the week.
@@ -27160,53 +27160,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 დღეში', '5 დღეში');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'დღეს 12:00 PM-ზე',  'დღეს ამავე დროს');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'დღეს 12:25 PM-ზე',  'ახლანდელ დროს დამატებული 25 წუთი');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'დღეს 1:00 PM-ზე',   'ახლანდელ დროს დამატებული 1 საათი');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'ხვალ 12:00 PM-ზე',  'ხვალ ამავე დროს');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'დღეს 11:00 AM-ზე',  'ახლანდელ დროს გამოკლებული 1 საათი');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'გუშინ 12:00 PM-ზე', 'გუშინ ამავე დროს');
+    assert.equal(moment(a).interview_hour(),                   'დღეს 12:00 PM-ზე',  'დღეს ამავე დროს');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'დღეს 12:25 PM-ზე',  'ახლანდელ დროს დამატებული 25 წუთი');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'დღეს 1:00 PM-ზე',   'ახლანდელ დროს დამატებული 1 საათი');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'ხვალ 12:00 PM-ზე',  'ხვალ ამავე დროს');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'დღეს 11:00 AM-ზე',  'ახლანდელ დროს გამოკლებული 1 საათი');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'გუშინ 12:00 PM-ზე', 'გუშინ ამავე დროს');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[შემდეგ] dddd LT[-ზე]'),  'დღეს + ' + i + ' დღე ახლანდელ დროს');
+        assert.equal(m.interview_hour(),       m.format('[შემდეგ] dddd LT[-ზე]'),  'დღეს + ' + i + ' დღე ახლანდელ დროს');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[შემდეგ] dddd LT[-ზე]'),  'დღეს + ' + i + ' დღე დღის დასაწყისში');
+        assert.equal(m.interview_hour(),       m.format('[შემდეგ] dddd LT[-ზე]'),  'დღეს + ' + i + ' დღე დღის დასაწყისში');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[შემდეგ] dddd LT[-ზე]'),  'დღეს + ' + i + ' დღე დღის დასასრულს');
+        assert.equal(m.interview_hour(),       m.format('[შემდეგ] dddd LT[-ზე]'),  'დღეს + ' + i + ' დღე დღის დასასრულს');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[წინა] dddd LT[-ზე]'),  'დღეს - ' + i + ' დღე ახლანდელ დროს');
+        assert.equal(m.interview_hour(),       m.format('[წინა] dddd LT[-ზე]'),  'დღეს - ' + i + ' დღე ახლანდელ დროს');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[წინა] dddd LT[-ზე]'),  'დღეს - ' + i + ' დღე დღის დასაწყისში');
+        assert.equal(m.interview_hour(),       m.format('[წინა] dddd LT[-ზე]'),  'დღეს - ' + i + ' დღე დღის დასაწყისში');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[წინა] dddd LT[-ზე]'),  'დღეს - ' + i + ' დღე დღის დასასრულს');
+        assert.equal(m.interview_hour(),       m.format('[წინა] dddd LT[-ზე]'),  'დღეს - ' + i + ' დღე დღის დასასრულს');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 კვირის უკან');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  '1 კვირაში');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 კვირის უკან');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  '1 კვირაში');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 კვირის წინ');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  '2 კვირაში');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 კვირის წინ');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  '2 კვირაში');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -27626,54 +27626,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 күн ішінде', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Бүгін сағат 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Бүгін сағат 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Бүгін сағат 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Ертең сағат 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Бүгін сағат 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Кеше сағат 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Бүгін сағат 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Бүгін сағат 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Бүгін сағат 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Ертең сағат 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Бүгін сағат 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Кеше сағат 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [сағат] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [сағат] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [сағат] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [сағат] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [сағат] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [сағат] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Өткен аптаның] dddd [сағат] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Өткен аптаның] dddd [сағат] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Өткен аптаның] dddd [сағат] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Өткен аптаның] dddd [сағат] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Өткен аптаның] dddd [сағат] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Өткен аптаның] dddd [сағат] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -28101,47 +28101,47 @@ test('fromNow', function (assert) {
     }).fromNow(), '5 ថ្ងៃទៀត', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                  'ថ្ងៃនេះ ម៉ោង 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),     'ថ្ងៃនេះ ម៉ោង 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),      'ថ្ងៃនេះ ម៉ោង 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),      'ស្អែក ម៉ោង 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(), 'ថ្ងៃនេះ ម៉ោង 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(), 'ម្សិលមិញ ម៉ោង 12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                  'ថ្ងៃនេះ ម៉ោង 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),     'ថ្ងៃនេះ ម៉ោង 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),      'ថ្ងៃនេះ ម៉ោង 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),      'ស្អែក ម៉ោង 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(), 'ថ្ងៃនេះ ម៉ោង 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(), 'ម្សិលមិញ ម៉ោង 12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({
             d: i
         });
-        assert.equal(m.calendar(), m.format('dddd [ម៉ោង] LT'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [ម៉ោង] LT'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [ម៉ោង] LT'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [ម៉ោង] LT'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [ម៉ោង] LT'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [ម៉ោង] LT'), 'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({
             d: i
         });
-        assert.equal(m.calendar(), m.format('dddd [សប្តាហ៍មុន] [ម៉ោង] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [សប្តាហ៍មុន] [ម៉ោង] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [សប្តាហ៍មុន] [ម៉ោង] LT'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [សប្តាហ៍មុន] [ម៉ោង] LT'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [សប្តាហ៍មុន] [ម៉ោង] LT'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [សប្តាហ៍មុន] [ម៉ោង] LT'), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({
             w: 1
         }),
@@ -28149,8 +28149,8 @@ test('calendar all else', function (assert) {
             w: 1
         });
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '1 week ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 1 week');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 1 week');
 
     weeksAgo = moment().subtract({
         w: 2
@@ -28159,8 +28159,8 @@ test('calendar all else', function (assert) {
         w: 2
     });
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -28579,54 +28579,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '೫ ದಿನ ನಂತರ', '೫ ದಿನ ನಂತರ');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'ಇಂದು ಮಧ್ಯಾಹ್ನ ೧೨:೦೦',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'ಇಂದು ಮಧ್ಯಾಹ್ನ ೧೨:೨೫',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 3}).calendar(),       'ಇಂದು ಮಧ್ಯಾಹ್ನ ೩:೦೦',     'Now plus 3 hours');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'ನಾಳೆ ಮಧ್ಯಾಹ್ನ ೧೨:೦೦',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'ಇಂದು ಮಧ್ಯಾಹ್ನ ೧೧:೦೦',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ನಿನ್ನೆ ಮಧ್ಯಾಹ್ನ ೧೨:೦೦',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'ಇಂದು ಮಧ್ಯಾಹ್ನ ೧೨:೦೦',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'ಇಂದು ಮಧ್ಯಾಹ್ನ ೧೨:೨೫',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 3}).interview_hour(),       'ಇಂದು ಮಧ್ಯಾಹ್ನ ೩:೦೦',     'Now plus 3 hours');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'ನಾಳೆ ಮಧ್ಯಾಹ್ನ ೧೨:೦೦',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'ಇಂದು ಮಧ್ಯಾಹ್ನ ೧೧:೦೦',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ನಿನ್ನೆ ಮಧ್ಯಾಹ್ನ ೧೨:೦೦',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[ಕೊನೆಯ] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[ಕೊನೆಯ] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[ಕೊನೆಯ] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[ಕೊನೆಯ] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[ಕೊನೆಯ] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[ಕೊನೆಯ] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -29097,53 +29097,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5일 후', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   '오늘 오후 12:00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      '오늘 오후 12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       '오늘 오후 1:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       '내일 오후 12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  '오늘 오전 11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  '어제 오후 12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   '오늘 오후 12:00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      '오늘 오후 12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       '오늘 오후 1:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       '내일 오후 12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  '오늘 오전 11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  '어제 오후 12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('지난주 dddd LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('지난주 dddd LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('지난주 dddd LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('지난주 dddd LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('지난주 dddd LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('지난주 dddd LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -29563,54 +29563,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 күн ичинде', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Бүгүн саат 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Бүгүн саат 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Бүгүн саат 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Эртең саат 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Бүгүн саат 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Кече саат 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Бүгүн саат 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Бүгүн саат 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Бүгүн саат 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Эртең саат 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Бүгүн саат 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Кече саат 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [саат] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [саат] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [саат] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [саат] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [саат] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [саат] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Өткен аптанын] dddd [күнү] [саат] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Өткен аптанын] dddd [күнү] [саат] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Өткен аптанын] dddd [күнү] [саат] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Өткен аптанын] dddd [күнү] [саат] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Өткен аптанын] dddd [күнү] [саат] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Өткен аптанын] dddd [күнү] [саат] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -30002,31 +30002,31 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({y: 400}).fromNow(), 'a 400 Joer', 'in 400 years');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Haut um 12:00 Auer',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Haut um 12:25 Auer',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Haut um 13:00 Auer',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Muer um 12:00 Auer',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Haut um 11:00 Auer',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Gëschter um 12:00 Auer', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Haut um 12:00 Auer',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Haut um 12:25 Auer',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Haut um 13:00 Auer',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Muer um 12:00 Auer',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Haut um 11:00 Auer',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Gëschter um 12:00 Auer', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [um] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [um] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [um] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [um] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m, weekday, datestring;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
@@ -30035,26 +30035,26 @@ test('calendar last week', function (assert) {
         weekday = parseInt(m.format('d'), 10);
         datestring = (weekday === 2 || weekday === 4 ? '[Leschten] dddd [um] LT' : '[Leschte] dddd [um] LT');
 
-        assert.equal(m.calendar(), m.format(datestring), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format(datestring), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format(datestring), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format(datestring), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format(datestring), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format(datestring), 'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -30474,54 +30474,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'ອີກ 5 ມື້', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'ມື້ນີ້ເວລາ 12:00',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'ມື້ນີ້ເວລາ 12:25',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'ມື້ນີ້ເວລາ 13:00',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'ມື້ອື່ນເວລາ 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'ມື້ນີ້ເວລາ 11:00',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ມື້ວານນີ້ເວລາ 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'ມື້ນີ້ເວລາ 12:00',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'ມື້ນີ້ເວລາ 12:25',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'ມື້ນີ້ເວລາ 13:00',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'ມື້ອື່ນເວລາ 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'ມື້ນີ້ເວລາ 11:00',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ມື້ວານນີ້ເວລາ 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[ວັນ]dddd[ໜ້າເວລາ] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[ວັນ]dddd[ໜ້າເວລາ] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[ວັນ]dddd[ໜ້າເວລາ] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[ວັນ]dddd[ໜ້າເວລາ] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[ວັນ]dddd[ໜ້າເວລາ] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[ວັນ]dddd[ໜ້າເວລາ] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[ວັນ]dddd[ແລ້ວນີ້ເວລາ] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[ວັນ]dddd[ແລ້ວນີ້ເວລາ] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[ວັນ]dddd[ແລ້ວນີ້ເວລາ] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[ວັນ]dddd[ແລ້ວນີ້ເວລາ] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[ວັນ]dddd[ແລ້ວນີ້ເວລາ] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[ວັນ]dddd[ແລ້ວນີ້ເວລາ] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -30895,7 +30895,7 @@ test('format week', function (assert) {
     }
 });
 
-test('format week on US calendar', function (assert) {
+test('format week on US interview_hour', function (assert) {
     // Tests, whether the weekday names are correct, even if the week does not start on Monday
     moment.updateLocale('lt', {week: {dow: 0, doy: 6}});
     var expected = 'sekmadienis Sek S_pirmadienis Pir P_antradienis Ant A_trečiadienis Tre T_ketvirtadienis Ket K_penktadienis Pen Pn_šeštadienis Šeš Š'.split('_'), i;
@@ -30958,53 +30958,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'po 5 dienų', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Šiandien 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Šiandien 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Šiandien 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Rytoj 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Šiandien 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Vakar 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Šiandien 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Šiandien 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Šiandien 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Rytoj 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Šiandien 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Vakar 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Praėjusį] dddd LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Praėjusį] dddd LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Praėjusį] dddd LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Praėjusį] dddd LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Praėjusį] dddd LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Praėjusį] dddd LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -31455,53 +31455,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'pēc 5 dienām', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Šodien pulksten 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Šodien pulksten 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Šodien pulksten 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Rīt pulksten 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Šodien pulksten 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Vakar pulksten 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Šodien pulksten 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Šodien pulksten 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Šodien pulksten 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Rīt pulksten 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Šodien pulksten 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Vakar pulksten 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [pulksten] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [pulksten] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [pulksten] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [pulksten] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [pulksten] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [pulksten] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Pagājušā] dddd [pulksten] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Pagājušā] dddd [pulksten] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Pagājušā] dddd [pulksten] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Pagājušā] dddd [pulksten] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Pagājušā] dddd [pulksten] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Pagājušā] dddd [pulksten] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -31924,18 +31924,18 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'za 5 dana', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'danas u 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'danas u 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'danas u 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'sjutra u 12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'danas u 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'juče u 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'danas u 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'danas u 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'danas u 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'sjutra u 12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'danas u 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'juče u 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -31956,15 +31956,15 @@ test('calendar next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -31983,26 +31983,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 // Monday is the first day of the week.
@@ -32425,54 +32425,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'i roto i 5 ra', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'i teie mahana, i 12:00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'i teie mahana, i 12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'i teie mahana, i 13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'apopo i 12:00',       'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'i teie mahana, i 11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'inanahi i 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'i teie mahana, i 12:00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'i teie mahana, i 12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'i teie mahana, i 13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'apopo i 12:00',       'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'i teie mahana, i 11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'inanahi i 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [i] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [i] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [i] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [i] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [i] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [i] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [whakamutunga i] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [whakamutunga i] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [whakamutunga i] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [whakamutunga i] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [whakamutunga i] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [whakamutunga i] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -32892,30 +32892,30 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(),  'после 5 дена', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Денес во 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Денес во 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Денес во 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Утре во 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Денес во 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Вчера во 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Денес во 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Денес во 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Денес во 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Утре во 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Денес во 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Вчера во 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[Во] dddd [во] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Во] dddd [во] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Во] dddd [во] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Во] dddd [во] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Во] dddd [во] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Во] dddd [во] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -32934,26 +32934,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -33372,54 +33372,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 ദിവസം കഴിഞ്ഞ്', '5 ദിവസം കഴിഞ്ഞ്');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'ഇന്ന് ഉച്ച കഴിഞ്ഞ് 12:00 -നു',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'ഇന്ന് ഉച്ച കഴിഞ്ഞ് 12:25 -നു',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 3}).calendar(),       'ഇന്ന് ഉച്ച കഴിഞ്ഞ് 3:00 -നു',    'Now plus 3 hours');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'നാളെ ഉച്ച കഴിഞ്ഞ് 12:00 -നു',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'ഇന്ന് രാവിലെ 11:00 -നു',         'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ഇന്നലെ ഉച്ച കഴിഞ്ഞ് 12:00 -നു',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'ഇന്ന് ഉച്ച കഴിഞ്ഞ് 12:00 -നു',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'ഇന്ന് ഉച്ച കഴിഞ്ഞ് 12:25 -നു',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 3}).interview_hour(),       'ഇന്ന് ഉച്ച കഴിഞ്ഞ് 3:00 -നു',    'Now plus 3 hours');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'നാളെ ഉച്ച കഴിഞ്ഞ് 12:00 -നു',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'ഇന്ന് രാവിലെ 11:00 -നു',         'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ഇന്നലെ ഉച്ച കഴിഞ്ഞ് 12:00 -നു',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[കഴിഞ്ഞ] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[കഴിഞ്ഞ] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[കഴിഞ്ഞ] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[കഴിഞ്ഞ] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[കഴിഞ്ഞ] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[കഴിഞ്ഞ] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -33854,54 +33854,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '५ दिवसांमध्ये', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'आज दुपारी १२:०० वाजता',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'आज दुपारी १२:२५ वाजता',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 3}).calendar(),       'आज दुपारी ३:०० वाजता',     'Now plus 3 hours');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'उद्या दुपारी १२:०० वाजता', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'आज दुपारी ११:०० वाजता',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'काल दुपारी १२:०० वाजता',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'आज दुपारी १२:०० वाजता',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'आज दुपारी १२:२५ वाजता',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 3}).interview_hour(),       'आज दुपारी ३:०० वाजता',     'Now plus 3 hours');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'उद्या दुपारी १२:०० वाजता', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'आज दुपारी ११:०० वाजता',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'काल दुपारी १२:०० वाजता',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format('[मागील] dddd[,] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('[मागील] dddd[,] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('[मागील] dddd[,] LT'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('[मागील] dddd[,] LT'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('[मागील] dddd[,] LT'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('[मागील] dddd[,] LT'), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -34346,53 +34346,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'dalam 5 hari', 'dalam 5 hari');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Hari ini pukul 12.00',  'hari ini pada waktu yang sama');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Hari ini pukul 12.25',  'Sekarang tambah 25 minit');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Hari ini pukul 13.00',  'Sekarang tambah 1 jam');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Esok pukul 12.00',      'esok pada waktu yang sama');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Hari ini pukul 11.00',  'Sekarang tolak 1 jam');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Kelmarin pukul 12.00',  'kelmarin pada waktu yang sama');
+    assert.equal(moment(a).interview_hour(),                   'Hari ini pukul 12.00',  'hari ini pada waktu yang sama');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Hari ini pukul 12.25',  'Sekarang tambah 25 minit');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Hari ini pukul 13.00',  'Sekarang tambah 1 jam');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Esok pukul 12.00',      'esok pada waktu yang sama');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Hari ini pukul 11.00',  'Sekarang tolak 1 jam');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Kelmarin pukul 12.00',  'kelmarin pada waktu yang sama');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari waktu sekarang');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari waktu sekarang');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari permulaan hari');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari permulaan hari');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari tamat hari');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari tamat hari');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari waktu sekarang');
+        assert.equal(m.interview_hour(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari waktu sekarang');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari permulaan hari');
+        assert.equal(m.interview_hour(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari permulaan hari');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari tamat hari');
+        assert.equal(m.interview_hour(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari tamat hari');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 minggu lepas');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'dalam 1 minggu');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 minggu lepas');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'dalam 1 minggu');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 minggu lepas');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'dalam 2 minggu');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 minggu lepas');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'dalam 2 minggu');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -34821,53 +34821,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'dalam 5 hari', 'dalam 5 hari');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Hari ini pukul 12.00',  'hari ini pada waktu yang sama');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Hari ini pukul 12.25',  'Sekarang tambah 25 minit');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Hari ini pukul 13.00',  'Sekarang tambah 1 jam');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Esok pukul 12.00',      'esok pada waktu yang sama');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Hari ini pukul 11.00',  'Sekarang tolak 1 jam');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Kelmarin pukul 12.00',  'kelmarin pada waktu yang sama');
+    assert.equal(moment(a).interview_hour(),                   'Hari ini pukul 12.00',  'hari ini pada waktu yang sama');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Hari ini pukul 12.25',  'Sekarang tambah 25 minit');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Hari ini pukul 13.00',  'Sekarang tambah 1 jam');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Esok pukul 12.00',      'esok pada waktu yang sama');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Hari ini pukul 11.00',  'Sekarang tolak 1 jam');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Kelmarin pukul 12.00',  'kelmarin pada waktu yang sama');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari waktu sekarang');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari waktu sekarang');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari permulaan hari');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari permulaan hari');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari tamat hari');
+        assert.equal(m.interview_hour(),       m.format('dddd [pukul] LT'),  'Hari ini + ' + i + ' hari tamat hari');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari waktu sekarang');
+        assert.equal(m.interview_hour(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari waktu sekarang');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari permulaan hari');
+        assert.equal(m.interview_hour(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari permulaan hari');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari tamat hari');
+        assert.equal(m.interview_hour(),       m.format('dddd [lepas] [pukul] LT'),  'Hari ini - ' + i + ' hari tamat hari');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 minggu lepas');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'dalam 1 minggu');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 minggu lepas');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'dalam 1 minggu');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 minggu lepas');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'dalam 2 minggu');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 minggu lepas');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'dalam 2 minggu');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -35352,47 +35352,47 @@ test('fromNow', function (assert) {
     }).fromNow(), 'လာမည့် ၅ ရက် မှာ', 'လာမည့် ၅ ရက် မှာ');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                  'ယနေ. ၁၂:၀၀ မှာ',      'ယနေ. ဒီအချိန်');
-    assert.equal(moment(a).add({m: 25}).calendar(),     'ယနေ. ၁၂:၂၅ မှာ',      'ယခုမှ ၂၅ မိနစ်ပေါင်းထည့်');
-    assert.equal(moment(a).add({h: 1}).calendar(),      'ယနေ. ၁၃:၀၀ မှာ',      'ယခုမှ ၁ နာရီပေါင်းထည့်');
-    assert.equal(moment(a).add({d: 1}).calendar(),      'မနက်ဖြန် ၁၂:၀၀ မှာ',  'မနက်ဖြန် ဒီအချိန်');
-    assert.equal(moment(a).subtract({h: 1}).calendar(), 'ယနေ. ၁၁:၀၀ မှာ',      'ယခုမှ ၁ နာရီနှုတ်');
-    assert.equal(moment(a).subtract({d: 1}).calendar(), 'မနေ.က ၁၂:၀၀ မှာ',     'မနေ.က ဒီအချိန်');
+    assert.equal(moment(a).interview_hour(),                  'ယနေ. ၁၂:၀၀ မှာ',      'ယနေ. ဒီအချိန်');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),     'ယနေ. ၁၂:၂၅ မှာ',      'ယခုမှ ၂၅ မိနစ်ပေါင်းထည့်');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),      'ယနေ. ၁၃:၀၀ မှာ',      'ယခုမှ ၁ နာရီပေါင်းထည့်');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),      'မနက်ဖြန် ၁၂:၀၀ မှာ',  'မနက်ဖြန် ဒီအချိန်');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(), 'ယနေ. ၁၁:၀၀ မှာ',      'ယခုမှ ၁ နာရီနှုတ်');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(), 'မနေ.က ၁၂:၀၀ မှာ',     'မနေ.က ဒီအချိန်');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({
             d: i
         });
-        assert.equal(m.calendar(), m.format('dddd LT [မှာ]'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd LT [မှာ]'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd LT [မှာ]'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd LT [မှာ]'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd LT [မှာ]'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd LT [မှာ]'), 'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({
             d: i
         });
-        assert.equal(m.calendar(), m.format('[ပြီးခဲ့သော] dddd LT [မှာ]'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('[ပြီးခဲ့သော] dddd LT [မှာ]'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('[ပြီးခဲ့သော] dddd LT [မှာ]'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('[ပြီးခဲ့သော] dddd LT [မှာ]'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('[ပြီးခဲ့သော] dddd LT [မှာ]'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('[ပြီးခဲ့သော] dddd LT [မှာ]'), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({
             w: 1
         }),
@@ -35400,8 +35400,8 @@ test('calendar all else', function (assert) {
             w: 1
         });
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), 'လွန်ခဲ့သော ၁ ပတ်က');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), '၁ ပတ်အတွင်း');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), 'လွန်ခဲ့သော ၁ ပတ်က');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), '၁ ပတ်အတွင်း');
 
     weeksAgo = moment().subtract({
         w: 2
@@ -35410,8 +35410,8 @@ test('calendar all else', function (assert) {
         w: 2
     });
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '၂ ပတ် အရင်က');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), '၂ ပတ် အတွင်း');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '၂ ပတ် အရင်က');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), '၂ ပတ် အတွင်း');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -35832,53 +35832,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'om 5 dager', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'i dag kl. 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'i dag kl. 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'i dag kl. 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'i morgen kl. 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'i dag kl. 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'i går kl. 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'i dag kl. 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'i dag kl. 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'i dag kl. 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'i morgen kl. 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'i dag kl. 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'i går kl. 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kl.] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[forrige] dddd [kl.] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[forrige] dddd [kl.] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[forrige] dddd [kl.] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[forrige] dddd [kl.] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[forrige] dddd [kl.] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[forrige] dddd [kl.] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -36297,53 +36297,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '५ दिनमा', '५ दिनमा');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'आज दिउँसोको १२:०० बजे',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'आज दिउँसोको १२:२५ बजे',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'आज दिउँसोको १:०० बजे',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'भोलि दिउँसोको १२:०० बजे',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'आज बिहानको ११:०० बजे',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'हिजो दिउँसोको १२:०० बजे',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'आज दिउँसोको १२:०० बजे',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'आज दिउँसोको १२:२५ बजे',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'आज दिउँसोको १:०० बजे',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'भोलि दिउँसोको १२:०० बजे',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'आज बिहानको ११:०० बजे',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'हिजो दिउँसोको १२:०० बजे',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[आउँदो] dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[आउँदो] dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[आउँदो] dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[आउँदो] dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[आउँदो] dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[आउँदो] dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[गएको] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[गएको] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[गएको] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[गएको] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[गएको] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[गएको] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -36779,53 +36779,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'over 5 dagen', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'vandaag om 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'vandaag om 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'vandaag om 13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'morgen om 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'vandaag om 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'gisteren om 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'vandaag om 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'vandaag om 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'vandaag om 13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'morgen om 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'vandaag om 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'gisteren om 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('month abbreviation', function (assert) {
@@ -37252,53 +37252,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'over 5 dagen', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'vandaag om 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'vandaag om 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'vandaag om 13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'morgen om 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'vandaag om 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'gisteren om 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'vandaag om 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'vandaag om 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'vandaag om 13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'morgen om 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'vandaag om 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'gisteren om 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [om] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[afgelopen] dddd [om] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('month abbreviation', function (assert) {
@@ -37725,53 +37725,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'om 5 dagar', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'I dag klokka 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'I dag klokka 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'I dag klokka 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'I morgon klokka 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'I dag klokka 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'I går klokka 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'I dag klokka 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'I dag klokka 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'I dag klokka 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'I morgon klokka 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'I dag klokka 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'I går klokka 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [klokka] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [klokka] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [klokka] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [klokka] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [klokka] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [klokka] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Føregåande] dddd [klokka] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Føregåande] dddd [klokka] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Føregåande] dddd [klokka] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Føregåande] dddd [klokka] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Føregåande] dddd [klokka] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Føregåande] dddd [klokka] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -38190,54 +38190,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '੫ ਦਿਨ ਵਿੱਚ', '੫ ਦਿਨ ਵਿੱਚ');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'ਅਜ ਦੁਪਹਿਰ ੧੨:੦੦ ਵਜੇ',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'ਅਜ ਦੁਪਹਿਰ ੧੨:੨੫ ਵਜੇ',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 3}).calendar(),       'ਅਜ ਦੁਪਹਿਰ ੩:੦੦ ਵਜੇ',   'Now plus 3 hours');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'ਕਲ ਦੁਪਹਿਰ ੧੨:੦੦ ਵਜੇ',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'ਅਜ ਦੁਪਹਿਰ ੧੧:੦੦ ਵਜੇ',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ਕਲ ਦੁਪਹਿਰ ੧੨:੦੦ ਵਜੇ',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'ਅਜ ਦੁਪਹਿਰ ੧੨:੦੦ ਵਜੇ',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'ਅਜ ਦੁਪਹਿਰ ੧੨:੨੫ ਵਜੇ',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 3}).interview_hour(),       'ਅਜ ਦੁਪਹਿਰ ੩:੦੦ ਵਜੇ',   'Now plus 3 hours');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'ਕਲ ਦੁਪਹਿਰ ੧੨:੦੦ ਵਜੇ',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'ਅਜ ਦੁਪਹਿਰ ੧੧:੦੦ ਵਜੇ',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ਕਲ ਦੁਪਹਿਰ ੧੨:੦੦ ਵਜੇ',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[ਪਿਛਲੇ] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[ਪਿਛਲੇ] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[ਪਿਛਲੇ] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[ਪਿਛਲੇ] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[ਪਿਛਲੇ] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[ਪਿਛਲੇ] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem invariant', function (assert) {
@@ -38798,30 +38798,30 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'za 5 dni', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Dziś o 12:00',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Dziś o 12:25',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Dziś o 13:00',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Jutro o 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Dziś o 11:00',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Wczoraj o 12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Dziś o 12:00',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Dziś o 12:25',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Dziś o 13:00',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Jutro o 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Dziś o 11:00',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Wczoraj o 12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[W] dddd [o] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[W] dddd [o] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[W] dddd [o] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[W] dddd [o] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[W] dddd [o] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[W] dddd [o] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -38839,28 +38839,28 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format(makeFormat(m)), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format(makeFormat(m)), 'Today - ' + i + ' days current time');
 
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format(makeFormat(m)), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format(makeFormat(m)), 'Today - ' + i + ' days beginning of day');
 
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format(makeFormat(m)), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format(makeFormat(m)), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -39278,53 +39278,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'em 5 dias', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Hoje às 12:00',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Hoje às 12:25',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Hoje às 13:00',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Amanhã às 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Hoje às 11:00',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Ontem às 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Hoje às 12:00',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Hoje às 12:25',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Hoje às 13:00',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Amanhã às 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Hoje às 11:00',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Ontem às 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -39740,53 +39740,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'em 5 dias', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Hoje às 12:00',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Hoje às 12:25',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Hoje às 13:00',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Amanhã às 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Hoje às 11:00',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Ontem às 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Hoje às 12:00',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Hoje às 12:25',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Hoje às 13:00',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Amanhã às 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Hoje às 11:00',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Ontem às 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [às] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format((m.day() === 0 || m.day() === 6) ? '[Último] dddd [às] LT' : '[Última] dddd [às] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -40214,53 +40214,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'peste 5 zile', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'azi la 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'azi la 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'azi la 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'mâine la 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'azi la 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ieri la 12:00',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'azi la 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'azi la 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'azi la 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'mâine la 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'azi la 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ieri la 12:00',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [la] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [la] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [la] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [la] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [la] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [la] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[fosta] dddd [la] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[fosta] dddd [la] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[fosta] dddd [la] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[fosta] dddd [la] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[fosta] dddd [la] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[fosta] dddd [la] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -40754,18 +40754,18 @@ test('fromNow', function (assert) {
     assert.equal(moment().subtract({m: 31}).fromNow(), '31 минуту назад', '31 minutes ago = 31 minutes ago');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Сегодня в 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Сегодня в 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Сегодня в 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Завтра в 12:00',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Сегодня в 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Вчера в 12:00',       'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Сегодня в 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Сегодня в 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Сегодня в 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Завтра в 12:00',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Сегодня в 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Вчера в 12:00',       'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m, now;
 
     function makeFormatNext(d) {
@@ -40795,25 +40795,25 @@ test('calendar next week', function (assert) {
     now = moment().startOf('week');
     for (i = 2; i < 7; i++) {
         m = moment(now).add({d: i});
-        assert.equal(m.calendar(now),       m.format(makeFormatThis(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatThis(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(now),       m.format(makeFormatThis(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatThis(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(now),       m.format(makeFormatThis(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatThis(m)),  'Today + ' + i + ' days end of day');
     }
 
     now = moment().endOf('week');
     for (i = 2; i < 7; i++) {
         m = moment(now).add({d: i});
-        assert.equal(m.calendar(now),       m.format(makeFormatNext(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatNext(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(now),       m.format(makeFormatNext(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatNext(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(now),       m.format(makeFormatNext(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatNext(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m, now;
 
     function makeFormatLast(d) {
@@ -40843,36 +40843,36 @@ test('calendar last week', function (assert) {
     now = moment().startOf('week');
     for (i = 2; i < 7; i++) {
         m = moment(now).subtract({d: i});
-        assert.equal(m.calendar(now),       m.format(makeFormatLast(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatLast(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(now),       m.format(makeFormatLast(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatLast(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(now),       m.format(makeFormatLast(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatLast(m)),  'Today - ' + i + ' days end of day');
     }
 
     now = moment().endOf('week');
     for (i = 2; i < 7; i++) {
         m = moment(now).subtract({d: i});
-        assert.equal(m.calendar(now),       m.format(makeFormatThis(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatThis(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(now),       m.format(makeFormatThis(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatThis(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(now),       m.format(makeFormatThis(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(now),       m.format(makeFormatThis(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -41306,53 +41306,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 ڏينهن پوء', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'اڄ 12:00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'اڄ 12:25',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'اڄ 13:00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'سڀاڻي 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'اڄ 11:00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ڪالهه 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'اڄ 12:00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'اڄ 12:25',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'اڄ 13:00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'سڀاڻي 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'اڄ 11:00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ڪالهه 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [اڳين هفتي تي] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [اڳين هفتي تي] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [اڳين هفتي تي] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [اڳين هفتي تي] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [اڳين هفتي تي] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [اڳين هفتي تي] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[گزريل هفتي] dddd [تي] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[گزريل هفتي] dddd [تي] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[گزريل هفتي] dddd [تي] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[گزريل هفتي] dddd [تي] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[گزريل هفتي] dddd [تي] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[گزريل هفتي] dddd [تي] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -41781,55 +41781,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 beaivvit geažes', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'otne ti 12:00',     'Today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'otne ti 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'otne ti 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'ihttin ti 12:00',   'Tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'otne ti 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ikte ti 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'otne ti 12:00',     'Today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'otne ti 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'otne ti 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'ihttin ti 12:00',   'Tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'otne ti 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ikte ti 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [ti] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [ti] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [ti] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [ti] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [ti] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [ti] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[ovddit] dddd [ti] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[ovddit] dddd [ti] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[ovddit] dddd [ti] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[ovddit] dddd [ti] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[ovddit] dddd [ti] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[ovddit] dddd [ti] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -42251,54 +42251,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'දින 5කින්', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'අද ප.ව. 12:00ට',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'අද ප.ව. 12:25ට',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'අද ප.ව. 1:00ට',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'හෙට ප.ව. 12:00ට',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'අද පෙ.ව. 11:00ට',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ඊයේ ප.ව. 12:00ට',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'අද ප.ව. 12:00ට',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'අද ප.ව. 12:25ට',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'අද ප.ව. 1:00ට',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'හෙට ප.ව. 12:00ට',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'අද පෙ.ව. 11:00ට',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ඊයේ ප.ව. 12:00ට',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd LT[ට]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd LT[ට]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd LT[ට]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT[ට]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd LT[ට]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd LT[ට]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[පසුගිය] dddd LT[ට]'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[පසුගිය] dddd LT[ට]'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[පසුගිය] dddd LT[ට]'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[පසුගිය] dddd LT[ට]'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[පසුගිය] dddd LT[ට]'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[පසුගිය] dddd LT[ට]'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 })));
@@ -42743,18 +42743,18 @@ test('fromNow (past)', function (assert) {
     assert.equal(moment().subtract({y: 10}).fromNow(), 'pred 10 rokmi', '10 years ago');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'dnes o 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'dnes o 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'dnes o 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'zajtra o 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'dnes o 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'včera o 12:00',    'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'dnes o 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'dnes o 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'dnes o 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'zajtra o 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'dnes o 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'včera o 12:00',    'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m, nextDay;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
@@ -42782,15 +42782,15 @@ test('calendar next week', function (assert) {
                 nextDay = 'v sobotu';
                 break;
         }
-        assert.equal(m.calendar(),       m.format('[' + nextDay + '] [o] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[' + nextDay + '] [o] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[' + nextDay + '] [o] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[' + nextDay + '] [o] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[' + nextDay + '] [o] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[' + nextDay + '] [o] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m, lastDay;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
@@ -42818,26 +42818,26 @@ test('calendar last week', function (assert) {
                 lastDay = 'minulú sobotu';
                 break;
         }
-        assert.equal(m.calendar(),       m.format('[' + lastDay + '] [o] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[' + lastDay + '] [o] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[' + lastDay + '] [o] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[' + lastDay + '] [o] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[' + lastDay + '] [o] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[' + lastDay + '] [o] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('humanize duration', function (assert) {
@@ -43354,18 +43354,18 @@ test('fromNow (future)', function (assert) {
     assert.equal(moment().subtract({y: 5}).fromNow(),  'pred 5 leti',     '5 years ago');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'danes ob 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'danes ob 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'danes ob 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'jutri ob 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'danes ob 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'včeraj ob 12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'danes ob 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'danes ob 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'danes ob 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'jutri ob 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'danes ob 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'včeraj ob 12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -43386,15 +43386,15 @@ test('calendar next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -43415,26 +43415,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -43868,55 +43868,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'në 5 ditë', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Sot në 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Sot në 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Sot në 13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Nesër në 12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Sot në 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Dje në 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Sot në 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Sot në 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Sot në 13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Nesër në 12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Sot në 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Dje në 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [në] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [në] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [në] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [në] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [në] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [në] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [e kaluar në] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [e kaluar në] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [e kaluar në] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [e kaluar në] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [e kaluar në] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [e kaluar në] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -44339,18 +44339,18 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'за 5 дана', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'данас у 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'данас у 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'данас у 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'сутра у 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'данас у 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'јуче у 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'данас у 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'данас у 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'данас у 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'сутра у 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'данас у 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'јуче у 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -44371,15 +44371,15 @@ test('calendar next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -44398,26 +44398,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -44840,18 +44840,18 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'za 5 dana', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'danas u 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'danas u 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'danas u 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'sutra u 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'danas u 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'juče u 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'danas u 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'danas u 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'danas u 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'sutra u 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'danas u 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'juče u 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -44872,15 +44872,15 @@ test('calendar next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -44899,26 +44899,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -45370,54 +45370,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'nga 5 emalanga', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Namuhla nga 12:00 emini',      'Today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Namuhla nga 12:25 emini',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Namuhla nga 1:00 emini',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Kusasa nga 12:00 emini',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Namuhla nga 11:00 emini',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Itolo nga 12:00 emini',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Namuhla nga 12:00 emini',      'Today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Namuhla nga 12:25 emini',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Namuhla nga 1:00 emini',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Kusasa nga 12:00 emini',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Namuhla nga 11:00 emini',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Itolo nga 12:00 emini',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [nga] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [nga] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [nga] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [nga] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [nga] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [nga] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [leliphelile] [nga] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [leliphelile] [nga] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [leliphelile] [nga] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [leliphelile] [nga] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [leliphelile] [nga] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [leliphelile] [nga] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -45837,53 +45837,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'om 5 dagar', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Idag 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Idag 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Idag 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Imorgon 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Idag 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Igår 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Idag 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Idag 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Idag 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Imorgon 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Idag 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Igår 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[På] dddd LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[På] dddd LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[På] dddd LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[På] dddd LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[På] dddd LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[På] dddd LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[I] dddd[s] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[I] dddd[s] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[I] dddd[s] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[I] dddd[s] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[I] dddd[s] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[I] dddd[s] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -46303,53 +46303,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'masiku 5 baadaye', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
-    assert.equal(moment(a).calendar(),                   'leo saa 12:00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'leo saa 12:25',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'leo saa 13:00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'kesho saa 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'leo saa 11:00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'jana 12:00',         'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'leo saa 12:00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'leo saa 12:25',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'leo saa 13:00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'kesho saa 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'leo saa 11:00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'jana 12:00',         'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[wiki ijayo] dddd [saat] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[wiki ijayo] dddd [saat] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[wiki ijayo] dddd [saat] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[wiki ijayo] dddd [saat] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[wiki ijayo] dddd [saat] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[wiki ijayo] dddd [saat] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[wiki iliyopita] dddd [saat] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[wiki iliyopita] dddd [saat] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[wiki iliyopita] dddd [saat] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[wiki iliyopita] dddd [saat] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[wiki iliyopita] dddd [saat] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[wiki iliyopita] dddd [saat] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -46769,54 +46769,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '௫ நாட்கள் இல்', '5 நாட்கள் இல்');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'இன்று ௧௨:௦௦',   'இன்று  12:00');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'இன்று ௧௨:௨௫',   'இன்று  12:25');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'இன்று ௧௩:௦௦',   'இன்று  13:00');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'நாளை ௧௨:௦௦',    'நாளை  12:00');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'இன்று ௧௧:௦௦',   'இன்று  11:00');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'நேற்று ௧௨:௦௦',  'நேற்று  12:00');
+    assert.equal(moment(a).interview_hour(),                   'இன்று ௧௨:௦௦',   'இன்று  12:00');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'இன்று ௧௨:௨௫',   'இன்று  12:25');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'இன்று ௧௩:௦௦',   'இன்று  13:00');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'நாளை ௧௨:௦௦',    'நாளை  12:00');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'இன்று ௧௧:௦௦',   'இன்று  11:00');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'நேற்று ௧௨:௦௦',  'நேற்று  12:00');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd, LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd, LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd, LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd, LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd, LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd, LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[கடந்த வாரம்] dddd, LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[கடந்த வாரம்] dddd, LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[கடந்த வாரம்] dddd, LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[கடந்த வாரம்] dddd, LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[கடந்த வாரம்] dddd, LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[கடந்த வாரம்] dddd, LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -47237,54 +47237,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 రోజులు లో', '5 రోజులు లో');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'నేడు మధ్యాహ్నం 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'నేడు మధ్యాహ్నం 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 3}).calendar(),       'నేడు మధ్యాహ్నం 3:00',    'Now plus 3 hours');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'రేపు మధ్యాహ్నం 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'నేడు మధ్యాహ్నం 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'నిన్న మధ్యాహ్నం 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'నేడు మధ్యాహ్నం 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'నేడు మధ్యాహ్నం 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 3}).interview_hour(),       'నేడు మధ్యాహ్నం 3:00',    'Now plus 3 hours');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'రేపు మధ్యాహ్నం 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'నేడు మధ్యాహ్నం 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'నిన్న మధ్యాహ్నం 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[,] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[గత] dddd[,] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[గత] dddd[,] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[గత] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[గత] dddd[,] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[గత] dddd[,] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[గత] dddd[,] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -47720,54 +47720,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'iha loron 5', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Ohin iha 12:00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Ohin iha 12:25',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Ohin iha 13:00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Aban iha 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Ohin iha 11:00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Horiseik iha 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Ohin iha 12:00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Ohin iha 12:25',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Ohin iha 13:00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Aban iha 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Ohin iha 11:00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Horiseik iha 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [iha] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [iha] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [iha] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [iha] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [iha] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [iha] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [semana kotuk] [iha] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [semana kotuk] [iha] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [semana kotuk] [iha] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [semana kotuk] [iha] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [semana kotuk] [iha] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [semana kotuk] [iha] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -48150,53 +48150,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'อีก 5 วัน', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'วันนี้ เวลา 12:00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'วันนี้ เวลา 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'วันนี้ เวลา 13:00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'พรุ่งนี้ เวลา 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'วันนี้ เวลา 11:00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'เมื่อวานนี้ เวลา 12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'วันนี้ เวลา 12:00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'วันนี้ เวลา 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'วันนี้ เวลา 13:00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'พรุ่งนี้ เวลา 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'วันนี้ เวลา 11:00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'เมื่อวานนี้ เวลา 12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd[หน้า เวลา] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd[หน้า เวลา] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd[หน้า เวลา] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[หน้า เวลา] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd[หน้า เวลา] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd[หน้า เวลา] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[วัน]dddd[ที่แล้ว เวลา] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[วัน]dddd[ที่แล้ว เวลา] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[วัน]dddd[ที่แล้ว เวลา] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[วัน]dddd[ที่แล้ว เวลา] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[วัน]dddd[ที่แล้ว เวลา] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[วัน]dddd[ที่แล้ว เวลา] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -48616,12 +48616,12 @@ test('fromNow', function (assert) {
 test('same day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   '12:00 ngayong araw',    'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      '12:25 ngayong araw',    'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       '13:00 ngayong araw',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Bukas ng 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  '11:00 ngayong araw',    'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  '12:00 kahapon',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   '12:00 ngayong araw',    'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      '12:25 ngayong araw',    'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       '13:00 ngayong araw',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Bukas ng 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  '11:00 ngayong araw',    'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  '12:00 kahapon',   'yesterday at the same time');
 });
 
 test('same next week', function (assert) {
@@ -48629,11 +48629,11 @@ test('same next week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('LT [sa susunod na] dddd'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('LT [sa susunod na] dddd'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('LT [sa susunod na] dddd'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('LT [sa susunod na] dddd'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('LT [sa susunod na] dddd'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('LT [sa susunod na] dddd'),  'Today + ' + i + ' days end of day');
     }
 });
 
@@ -48642,11 +48642,11 @@ test('same last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('LT [noong nakaraang] dddd'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('LT [noong nakaraang] dddd'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('LT [noong nakaraang] dddd'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('LT [noong nakaraang] dddd'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('LT [noong nakaraang] dddd'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('LT [noong nakaraang] dddd'),  'Today - ' + i + ' days end of day');
     }
 });
 
@@ -48654,14 +48654,14 @@ test('same all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -49095,55 +49095,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({y: -1}).fromNow(), 'wa’ ben', 'a year ago');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'DaHjaj 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'DaHjaj 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'DaHjaj 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'wa’leS 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'DaHjaj 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'wa’Hu’ 12:00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'DaHjaj 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'DaHjaj 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'DaHjaj 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'wa’leS 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'DaHjaj 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'wa’Hu’ 12:00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('LLL'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('LLL'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('LLL'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('LLL'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('LLL'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('LLL'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format('LLL'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('LLL'), 'Today - ' + i + ' days current time');
 
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('LLL'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('LLL'), 'Today - ' + i + ' days beginning of day');
 
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('LLL'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('LLL'), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -49574,53 +49574,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 gün sonra', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'bugün saat 12:00',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'bugün saat 12:25',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'bugün saat 13:00',     'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'yarın saat 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'bugün saat 11:00',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'dün 12:00',            'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'bugün saat 12:00',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'bugün saat 12:25',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'bugün saat 13:00',     'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'yarın saat 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'bugün saat 11:00',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'dün 12:00',            'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[haftaya] dddd [saat] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[haftaya] dddd [saat] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[haftaya] dddd [saat] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[haftaya] dddd [saat] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[haftaya] dddd [saat] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[haftaya] dddd [saat] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[geçen hafta] dddd [saat] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[geçen hafta] dddd [saat] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[geçen hafta] dddd [saat] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[geçen hafta] dddd [saat] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[geçen hafta] dddd [saat] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[geçen hafta] dddd [saat] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -50040,54 +50040,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'osprei 5 ziuas', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'oxhi à 12.00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'oxhi à 12.25',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'oxhi à 13.00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'demà à 12.00',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'oxhi à 11.00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ieiri à 12.00',     'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'oxhi à 12.00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'oxhi à 12.25',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'oxhi à 13.00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'demà à 12.00',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'oxhi à 11.00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ieiri à 12.00',     'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [à] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [à] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [à] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [à] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [à] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [à] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[sür el] dddd [lasteu à] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[sür el] dddd [lasteu à] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[sür el] dddd [lasteu à] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[sür el] dddd [lasteu à] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[sür el] dddd [lasteu à] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[sür el] dddd [lasteu à] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 // Monday is the first day of the week.
@@ -50510,53 +50510,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'dadkh s yan 5 ossan', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'asdkh g 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'asdkh g 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'asdkh g 13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'aska g 12:00',    'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'asdkh g 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'assant g 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'asdkh g 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'asdkh g 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'asdkh g 13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'aska g 12:00',    'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'asdkh g 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'assant g 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [g] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [g] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [g] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [g] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [g] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [g] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [g] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [g] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [g] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [g] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [g] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [g] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -50976,53 +50976,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'ⴷⴰⴷⵅ ⵙ ⵢⴰⵏ 5 oⵙⵙⴰⵏ', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'ⴰⵙⴷⵅ ⴴ 12:00',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'ⴰⵙⴷⵅ ⴴ 12:25',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'ⴰⵙⴷⵅ ⴴ 13:00',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'ⴰⵙⴽⴰ ⴴ 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'ⴰⵙⴷⵅ ⴴ 11:00',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'ⴰⵚⴰⵏⵜ ⴴ 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'ⴰⵙⴷⵅ ⴴ 12:00',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'ⴰⵙⴷⵅ ⴴ 12:25',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'ⴰⵙⴷⵅ ⴴ 13:00',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'ⴰⵙⴽⴰ ⴴ 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'ⴰⵙⴷⵅ ⴴ 11:00',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'ⴰⵚⴰⵏⵜ ⴴ 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [ⴴ] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [ⴴ] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [ⴴ] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [ⴴ] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [ⴴ] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [ⴴ] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [ⴴ] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [ⴴ] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [ⴴ] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [ⴴ] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [ⴴ] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [ⴴ] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -51458,32 +51458,32 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'за 5 днів', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Сьогодні о 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Сьогодні о 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Сьогодні о 13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Завтра о 12:00',     'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 2}).calendar(),  'Сьогодні о 10:00',   'Now minus 2 hours');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Вчора о 12:00',      'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Сьогодні о 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Сьогодні о 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Сьогодні о 13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Завтра о 12:00',     'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 2}).interview_hour(),  'Сьогодні о 10:00',   'Now minus 2 hours');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Вчора о 12:00',      'yesterday at the same time');
     // A special case for Ukrainian since 11 hours have different preposition
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Сьогодні об 11:00',  'same day at 11 o\'clock');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Сьогодні об 11:00',  'same day at 11 o\'clock');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[У] dddd [о' + (m.hours() === 11 ? 'б' : '') + '] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[У] dddd [о' + (m.hours() === 11 ? 'б' : '') + '] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[У] dddd [о] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[У] dddd [о] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[У] dddd [о] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[У] dddd [о] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     function makeFormat(d) {
@@ -51502,26 +51502,26 @@ test('calendar last week', function (assert) {
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format(makeFormat(m)),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -51955,54 +51955,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 دن بعد', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'آج بوقت 12:00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'آج بوقت 12:25',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'آج بوقت 13:00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'کل بوقت 12:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'آج بوقت 11:00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'گذشتہ روز بوقت 12:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'آج بوقت 12:00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'آج بوقت 12:25',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'آج بوقت 13:00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'کل بوقت 12:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'آج بوقت 11:00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'گذشتہ روز بوقت 12:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [بوقت] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [بوقت] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [بوقت] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [بوقت] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [بوقت] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [بوقت] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[گذشتہ] dddd [بوقت] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[گذشتہ] dddd [بوقت] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[گذشتہ] dddd [بوقت] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[گذشتہ] dddd [بوقت] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[گذشتہ] dddd [بوقت] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[گذشتہ] dddd [بوقت] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -52422,54 +52422,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'Yaqin 5 kun ichida', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Bugun soat 12:00 da',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Bugun soat 12:25 da',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Bugun soat 13:00 da',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Ertaga 12:00 da',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Bugun soat 11:00 da',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Kecha soat 12:00 da',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Bugun soat 12:00 da',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Bugun soat 12:25 da',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Bugun soat 13:00 da',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Ertaga 12:00 da',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Bugun soat 11:00 da',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Kecha soat 12:00 da',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [kuni soat] LT [da]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [kuni soat] LT [da]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [kuni soat] LT [da]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kuni soat] LT [da]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [kuni soat] LT [da]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [kuni soat] LT [da]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[O\'tgan] dddd [kuni soat] LT [da]'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[O\'tgan] dddd [kuni soat] LT [da]'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[O\'tgan] dddd [kuni soat] LT [da]'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[O\'tgan] dddd [kuni soat] LT [da]'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[O\'tgan] dddd [kuni soat] LT [da]'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[O\'tgan] dddd [kuni soat] LT [da]'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -52889,54 +52889,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'Якин 5 кун ичида', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Бугун соат 12:00 да',  'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Бугун соат 12:25 да',  'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Бугун соат 13:00 да',  'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Эртага 12:00 да',      'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Бугун соат 11:00 да',  'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Кеча соат 12:00 да',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Бугун соат 12:00 да',  'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Бугун соат 12:25 да',  'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Бугун соат 13:00 да',  'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Эртага 12:00 да',      'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Бугун соат 11:00 да',  'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Кеча соат 12:00 да',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [куни соат] LT [да]'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [куни соат] LT [да]'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [куни соат] LT [да]'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [куни соат] LT [да]'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [куни соат] LT [да]'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [куни соат] LT [да]'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[Утган] dddd [куни соат] LT [да]'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[Утган] dddd [куни соат] LT [да]'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[Утган] dddd [куни соат] LT [да]'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[Утган] dddd [куни соат] LT [да]'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[Утган] dddd [куни соат] LT [да]'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[Утган] dddd [куни соат] LT [да]'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -53365,55 +53365,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 ngày tới', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Hôm nay lúc 12:00',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Hôm nay lúc 12:25',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Hôm nay lúc 13:00',   'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Ngày mai lúc 12:00',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Hôm nay lúc 11:00',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Hôm qua lúc 12:00',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Hôm nay lúc 12:00',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Hôm nay lúc 12:25',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Hôm nay lúc 13:00',   'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Ngày mai lúc 12:00',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Hôm nay lúc 11:00',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Hôm qua lúc 12:00',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [tuần tới lúc] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [tuần tới lúc] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [tuần tới lúc] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [tuần tới lúc] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [tuần tới lúc] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [tuần tới lúc] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [tuần rồi lúc] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [tuần rồi lúc] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [tuần rồi lúc] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [tuần rồi lúc] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [tuần rồi lúc] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [tuần rồi lúc] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -53833,54 +53833,54 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'í~ñ 5 d~áýs', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(2).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                     'T~ódá~ý át 02:00',      'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'T~ódá~ý át 02:25',      'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'T~ódá~ý át 03:00',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'T~ómó~rró~w át 02:00',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'T~ódá~ý át 01:00',      'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Ý~ést~érdá~ý át 02:00',  'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                     'T~ódá~ý át 02:00',      'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'T~ódá~ý át 02:25',      'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'T~ódá~ý át 03:00',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'T~ómó~rró~w át 02:00',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'T~ódá~ý át 01:00',      'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Ý~ést~érdá~ý át 02:00',  'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('dddd [át] LT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('dddd [át] LT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('dddd [át] LT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [át] LT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('dddd [át] LT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('dddd [át] LT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[L~ást] dddd [át] LT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[L~ást] dddd [át] LT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[L~ást] dddd [át] LT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[L~ást] dddd [át] LT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[L~ást] dddd [át] LT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[L~ást] dddd [át] LT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),  '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),  '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('weeks year starting sunday formatted', function (assert) {
@@ -54302,55 +54302,55 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), 'ní ọjọ́ 5', 'ní ọjọ́ 5');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                     'Ònì ni 12:00 PM',   'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Ònì ni 12:25 PM',   'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Ònì ni 1:00 PM',    'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Ọ̀la ni 12:00 PM',   'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Ònì ni 11:00 AM',   'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Àna ni 12:00 PM',   'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                     'Ònì ni 12:00 PM',   'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Ònì ni 12:25 PM',   'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Ònì ni 1:00 PM',    'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Ọ̀la ni 12:00 PM',   'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Ònì ni 11:00 AM',   'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Àna ni 12:00 PM',   'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(), m.format('dddd [Ọsẹ̀ tón\'bọ] [ni] LT'), 'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [Ọsẹ̀ tón\'bọ] [ni] LT'), 'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [Ọsẹ̀ tón\'bọ] [ni] LT'), 'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [Ọsẹ̀ tón\'bọ] [ni] LT'), 'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [Ọsẹ̀ tón\'bọ] [ni] LT'), 'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [Ọsẹ̀ tón\'bọ] [ni] LT'), 'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
 
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(), m.format('dddd [Ọsẹ̀ tólọ́] [ni] LT'), 'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(), m.format('dddd [Ọsẹ̀ tólọ́] [ni] LT'), 'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(), m.format('dddd [Ọsẹ̀ tólọ́] [ni] LT'), 'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(), m.format('dddd [Ọsẹ̀ tólọ́] [ni] LT'), 'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(), m.format('dddd [Ọsẹ̀ tólọ́] [ni] LT'), 'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(), m.format('dddd [Ọsẹ̀ tólọ́] [ni] LT'), 'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '1 week ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 1 week');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(), weeksAgo.format('L'), '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(), weeksFromNow.format('L'), 'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(), weeksAgo.format('L'), '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(), weeksFromNow.format('L'), 'in 2 weeks');
 });
 
 test('weeks year starting sunday format', function (assert) {
@@ -54738,53 +54738,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 天内', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   '今天12:00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      '今天12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       '今天13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       '明天12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  '今天11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  '昨天12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   '今天12:00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      '今天12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       '今天13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       '明天12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  '今天11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  '昨天12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -55177,53 +55177,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 天內', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   '今天12:00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      '今天12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       '今天13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       '明天12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  '今天11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  '昨天12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   '今天12:00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      '今天12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       '今天13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       '明天12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  '今天11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  '昨天12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -55625,53 +55625,53 @@ test('fromNow', function (assert) {
     assert.equal(moment().add({d: 5}).fromNow(), '5 天內', 'in 5 days');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   '今天12:00', 'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      '今天12:25', 'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       '今天13:00', 'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       '明天12:00', 'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  '今天11:00', 'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  '昨天12:00', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   '今天12:00', 'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      '今天12:25', 'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       '今天13:00', 'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       '明天12:00', 'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  '今天11:00', 'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  '昨天12:00', 'yesterday at the same time');
 });
 
-test('calendar next week', function (assert) {
+test('interview_hour next week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().add({d: i});
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[下]ddddLT'),  'Today + ' + i + ' days end of day');
     }
 });
 
-test('calendar last week', function (assert) {
+test('interview_hour last week', function (assert) {
     var i, m;
     for (i = 2; i < 7; i++) {
         m = moment().subtract({d: i});
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days current time');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days current time');
         m.hours(0).minutes(0).seconds(0).milliseconds(0);
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days beginning of day');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days beginning of day');
         m.hours(23).minutes(59).seconds(59).milliseconds(999);
-        assert.equal(m.calendar(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days end of day');
+        assert.equal(m.interview_hour(),       m.format('[上]ddddLT'),  'Today - ' + i + ' days end of day');
     }
 });
 
-test('calendar all else', function (assert) {
+test('interview_hour all else', function (assert) {
     var weeksAgo = moment().subtract({w: 1}),
         weeksFromNow = moment().add({w: 1});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '1 week ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 1 week');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '1 week ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 1 week');
 
     weeksAgo = moment().subtract({w: 2});
     weeksFromNow = moment().add({w: 2});
 
-    assert.equal(weeksAgo.calendar(),       weeksAgo.format('L'),      '2 weeks ago');
-    assert.equal(weeksFromNow.calendar(),   weeksFromNow.format('L'),  'in 2 weeks');
+    assert.equal(weeksAgo.interview_hour(),       weeksAgo.format('L'),      '2 weeks ago');
+    assert.equal(weeksFromNow.interview_hour(),   weeksFromNow.format('L'),  'in 2 weeks');
 });
 
 test('meridiem', function (assert) {
@@ -56578,21 +56578,21 @@ function module$1 (name, lifecycle) {
 
 // These tests are for locale independent features
 // locale dependent tests would be in locale test folder
-module$1('calendar');
+module$1('interview_hour');
 
 test('passing a function', function (assert) {
     var a  = moment().hours(13).minutes(0).seconds(0);
-    assert.equal(moment(a).calendar(null, {
+    assert.equal(moment(a).interview_hour(null, {
         'sameDay': function () {
             return 'h:mmA';
         }
     }), '1:00PM', 'should equate');
 });
 
-test('extending calendar options', function (assert) {
-    var calendarFormat = moment.calendarFormat;
+test('extending interview_hour options', function (assert) {
+    var interview_hourFormat = moment.interview_hourFormat;
 
-    moment.calendarFormat = function (myMoment, now) {
+    moment.interview_hourFormat = function (myMoment, now) {
         var diff = myMoment.diff(now, 'days', true);
         var nextMonth = now.clone().add(1, 'month');
 
@@ -56608,7 +56608,7 @@ test('extending calendar options', function (assert) {
     };
 
     moment.updateLocale('en', {
-        calendar : {
+        interview_hour : {
                 sameDay : '[Today at] LT',
                 nextDay : '[Tomorrow at] LT',
                 nextWeek : 'dddd [at] LT',
@@ -56622,11 +56622,11 @@ test('extending calendar options', function (assert) {
     var a = moment('2016-01-01').add(28, 'days');
     var b = moment('2016-01-01').add(1, 'month');
     try {
-        assert.equal(a.calendar('2016-01-01'), 'This month on the 29th', 'Ad hoc calendar format for this month');
-        assert.equal(b.calendar('2016-01-01'), 'Next month on the 1st', 'Ad hoc calendar format for next month');
-        assert.equal(a.locale('fr').calendar('2016-01-01'), a.locale('fr').format('L'), 'French falls back to default because thisMonth is not defined in that locale');
+        assert.equal(a.interview_hour('2016-01-01'), 'This month on the 29th', 'Ad hoc interview_hour format for this month');
+        assert.equal(b.interview_hour('2016-01-01'), 'Next month on the 1st', 'Ad hoc interview_hour format for next month');
+        assert.equal(a.locale('fr').interview_hour('2016-01-01'), a.locale('fr').format('L'), 'French falls back to default because thisMonth is not defined in that locale');
     } finally {
-        moment.calendarFormat = calendarFormat;
+        moment.interview_hourFormat = interview_hourFormat;
         moment.updateLocale('en', null);
     }
 });
@@ -61902,7 +61902,7 @@ test('toJSON skips postformat', function (assert) {
     moment.defineLocale('postformat', null);
 });
 
-test('calendar day timezone', function (assert) {
+test('interview_hour day timezone', function (assert) {
     moment.locale('en');
     var zones = [60, -60, 90, -90, 360, -360, 720, -720],
         b = moment().utc().startOf('day').subtract({m : 1}),
@@ -61913,19 +61913,19 @@ test('calendar day timezone', function (assert) {
     for (i = 0; i < zones.length; ++i) {
         z = zones[i];
         a = moment().utcOffset(z).startOf('day').subtract({m: 1});
-        assert.equal(moment(a).utcOffset(z).calendar(), 'Yesterday at 11:59 PM',
+        assert.equal(moment(a).utcOffset(z).interview_hour(), 'Yesterday at 11:59 PM',
                      'Yesterday at 11:59 PM, not Today, or the wrong time, tz = ' + z);
     }
 
-    assert.equal(moment(b).utc().calendar(), 'Yesterday at 11:59 PM', 'Yesterday at 11:59 PM, not Today, or the wrong time');
-    assert.equal(moment(c).local().calendar(), 'Yesterday at 11:59 PM', 'Yesterday at 11:59 PM, not Today, or the wrong time');
-    assert.equal(moment(c).local().calendar(d), 'Tomorrow at 11:59 PM', 'Tomorrow at 11:59 PM, not Yesterday, or the wrong time');
+    assert.equal(moment(b).utc().interview_hour(), 'Yesterday at 11:59 PM', 'Yesterday at 11:59 PM, not Today, or the wrong time');
+    assert.equal(moment(c).local().interview_hour(), 'Yesterday at 11:59 PM', 'Yesterday at 11:59 PM, not Today, or the wrong time');
+    assert.equal(moment(c).local().interview_hour(d), 'Tomorrow at 11:59 PM', 'Tomorrow at 11:59 PM, not Yesterday, or the wrong time');
 });
 
-test('calendar with custom formats', function (assert) {
-    assert.equal(moment().calendar(null, {sameDay: '[Today]'}), 'Today', 'Today');
-    assert.equal(moment().add(1, 'days').calendar(null, {nextDay: '[Tomorrow]'}), 'Tomorrow', 'Tomorrow');
-    assert.equal(moment([1985, 1, 4]).calendar(null, {sameElse: 'YYYY-MM-DD'}), '1985-02-04', 'Else');
+test('interview_hour with custom formats', function (assert) {
+    assert.equal(moment().interview_hour(null, {sameDay: '[Today]'}), 'Today', 'Today');
+    assert.equal(moment().add(1, 'days').interview_hour(null, {nextDay: '[Tomorrow]'}), 'Tomorrow', 'Tomorrow');
+    assert.equal(moment([1985, 1, 4]).interview_hour(null, {sameElse: 'YYYY-MM-DD'}), '1985-02-04', 'Else');
 });
 
 test('invalid', function (assert) {
@@ -63523,7 +63523,7 @@ test('invalid operations', function (assert) {
         invalid = invalids[i];
 
         assert.ok(!invalid.clone().add(5, 'hours').isValid(), 'invalid.add is invalid');
-        assert.equal(invalid.calendar(), 'Invalid date', 'invalid.calendar is \'Invalid date\'');
+        assert.equal(invalid.interview_hour(), 'Invalid date', 'invalid.interview_hour is \'Invalid date\'');
         assert.ok(!invalid.clone().isValid(), 'invalid.clone is invalid');
         assert.ok(isNaN(invalid.diff(valid)), 'invalid.diff(valid) is NaN');
         assert.ok(isNaN(valid.diff(invalid)), 'valid.diff(invalid) is NaN');
@@ -69049,7 +69049,7 @@ test('library ensure inheritance LT L LL LLL LLLL', function (assert) {
             LLL : '-[LLL]-',
             LLLL : '-[LLLL]-'
         },
-        calendar : {
+        interview_hour : {
             sameDay : '[sameDay] LT',
             nextDay : '[nextDay] L',
             nextWeek : '[nextWeek] LL',
@@ -69061,11 +69061,11 @@ test('library ensure inheritance LT L LL LLL LLLL', function (assert) {
 
     moment.locale('es');
 
-    assert.equal(moment().locale(locale).calendar(), 'sameDay -LT-', 'Should use instance locale in LT formatting');
-    assert.equal(moment().add(1, 'days').locale(locale).calendar(), 'nextDay -L-', 'Should use instance locale in L formatting');
-    assert.equal(moment().add(-1, 'days').locale(locale).calendar(), 'lastDay -LLL-', 'Should use instance locale in LL formatting');
-    assert.equal(moment().add(4, 'days').locale(locale).calendar(), 'nextWeek -LL-', 'Should use instance locale in LLL formatting');
-    assert.equal(moment().add(-4, 'days').locale(locale).calendar(), 'lastWeek -LLLL-', 'Should use instance locale in LLLL formatting');
+    assert.equal(moment().locale(locale).interview_hour(), 'sameDay -LT-', 'Should use instance locale in LT formatting');
+    assert.equal(moment().add(1, 'days').locale(locale).interview_hour(), 'nextDay -L-', 'Should use instance locale in L formatting');
+    assert.equal(moment().add(-1, 'days').locale(locale).interview_hour(), 'lastDay -LLL-', 'Should use instance locale in LL formatting');
+    assert.equal(moment().add(4, 'days').locale(locale).interview_hour(), 'nextWeek -LL-', 'Should use instance locale in LLL formatting');
+    assert.equal(moment().add(-4, 'days').locale(locale).interview_hour(), 'lastWeek -LLLL-', 'Should use instance locale in LLLL formatting');
 });
 
 test('library localeData', function (assert) {
@@ -69700,9 +69700,9 @@ function module$1 (name, lifecycle) {
 
 module$1('locale inheritance');
 
-test('calendar', function (assert) {
+test('interview_hour', function (assert) {
     moment.defineLocale('base-cal', {
-        calendar : {
+        interview_hour : {
             sameDay: '[Today at] HH:mm',
             nextDay: '[Tomorrow at] HH:mm',
             nextWeek: '[Next week at] HH:mm',
@@ -69713,7 +69713,7 @@ test('calendar', function (assert) {
     });
     moment.defineLocale('child-cal', {
         parentLocale: 'base-cal',
-        calendar: {
+        interview_hour: {
             sameDay: '[Today] HH:mm',
             nextDay: '[Tomorrow] HH:mm',
             nextWeek: '[Next week] HH:mm'
@@ -69722,19 +69722,19 @@ test('calendar', function (assert) {
 
     moment.locale('child-cal');
     var anchor = moment.utc('2015-05-05T12:00:00', moment.ISO_8601);
-    assert.equal(anchor.clone().add(3, 'hours').calendar(anchor), 'Today 15:00', 'today uses child version');
-    assert.equal(anchor.clone().add(1, 'day').calendar(anchor), 'Tomorrow 12:00', 'tomorrow uses child version');
-    assert.equal(anchor.clone().add(3, 'days').calendar(anchor), 'Next week 12:00', 'next week uses child version');
+    assert.equal(anchor.clone().add(3, 'hours').interview_hour(anchor), 'Today 15:00', 'today uses child version');
+    assert.equal(anchor.clone().add(1, 'day').interview_hour(anchor), 'Tomorrow 12:00', 'tomorrow uses child version');
+    assert.equal(anchor.clone().add(3, 'days').interview_hour(anchor), 'Next week 12:00', 'next week uses child version');
 
-    assert.equal(anchor.clone().subtract(1, 'day').calendar(anchor), 'Yesterday at 12:00', 'yesterday uses parent version');
-    assert.equal(anchor.clone().subtract(3, 'days').calendar(anchor), 'Last week at 12:00', 'last week uses parent version');
-    assert.equal(anchor.clone().subtract(7, 'days').calendar(anchor), 'whatever', 'sameElse uses parent version -');
-    assert.equal(anchor.clone().add(7, 'days').calendar(anchor), 'whatever', 'sameElse uses parent version +');
+    assert.equal(anchor.clone().subtract(1, 'day').interview_hour(anchor), 'Yesterday at 12:00', 'yesterday uses parent version');
+    assert.equal(anchor.clone().subtract(3, 'days').interview_hour(anchor), 'Last week at 12:00', 'last week uses parent version');
+    assert.equal(anchor.clone().subtract(7, 'days').interview_hour(anchor), 'whatever', 'sameElse uses parent version -');
+    assert.equal(anchor.clone().add(7, 'days').interview_hour(anchor), 'whatever', 'sameElse uses parent version +');
 });
 
 test('missing', function (assert) {
     moment.defineLocale('base-cal-2', {
-        calendar: {
+        interview_hour: {
             sameDay: '[Today at] HH:mm',
             nextDay: '[Tomorrow at] HH:mm',
             nextWeek: '[Next week at] HH:mm',
@@ -69748,13 +69748,13 @@ test('missing', function (assert) {
     });
     moment.locale('child-cal-2');
     var anchor = moment.utc('2015-05-05T12:00:00', moment.ISO_8601);
-    assert.equal(anchor.clone().add(3, 'hours').calendar(anchor), 'Today at 15:00', 'today uses parent version');
-    assert.equal(anchor.clone().add(1, 'day').calendar(anchor), 'Tomorrow at 12:00', 'tomorrow uses parent version');
-    assert.equal(anchor.clone().add(3, 'days').calendar(anchor), 'Next week at 12:00', 'next week uses parent version');
-    assert.equal(anchor.clone().subtract(1, 'day').calendar(anchor), 'Yesterday at 12:00', 'yesterday uses parent version');
-    assert.equal(anchor.clone().subtract(3, 'days').calendar(anchor), 'Last week at 12:00', 'last week uses parent version');
-    assert.equal(anchor.clone().subtract(7, 'days').calendar(anchor), 'whatever', 'sameElse uses parent version -');
-    assert.equal(anchor.clone().add(7, 'days').calendar(anchor), 'whatever', 'sameElse uses parent version +');
+    assert.equal(anchor.clone().add(3, 'hours').interview_hour(anchor), 'Today at 15:00', 'today uses parent version');
+    assert.equal(anchor.clone().add(1, 'day').interview_hour(anchor), 'Tomorrow at 12:00', 'tomorrow uses parent version');
+    assert.equal(anchor.clone().add(3, 'days').interview_hour(anchor), 'Next week at 12:00', 'next week uses parent version');
+    assert.equal(anchor.clone().subtract(1, 'day').interview_hour(anchor), 'Yesterday at 12:00', 'yesterday uses parent version');
+    assert.equal(anchor.clone().subtract(3, 'days').interview_hour(anchor), 'Last week at 12:00', 'last week uses parent version');
+    assert.equal(anchor.clone().subtract(7, 'days').interview_hour(anchor), 'whatever', 'sameElse uses parent version -');
+    assert.equal(anchor.clone().add(7, 'days').interview_hour(anchor), 'whatever', 'sameElse uses parent version +');
 });
 
 // Test function vs obj both directions
@@ -70135,10 +70135,10 @@ function module$1 (name, lifecycle) {
 
 module$1('locale update');
 
-test('calendar', function (assert) {
+test('interview_hour', function (assert) {
     moment.defineLocale('cal', null);
     moment.defineLocale('cal', {
-        calendar : {
+        interview_hour : {
             sameDay: '[Today at] HH:mm',
             nextDay: '[Tomorrow at] HH:mm',
             nextWeek: '[Next week at] HH:mm',
@@ -70148,7 +70148,7 @@ test('calendar', function (assert) {
         }
     });
     moment.updateLocale('cal', {
-        calendar: {
+        interview_hour: {
             sameDay: '[Today] HH:mm',
             nextDay: '[Tomorrow] HH:mm',
             nextWeek: '[Next week] HH:mm'
@@ -70157,20 +70157,20 @@ test('calendar', function (assert) {
 
     moment.locale('cal');
     var anchor = moment.utc('2015-05-05T12:00:00', moment.ISO_8601);
-    assert.equal(anchor.clone().add(3, 'hours').calendar(anchor), 'Today 15:00', 'today uses child version');
-    assert.equal(anchor.clone().add(1, 'day').calendar(anchor), 'Tomorrow 12:00', 'tomorrow uses child version');
-    assert.equal(anchor.clone().add(3, 'days').calendar(anchor), 'Next week 12:00', 'next week uses child version');
+    assert.equal(anchor.clone().add(3, 'hours').interview_hour(anchor), 'Today 15:00', 'today uses child version');
+    assert.equal(anchor.clone().add(1, 'day').interview_hour(anchor), 'Tomorrow 12:00', 'tomorrow uses child version');
+    assert.equal(anchor.clone().add(3, 'days').interview_hour(anchor), 'Next week 12:00', 'next week uses child version');
 
-    assert.equal(anchor.clone().subtract(1, 'day').calendar(anchor), 'Yesterday at 12:00', 'yesterday uses parent version');
-    assert.equal(anchor.clone().subtract(3, 'days').calendar(anchor), 'Last week at 12:00', 'last week uses parent version');
-    assert.equal(anchor.clone().subtract(7, 'days').calendar(anchor), 'whatever', 'sameElse uses parent version -');
-    assert.equal(anchor.clone().add(7, 'days').calendar(anchor), 'whatever', 'sameElse uses parent version +');
+    assert.equal(anchor.clone().subtract(1, 'day').interview_hour(anchor), 'Yesterday at 12:00', 'yesterday uses parent version');
+    assert.equal(anchor.clone().subtract(3, 'days').interview_hour(anchor), 'Last week at 12:00', 'last week uses parent version');
+    assert.equal(anchor.clone().subtract(7, 'days').interview_hour(anchor), 'whatever', 'sameElse uses parent version -');
+    assert.equal(anchor.clone().add(7, 'days').interview_hour(anchor), 'whatever', 'sameElse uses parent version +');
 });
 
 test('missing', function (assert) {
     moment.defineLocale('cal-2', null);
     moment.defineLocale('cal-2', {
-        calendar: {
+        interview_hour: {
             sameDay: '[Today at] HH:mm',
             nextDay: '[Tomorrow at] HH:mm',
             nextWeek: '[Next week at] HH:mm',
@@ -70183,13 +70183,13 @@ test('missing', function (assert) {
     });
     moment.locale('cal-2');
     var anchor = moment.utc('2015-05-05T12:00:00', moment.ISO_8601);
-    assert.equal(anchor.clone().add(3, 'hours').calendar(anchor), 'Today at 15:00', 'today uses parent version');
-    assert.equal(anchor.clone().add(1, 'day').calendar(anchor), 'Tomorrow at 12:00', 'tomorrow uses parent version');
-    assert.equal(anchor.clone().add(3, 'days').calendar(anchor), 'Next week at 12:00', 'next week uses parent version');
-    assert.equal(anchor.clone().subtract(1, 'day').calendar(anchor), 'Yesterday at 12:00', 'yesterday uses parent version');
-    assert.equal(anchor.clone().subtract(3, 'days').calendar(anchor), 'Last week at 12:00', 'last week uses parent version');
-    assert.equal(anchor.clone().subtract(7, 'days').calendar(anchor), 'whatever', 'sameElse uses parent version -');
-    assert.equal(anchor.clone().add(7, 'days').calendar(anchor), 'whatever', 'sameElse uses parent version +');
+    assert.equal(anchor.clone().add(3, 'hours').interview_hour(anchor), 'Today at 15:00', 'today uses parent version');
+    assert.equal(anchor.clone().add(1, 'day').interview_hour(anchor), 'Tomorrow at 12:00', 'tomorrow uses parent version');
+    assert.equal(anchor.clone().add(3, 'days').interview_hour(anchor), 'Next week at 12:00', 'next week uses parent version');
+    assert.equal(anchor.clone().subtract(1, 'day').interview_hour(anchor), 'Yesterday at 12:00', 'yesterday uses parent version');
+    assert.equal(anchor.clone().subtract(3, 'days').interview_hour(anchor), 'Last week at 12:00', 'last week uses parent version');
+    assert.equal(anchor.clone().subtract(7, 'days').interview_hour(anchor), 'whatever', 'sameElse uses parent version -');
+    assert.equal(anchor.clone().add(7, 'days').interview_hour(anchor), 'whatever', 'sameElse uses parent version +');
 });
 
 // Test function vs obj both directions
@@ -72232,15 +72232,15 @@ test('transform from', function (assert) {
     assert.equal(moment.duration(10, 'h').humanize(), '!) hours', 'postformat should work on moment.duration.fn.humanize');
 });
 
-test('calendar day', function (assert) {
+test('interview_hour day', function (assert) {
     var a = moment().hours(12).minutes(0).seconds(0);
 
-    assert.equal(moment(a).calendar(),                   'Today at !@:)) PM',     'today at the same time');
-    assert.equal(moment(a).add({m: 25}).calendar(),      'Today at !@:@% PM',     'Now plus 25 min');
-    assert.equal(moment(a).add({h: 1}).calendar(),       'Today at !:)) PM',      'Now plus 1 hour');
-    assert.equal(moment(a).add({d: 1}).calendar(),       'Tomorrow at !@:)) PM',  'tomorrow at the same time');
-    assert.equal(moment(a).subtract({h: 1}).calendar(),  'Today at !!:)) AM',     'Now minus 1 hour');
-    assert.equal(moment(a).subtract({d: 1}).calendar(),  'Yesterday at !@:)) PM', 'yesterday at the same time');
+    assert.equal(moment(a).interview_hour(),                   'Today at !@:)) PM',     'today at the same time');
+    assert.equal(moment(a).add({m: 25}).interview_hour(),      'Today at !@:@% PM',     'Now plus 25 min');
+    assert.equal(moment(a).add({h: 1}).interview_hour(),       'Today at !:)) PM',      'Now plus 1 hour');
+    assert.equal(moment(a).add({d: 1}).interview_hour(),       'Tomorrow at !@:)) PM',  'tomorrow at the same time');
+    assert.equal(moment(a).subtract({h: 1}).interview_hour(),  'Today at !!:)) AM',     'Now minus 1 hour');
+    assert.equal(moment(a).subtract({d: 1}).interview_hour(),  'Yesterday at !@:)) PM', 'yesterday at the same time');
 });
 
 })));

@@ -34,7 +34,7 @@ var sq = moment.defineLocale('sq', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Sot në] LT',
         nextDay : '[Nesër në] LT',
         nextWeek : 'dddd [në] LT',

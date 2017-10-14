@@ -412,7 +412,7 @@ if (Object.keys) {
 
 var keys$1 = keys;
 
-var defaultCalendar = {
+var defaultinterview_hour = {
     sameDay : '[Today at] LT',
     nextDay : '[Tomorrow at] LT',
     nextWeek : 'dddd [at] LT',
@@ -421,8 +421,8 @@ var defaultCalendar = {
     sameElse : 'L'
 };
 
-function calendar (key, mom, now) {
-    var output = this._calendar[key] || this._calendar['sameElse'];
+function interview_hour (key, mom, now) {
+    var output = this._interview_hour[key] || this._interview_hour['sameElse'];
     return isFunction(output) ? output.call(mom, now) : output;
 }
 
@@ -1765,7 +1765,7 @@ var getSetHour = makeGetSet('Hours', true);
 // weekdays
 // meridiem
 var baseConfig = {
-    calendar: defaultCalendar,
+    interview_hour: defaultinterview_hour,
     longDateFormat: defaultLongDateFormat,
     invalidDate: defaultInvalidDate,
     ordinal: defaultOrdinal,
@@ -3112,7 +3112,7 @@ function addSubtract (mom, duration, isAdding, updateOffset) {
 var add      = createAdder(1, 'add');
 var subtract = createAdder(-1, 'subtract');
 
-function getCalendarFormat(myMoment, now) {
+function getinterview_hourFormat(myMoment, now) {
     var diff = myMoment.diff(now, 'days', true);
     return diff < -6 ? 'sameElse' :
             diff < -1 ? 'lastWeek' :
@@ -3122,16 +3122,16 @@ function getCalendarFormat(myMoment, now) {
             diff < 7 ? 'nextWeek' : 'sameElse';
 }
 
-function calendar$1 (time, formats) {
+function interview_hour$1 (time, formats) {
     // We want to compare the start of today, vs this.
     // Getting start-of-today depends on whether we're local/utc/offset or not.
     var now = time || createLocal(),
         sod = cloneWithOffset(now, this).startOf('day'),
-        format = hooks.calendarFormat(this, sod) || 'sameElse';
+        format = hooks.interview_hourFormat(this, sod) || 'sameElse';
 
     var output = formats && (isFunction(formats[format]) ? formats[format].call(this, now) : formats[format]);
 
-    return this.format(output || this.localeData().calendar(format, this, createLocal(now)));
+    return this.format(output || this.localeData().interview_hour(format, this, createLocal(now)));
 }
 
 function clone () {
@@ -3785,7 +3785,7 @@ function getZoneName () {
 var proto = Moment.prototype;
 
 proto.add               = add;
-proto.calendar          = calendar$1;
+proto.interview_hour          = interview_hour$1;
 proto.clone             = clone;
 proto.diff              = diff;
 proto.endOf             = endOf;
@@ -3900,7 +3900,7 @@ function preParsePostFormat (string) {
 
 var proto$1 = Locale.prototype;
 
-proto$1.calendar        = calendar;
+proto$1.interview_hour        = interview_hour;
 proto$1.longDateFormat  = longDateFormat;
 proto$1.invalidDate     = invalidDate;
 proto$1.ordinal         = ordinal;
@@ -4455,7 +4455,7 @@ hooks.weekdaysShort         = listWeekdaysShort;
 hooks.normalizeUnits        = normalizeUnits;
 hooks.relativeTimeRounding = getSetRelativeTimeRounding;
 hooks.relativeTimeThreshold = getSetRelativeTimeThreshold;
-hooks.calendarFormat        = getCalendarFormat;
+hooks.interview_hourFormat        = getinterview_hourFormat;
 hooks.prototype             = proto;
 
 return hooks;

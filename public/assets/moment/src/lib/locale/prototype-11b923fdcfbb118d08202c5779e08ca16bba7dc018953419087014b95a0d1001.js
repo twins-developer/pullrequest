@@ -2,7 +2,7 @@ import { Locale } from './constructor';
 
 var proto = Locale.prototype;
 
-import { calendar } from './calendar';
+import { interview_hour } from './interview_hour';
 import { longDateFormat } from './formats';
 import { invalidDate } from './invalid';
 import { ordinal } from './ordinal';
@@ -10,7 +10,7 @@ import { preParsePostFormat } from './pre-post-format';
 import { relativeTime, pastFuture } from './relative';
 import { set } from './set';
 
-proto.calendar        = calendar;
+proto.interview_hour        = interview_hour;
 proto.longDateFormat  = longDateFormat;
 proto.invalidDate     = invalidDate;
 proto.ordinal         = ordinal;

@@ -24,7 +24,7 @@ var enCa = moment.defineLocale('en-ca', {
         LLL : 'MMMM D, YYYY h:mm A',
         LLLL : 'dddd, MMMM D, YYYY h:mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Today at] LT',
         nextDay : '[Tomorrow at] LT',
         nextWeek : 'dddd [at] LT',

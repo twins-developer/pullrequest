@@ -63,7 +63,7 @@ export default moment.defineLocale('br', {
         LLL : 'D [a viz] MMMM YYYY h[e]mm A',
         LLLL : 'dddd, D [a viz] MMMM YYYY h[e]mm A'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hiziv da] LT',
         nextDay : '[Warc\'hoazh da] LT',
         nextWeek : 'dddd [da] LT',

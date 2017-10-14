@@ -59,7 +59,7 @@ var ur = moment.defineLocale('ur', {
         }
         return 'شام';
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[آج بوقت] LT',
         nextDay : '[کل بوقت] LT',
         nextWeek : 'dddd [بوقت] LT',

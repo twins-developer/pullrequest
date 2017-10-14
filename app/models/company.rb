@@ -16,6 +16,11 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
+# Indexes
+#
+#  index_companies_on_email                 (email) UNIQUE
+#  index_companies_on_reset_password_token  (reset_password_token) UNIQUE
+#
 
 class Company < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -33,14 +38,16 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :engineers
   has_one :unconfirmed_address, as: :resource, dependent: :destroy
   has_many :projects
-  has_many :interview_hours
+  has_many :interview_hour_masters
   has_many :applies, dependent: :destroy
   has_many :scouts
+  has_many :interview_hours
 
   # -------------------------------------------------------------------------------
   # Callbacks
   # -------------------------------------------------------------------------------
-  after_create :build_default_associations, :create_default_interview_hours
+  after_create *%i(build_default_associations create_default_interview_hour_masters
+    create_current_month_hours create_next_month_hours)
   # -------------------------------------------------------------------------------
   # Delegations
   # -------------------------------------------------------------------------------
@@ -83,15 +90,51 @@ class Company < ApplicationRecord
   #
   # 全時間InterviewHoursデータを作成する
   #
-  def create_default_interview_hours
+  def create_default_interview_hour_masters
     company = Company.find(id)
-    InterviewHour.wdays.values.to_a.each do |wday|
+    InterviewHourMaster.wdays.values.to_a.each do |wday|
       8.upto(21).each do |hour|
-        interview_hour = company.interview_hours.new(
+        interview_hour_master = company.interview_hour_masters.new(
           wday: wday,
           hour: hour
         )
-        interview_hour.save
+        interview_hour_master.save
+      end
+    end
+  end
+
+  #
+  # 登録日~登録月の末日の面談可能時間を作成する
+  #
+  def create_current_month_hours
+    company = Company.find(id)
+    (Time.zone.today..Time.zone.today.end_of_month).each do |current_month_day|
+      interview_hour_masters = company.interview_hour_masters.where(wday: current_month_day.wday)
+      interview_hour_masters.each do |interview_hour_master|
+        company.interview_hours.create!(
+          interviewed_on: current_month_day,
+          wday: current_month_day.wday,
+          hour: interview_hour_master.hour
+        )
+      end
+    end
+  end
+
+  #
+  # 翌月の面談可能時間を作成する
+  #
+  def create_next_month_hours
+    company = Company.find(id)
+    next_beginning = Time.zone.today.next_month.beginning_of_month
+    next_end = Time.zone.today.next_month.end_of_month
+    (next_beginning..next_end).each do |next_month_day|
+      interview_hour_masters = company.interview_hour_masters.where(wday: next_month_day.wday)
+      interview_hour_masters.each do |interview_hour_master|
+        company.interview_hours.create(
+          interviewed_on: next_month_day,
+          wday: next_month_day.wday,
+          hour: interview_hour_master.hour
+        )
       end
     end
   end

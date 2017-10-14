@@ -52,7 +52,7 @@ var my = moment.defineLocale('my', {
         LLL: 'D MMMM YYYY HH:mm',
         LLLL: 'dddd D MMMM YYYY HH:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[ယနေ.] LT [မှာ]',
         nextDay: '[မနက်ဖြန်] LT [မှာ]',
         nextWeek: 'dddd LT [မှာ]',

@@ -49,7 +49,7 @@ var srCyrl = moment.defineLocale('sr-cyrl', {
         LLL: 'D. MMMM YYYY H:mm',
         LLLL: 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[данас у] LT',
         nextDay: '[сутра у] LT',
         nextWeek: function () {

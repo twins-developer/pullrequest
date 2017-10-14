@@ -22,8 +22,8 @@ import {
 } from './lib/moment/moment';
 
 import {
-    getCalendarFormat
-} from './lib/moment/calendar';
+    getinterview_hourFormat
+} from './lib/moment/interview_hour';
 
 import {
     defineLocale,
@@ -76,7 +76,7 @@ moment.weekdaysShort         = weekdaysShort;
 moment.normalizeUnits        = normalizeUnits;
 moment.relativeTimeRounding = relativeTimeRounding;
 moment.relativeTimeThreshold = relativeTimeThreshold;
-moment.calendarFormat        = getCalendarFormat;
+moment.interview_hourFormat        = getinterview_hourFormat;
 moment.prototype             = fn;
 
 export default moment;

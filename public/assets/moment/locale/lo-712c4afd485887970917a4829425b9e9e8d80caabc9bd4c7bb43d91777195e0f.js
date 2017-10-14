@@ -36,7 +36,7 @@ var lo = moment.defineLocale('lo', {
             return 'ຕອນແລງ';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ມື້ນີ້ເວລາ] LT',
         nextDay : '[ມື້ອື່ນເວລາ] LT',
         nextWeek : '[ວັນ]dddd[ໜ້າເວລາ] LT',

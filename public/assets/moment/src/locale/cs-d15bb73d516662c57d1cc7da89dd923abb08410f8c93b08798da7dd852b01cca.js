@@ -99,7 +99,7 @@ export default moment.defineLocale('cs', {
         LLLL : 'dddd D. MMMM YYYY H:mm',
         l : 'D. M. YYYY'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[dnes v] LT',
         nextDay: '[zítra v] LT',
         nextWeek: function () {

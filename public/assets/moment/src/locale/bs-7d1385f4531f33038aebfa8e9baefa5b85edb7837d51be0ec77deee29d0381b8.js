@@ -74,7 +74,7 @@ export default moment.defineLocale('bs', {
         LLL : 'D. MMMM YYYY H:mm',
         LLLL : 'dddd, D. MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay  : '[danas u] LT',
         nextDay  : '[sutra u] LT',
         nextWeek : function () {

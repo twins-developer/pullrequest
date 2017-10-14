@@ -56,7 +56,7 @@ var be = moment.defineLocale('be', {
         LLL : 'D MMMM YYYY г., HH:mm',
         LLLL : 'dddd, D MMMM YYYY г., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Сёння ў] LT',
         nextDay: '[Заўтра ў] LT',
         lastDay: '[Учора ў] LT',

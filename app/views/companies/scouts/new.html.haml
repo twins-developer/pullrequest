@@ -36,26 +36,17 @@
             &nbsp;
             %span.label.label-info= t('helpers.labels.required')
           .col-sm-10
-            = f.text_field :interviewed_on, id: 'start_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
-              class: 'form-control'
-
+            = f.select :interviewed_on,
+              current_company.interview_hours.find_interviewable_day, {}, class: 'form-control'
         .form-group
           %label.col-sm-2.control-label.control-label-required
             = t('activerecord.attributes.scouts.start_at')
             &nbsp;
             %span.label.label-info= t('helpers.labels.required')
           .col-sm-10
-            = f.text_field :start_at, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
-              class: 'form-control'
-
-        .form-group
-          %label.col-sm-2.control-label.control-label-required
-            = t('activerecord.attributes.scouts.end_at')
-            &nbsp;
-            %span.label.label-info= t('helpers.labels.required')
-          .col-sm-10
-            = f.text_field :end_at, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
-              class: 'form-control'
+            // @TODO ajaxでその日にちの面談可能時間を取得する
+            // 日にちのフォーマット
+            = f.select :start_at, current_company.interview_hours.find_interviewable_day, {}, class: 'form-control'
 
         .form-group
           %label.col-sm-2.control-label.control-label-required

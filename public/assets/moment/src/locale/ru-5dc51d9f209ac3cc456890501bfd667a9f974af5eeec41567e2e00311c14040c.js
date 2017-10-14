@@ -70,7 +70,7 @@ export default moment.defineLocale('ru', {
         LLL : 'D MMMM YYYY г., HH:mm',
         LLLL : 'dddd, D MMMM YYYY г., HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Сегодня в] LT',
         nextDay: '[Завтра в] LT',
         lastDay: '[Вчера в] LT',

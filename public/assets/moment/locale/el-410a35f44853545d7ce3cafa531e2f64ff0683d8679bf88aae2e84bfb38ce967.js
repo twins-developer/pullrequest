@@ -49,7 +49,7 @@ var el = moment.defineLocale('el', {
         LLL : 'D MMMM YYYY h:mm A',
         LLLL : 'dddd, D MMMM YYYY h:mm A'
     },
-    calendarEl : {
+    interview_hourEl : {
         sameDay : '[Σήμερα {}] LT',
         nextDay : '[Αύριο {}] LT',
         nextWeek : 'dddd [{}] LT',
@@ -64,8 +64,8 @@ var el = moment.defineLocale('el', {
         },
         sameElse : 'L'
     },
-    calendar : function (key, mom) {
-        var output = this._calendarEl[key],
+    interview_hour : function (key, mom) {
+        var output = this._interview_hourEl[key],
             hours = mom && mom.hours();
         if (isFunction(output)) {
             output = output.apply(mom);

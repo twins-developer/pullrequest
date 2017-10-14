@@ -4,8 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string
-#  start_at   :date
-#  end_at     :date
+#  started_on :date
+#  ended_on   :date
 #  note       :text
 #  code       :text
 #  created_at :datetime         not null

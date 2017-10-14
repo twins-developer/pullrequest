@@ -61,7 +61,7 @@ var fa = moment.defineLocale('fa', {
             return 'بعد از ظهر';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[امروز ساعت] LT',
         nextDay : '[فردا ساعت] LT',
         nextWeek : 'dddd [ساعت] LT',

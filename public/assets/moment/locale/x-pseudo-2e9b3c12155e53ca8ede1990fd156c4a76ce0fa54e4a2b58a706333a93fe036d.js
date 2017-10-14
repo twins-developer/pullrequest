@@ -25,7 +25,7 @@ var xPseudo = moment.defineLocale('x-pseudo', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[T~ódá~ý át] LT',
         nextDay : '[T~ómó~rró~w át] LT',
         nextWeek : 'dddd [át] LT',

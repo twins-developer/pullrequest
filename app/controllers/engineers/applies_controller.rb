@@ -113,7 +113,6 @@ class Engineers::AppliesController < Engineers::BaseController
       :project_id,
       :interviewed_on,
       :start_at,
-      :end_at,
       :engineer_reason,
       :company_reason
     )

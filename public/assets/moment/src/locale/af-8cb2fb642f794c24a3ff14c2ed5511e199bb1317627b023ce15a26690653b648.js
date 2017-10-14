@@ -29,7 +29,7 @@ export default moment.defineLocale('af', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd, D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Vandag om] LT',
         nextDay : '[Môre om] LT',
         nextWeek : 'dddd [om] LT',

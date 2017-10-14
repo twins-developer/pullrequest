@@ -25,7 +25,7 @@ var arDz = moment.defineLocale('ar-dz', {
         LLL : 'D MMMM YYYY HH:mm',
         LLLL : 'dddd D MMMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[اليوم على الساعة] LT',
         nextDay: '[غدا على الساعة] LT',
         nextWeek: 'dddd [على الساعة] LT',

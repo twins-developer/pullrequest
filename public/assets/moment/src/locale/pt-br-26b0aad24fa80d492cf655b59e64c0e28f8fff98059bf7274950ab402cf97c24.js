@@ -19,7 +19,7 @@ export default moment.defineLocale('pt-br', {
         LLL : 'D [de] MMMM [de] YYYY [às] HH:mm',
         LLLL : 'dddd, D [de] MMMM [de] YYYY [às] HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Hoje às] LT',
         nextDay: '[Amanhã às] LT',
         nextWeek: 'dddd [às] LT',

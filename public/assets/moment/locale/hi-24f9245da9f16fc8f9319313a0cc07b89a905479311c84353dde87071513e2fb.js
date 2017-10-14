@@ -50,7 +50,7 @@ var hi = moment.defineLocale('hi', {
         LLL : 'D MMMM YYYY, A h:mm बजे',
         LLLL : 'dddd, D MMMM YYYY, A h:mm बजे'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[आज] LT',
         nextDay : '[कल] LT',
         nextWeek : 'dddd, LT',

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :companies do
+    get 'interview_hours/index'
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'pages#index'
@@ -50,7 +54,8 @@ Rails.application.routes.draw do
       get 'error', on: :collection
     end
     resources :engineers, only: %i(index show)
-    resources :interview_hours
+    resources :interview_hour_masters, only: :index
+    resources :interview_hours, only: %i(index create)
   end
 
   #

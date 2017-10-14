@@ -71,7 +71,7 @@ var fi = moment.defineLocale('fi', {
         lll : 'Do MMM YYYY, [klo] HH.mm',
         llll : 'ddd, Do MMM YYYY, [klo] HH.mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[tänään] [klo] LT',
         nextDay : '[huomenna] [klo] LT',
         nextWeek : 'dddd [klo] LT',

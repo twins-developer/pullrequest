@@ -3,7 +3,7 @@ import { Moment } from './constructor';
 var proto = Moment.prototype;
 
 import { add, subtract } from './add-subtract';
-import { calendar, getCalendarFormat } from './calendar';
+import { interview_hour, getinterview_hourFormat } from './interview_hour';
 import { clone } from './clone';
 import { isBefore, isBetween, isSame, isAfter, isSameOrAfter, isSameOrBefore } from './compare';
 import { diff } from './diff';
@@ -19,7 +19,7 @@ import { isValid, parsingFlags, invalidAt } from './valid';
 import { creationData } from './creation-data';
 
 proto.add               = add;
-proto.calendar          = calendar;
+proto.interview_hour          = interview_hour;
 proto.clone             = clone;
 proto.diff              = diff;
 proto.endOf             = endOf;

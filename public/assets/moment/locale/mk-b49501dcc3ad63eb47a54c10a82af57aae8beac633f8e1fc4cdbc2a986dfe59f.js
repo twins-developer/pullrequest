@@ -24,7 +24,7 @@ var mk = moment.defineLocale('mk', {
         LLL : 'D MMMM YYYY H:mm',
         LLLL : 'dddd, D MMMM YYYY H:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Денес во] LT',
         nextDay : '[Утре во] LT',
         nextWeek : '[Во] dddd [во] LT',

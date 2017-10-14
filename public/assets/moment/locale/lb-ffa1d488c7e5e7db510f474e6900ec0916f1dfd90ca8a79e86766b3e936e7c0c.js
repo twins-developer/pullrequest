@@ -92,7 +92,7 @@ var lb = moment.defineLocale('lb', {
         LLL: 'D. MMMM YYYY H:mm [Auer]',
         LLLL: 'dddd, D. MMMM YYYY H:mm [Auer]'
     },
-    calendar: {
+    interview_hour: {
         sameDay: '[Haut um] LT',
         sameElse: 'L',
         nextDay: '[Muer um] LT',

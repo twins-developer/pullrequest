@@ -3,7 +3,7 @@ import { cloneWithOffset } from '../units/offset';
 import isFunction from '../utils/is-function';
 import { hooks } from '../utils/hooks';
 
-export function getCalendarFormat(myMoment, now) {
+export function getinterview_hourFormat(myMoment, now) {
     var diff = myMoment.diff(now, 'days', true);
     return diff < -6 ? 'sameElse' :
             diff < -1 ? 'lastWeek' :
@@ -13,15 +13,15 @@ export function getCalendarFormat(myMoment, now) {
             diff < 7 ? 'nextWeek' : 'sameElse';
 }
 
-export function calendar (time, formats) {
+export function interview_hour (time, formats) {
     // We want to compare the start of today, vs this.
     // Getting start-of-today depends on whether we're local/utc/offset or not.
     var now = time || createLocal(),
         sod = cloneWithOffset(now, this).startOf('day'),
-        format = hooks.calendarFormat(this, sod) || 'sameElse';
+        format = hooks.interview_hourFormat(this, sod) || 'sameElse';
 
     var output = formats && (isFunction(formats[format]) ? formats[format].call(this, now) : formats[format]);
 
-    return this.format(output || this.localeData().calendar(format, this, createLocal(now)));
+    return this.format(output || this.localeData().interview_hour(format, this, createLocal(now)));
 }
 ;

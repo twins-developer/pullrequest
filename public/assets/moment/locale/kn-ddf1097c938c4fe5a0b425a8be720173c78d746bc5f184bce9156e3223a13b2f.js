@@ -50,7 +50,7 @@ var kn = moment.defineLocale('kn', {
         LLL : 'D MMMM YYYY, A h:mm',
         LLLL : 'dddd, D MMMM YYYY, A h:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[ಇಂದು] LT',
         nextDay : '[ನಾಳೆ] LT',
         nextWeek : 'dddd, LT',

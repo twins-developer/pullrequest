@@ -60,7 +60,7 @@ var dv = moment.defineLocale('dv', {
             return 'މފ';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[މިއަދު] LT',
         nextDay : '[މާދަމާ] LT',
         nextWeek : 'dddd LT',

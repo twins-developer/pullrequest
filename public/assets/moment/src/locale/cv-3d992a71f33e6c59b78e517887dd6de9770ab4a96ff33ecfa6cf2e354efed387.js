@@ -18,7 +18,7 @@ export default moment.defineLocale('cv', {
         LLL : 'YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm',
         LLLL : 'dddd, YYYY [ҫулхи] MMMM [уйӑхӗн] D[-мӗшӗ], HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Паян] LT [сехетре]',
         nextDay: '[Ыран] LT [сехетре]',
         lastDay: '[Ӗнер] LT [сехетре]',

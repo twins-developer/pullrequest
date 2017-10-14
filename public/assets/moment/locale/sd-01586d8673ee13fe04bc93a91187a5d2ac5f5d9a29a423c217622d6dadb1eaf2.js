@@ -58,7 +58,7 @@ var sd = moment.defineLocale('sd', {
         }
         return 'شام';
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[اڄ] LT',
         nextDay : '[سڀاڻي] LT',
         nextWeek : 'dddd [اڳين هفتي تي] LT',

@@ -49,7 +49,7 @@ var id = moment.defineLocale('id', {
             return 'malam';
         }
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Hari ini pukul] LT',
         nextDay : '[Besok pukul] LT',
         nextWeek : 'dddd [pukul] LT',

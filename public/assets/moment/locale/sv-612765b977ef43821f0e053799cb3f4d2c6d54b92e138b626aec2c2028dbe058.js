@@ -26,7 +26,7 @@ var sv = moment.defineLocale('sv', {
         lll : 'D MMM YYYY HH:mm',
         llll : 'ddd D MMM YYYY HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay: '[Idag] LT',
         nextDay: '[Imorgon] LT',
         lastDay: '[Igår] LT',

@@ -61,7 +61,7 @@ var lv = moment.defineLocale('lv', {
         LLL : 'YYYY. [gada] D. MMMM, HH:mm',
         LLLL : 'YYYY. [gada] D. MMMM, dddd, HH:mm'
     },
-    calendar : {
+    interview_hour : {
         sameDay : '[Šodien pulksten] LT',
         nextDay : '[Rīt pulksten] LT',
         nextWeek : 'dddd [pulksten] LT',
