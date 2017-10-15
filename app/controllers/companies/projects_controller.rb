@@ -15,6 +15,7 @@ class Companies::ProjectsController < Companies::BaseController
   # GET /projects/new
   def new
     @project = Project.new
+    @tags = Tag.all
   end
 
   # GET /projects/1/edit
@@ -72,7 +73,11 @@ class Companies::ProjectsController < Companies::BaseController
       :end_on,
       :status,
       :title,
-      :note
+      :note,
+      project_tags_attributes: %i(
+        id _destroy
+        tag_id company_id project_id
+      )
     )
   end
 end

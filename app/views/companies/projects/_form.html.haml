@@ -1,6 +1,7 @@
 // @TODO datetimepicerのフォーマット指定をcoffeeでする。 -> projects.coffee
 //       noteのテンプレート機能実装する。
 //       下書き機能の実装する。
+//       タグのvalidation
 
 .col-md-12
   = form_for [:companies, @project], html: { class: 'form-horizontal', role: 'form' } do |f|
@@ -42,13 +43,20 @@
         = f.text_field :end_on, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
           class: 'form-control'
 
+    #tags.form-group
+      = f.fields_for :project_tags do |project_tag|
+        .col-md-12
+          = render 'project_tag_fields', f: project_tag
+      .links.col-md-10.pull-right
+        = link_to_add_association "Tag を追加", f, :project_tags, class: 'btn btn-primary btn-block'
+
     .form-group
       %label.col-sm-2.control-label.control-label-required
         = t('.note')
         &nbsp;
         %span.label.label-info= t('.required')
       .col-sm-10
-        = f.text_area :note, class: 'form-control', placeholder: t('.note_example')
+        = f.text_area :note, size: '90x90', class: 'form-control', placeholder: t('.note_example')
 
     .form-group
       .col-sm-offset-2.col-sm-10

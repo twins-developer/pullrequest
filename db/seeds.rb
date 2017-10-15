@@ -1,7 +1,24 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+tags = Tag.create([
+  {
+    name: 'Ruby on Rails',
+    note: 'オープンソースのWebアプリケーションフレームワークである。
+    RoRまたは単にRailsと呼ばれる。 その名にも示されているようにRubyで書かれている。
+    またModel View Controller（MVC）アーキテクチャに基づいて構築されている。',
+    image: File.open("#{Rails.root}/db/seeds/ror.png"),
+    category: :language
+  },
+  {
+    name: 'GitHub',
+    note: 'GitHubはソフトウェア開発プロジェクトのための共有ウェブサービスであり、
+    Gitバージョン管理システムを使用する。
+    Ruby on RailsおよびErlangで記述されており、GitHub社によって保守されている。',
+    image: File.open("#{Rails.root}/db/seeds/github.png"),
+    category: :tool
+  },
+  {
+    name: 'jQuery',
+    note: 'ウェブブラウザ用のJavaScriptコードをより容易に記述できるようにするために設計されたJavaScriptライブラリである。',
+    image: File.open("#{Rails.root}/db/seeds/jquery.jpg"),
+    category: :language
+  }
+])

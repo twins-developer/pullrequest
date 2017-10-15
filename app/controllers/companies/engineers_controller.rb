@@ -13,7 +13,6 @@ class Companies::EngineersController < Companies::BaseController
 
   # GET  /companies/engineers/:1
   def show
-
   end
 
   private

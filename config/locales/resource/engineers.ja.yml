@@ -140,3 +140,6 @@ ja:
         error: 先に応募が埋まってしまいました。お手数ですが、日時を変えて再度ご応募ください
       index:
         title: 応募一覧
+    scouts:
+      index:
+        title: スカウト一覧

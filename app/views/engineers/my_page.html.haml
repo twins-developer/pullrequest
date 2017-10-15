@@ -1,28 +1,53 @@
 -# - if current_engineer.unconfirmed_email
 -#   .alert.alert-danger= t '.unconfirmed_email', unconfirmed_email: current_engineer.unconfirmed_email
+.container
+  .page-header
+    %h1= title t '.title'
 
-%h1= title t '.title'
-%br
-%h4= t '.basic_info'
-.row
-  .col-xs-12.col-md-4
-    %table.table.table-bordered
-      %tbody
-        %tr
-          %td.profile-label= t 'activerecord.attributes.user.email'
-          %td= current_engineer.email
-        %tr
-          %td.profile-label= t 'activerecord.attributes.user.name'
-          %td= current_engineer.name
-        %tr
-          %td.profile-label= t 'activerecord.attributes.user.image'
-          %td= image_tag current_engineer.image.url, size: '23x23'
-        %tr
-          %td.profile-label= t 'activerecord.attributes.user.prefecture'
-          %td= current_engineer.prefecture
-%hr
-.row
-.btn-group.btn-group-justified
-  .col-xs-12.col-md-4.btn-group= link_to t('.applies'), engineers_applies_path, class: 'btn btn-primary btn-block'
-  .col-xs-12.col-md-4.btn-group= link_to t('.confirm_documents'), new_engineers_confirm_document_path, class: 'btn btn-primary btn-block'
-  .col-xs-12.col-md-4.btn-group= link_to t('helpers.links.edit'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
+.container
+  .row
+    .col-md-3
+      = image_tag current_engineer.image.url, class: 'img-responsive center-block'
+      %hr
+      %table.table.table-bordered
+        %tbody
+          %tr
+            %td.profile-label= t 'activerecord.attributes.user.email'
+            %td= current_engineer.email
+          %tr
+            %td.profile-label= t 'activerecord.attributes.user.name'
+            %td= current_engineer.name
+
+      = link_to t('.confirm_documents'), new_engineers_confirm_document_path, class: 'btn btn-primary btn-block'
+      = link_to t('helpers.links.edit'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
+
+    .col-md-9
+      %ul.nav.nav-tabs
+        %li.nav-item
+          %a{ href: '#applies', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= t 'engineers.applies.index.title'
+        %li.nav-item
+          %a{ href: '#scouts', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= t 'engineers.scouts.index.title'
+        %li.nav-item
+          %a{ href: '#clips', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= 'タブ2'
+        %li.nav-item
+          %a.nav-link.bg-primary{ href: '#likes', 'data-toggle': 'tab' }= 'タブ3'
+        %li.nav-item
+          %a.nav-link.bg-primary{ href: '#reviews', 'data-toggle': 'tab' }= 'タブ4'
+      .tab-content
+        #applies.tab-pane.active
+          %br
+          - @applies.each do |apply|
+            .panel.panel-default
+              .panel-heading= link_to apply.project.title, [:engineers, apply]
+              .panel-body= apply.project.note.truncate(90)
+        #scouts.tab-pane
+          %br
+          - @scouts.each do |scout|
+            .panel.panel-default
+              .panel-heading= link_to scout.company.name, [:engineers, scout.company]
+              .panel-body= scout.company.name.truncate(90)
+        #clips.tab-pane
+        #likes.tab-pane
+          = 'y'
+        #reviews.tab-pane
+          = 'u'
