@@ -1,13 +1,18 @@
 -# - if current_company.unconfirmed_email
 -#   .alert.alert-danger= t '.unconfirmed_email', unconfirmed_email: current_company.unconfirmed_email
 
-%h1= title t '.title'
-%br
-%h4= t '.basic_info'
+.container
+  .page-header
+    = link_to companies_interview_hours_path, method: :post, class: 'btn btn-default' do
+      %span.glyphicon.glyphicon-list-alt
+      反映する
+    %h1= title t '.title'
 
 .container
   .row
-    .col-xs-12.col-md-4
+    .col-md-3
+      = image_tag current_company.image.url, class: 'img-responsive center-block'
+      %hr
       %table.table.table-bordered
         %tbody
           %tr
@@ -16,18 +21,59 @@
           %tr
             %td.profile-label= t 'activerecord.attributes.user.name'
             %td= current_company.name
-          %tr
-            %td.profile-label= t 'activerecord.attributes.user.image'
-            %td= image_tag current_company.image.url, size: '23x23'
 
-  %hr
+      = link_to t('companies.interview_hour_masters.index.title'), companies_interview_hour_masters_path, class: 'btn btn-primary btn-block'
+      = link_to t('companies.confirm_documents.new.title'), new_companies_confirm_document_path, class: 'btn btn-primary btn-block'
+      = link_to t('helpers.links.edit'), edit_company_registration_path, class: 'btn btn-primary btn-block'
+      = link_to t('companies.projects.index.title'), companies_projects_path, class: 'btn btn-primary btn-block'
+      = link_to t('companies.interview_hours.index.title'), companies_interview_hours_path, class: 'btn btn-primary btn-block'
+
+    .col-md-9
+      .table-responsive.col-md-12
+        %table.table.table-striped.table-bordered.table-condensed.table-hover
+          %thead
+            %tr
+              %th
+              - find_one_week.each do |week_day|
+                %th= week_day
+          %tbody
+            - 8.upto(21) do |hour|
+              %tr
+                %td.text-center= format '%02d', hour
+                - find_one_week.each.with_index(0) do |day|
+                  %td{ class: filled_interview_hour?(@interview_hours, day, hour) ? 'bg-warning' : '' }
+
   .row
-    .btn-group.btn-group-justified
-      .col-xs-12.col-md-4.btn-group= link_to t('companies.interview_hour_masters.index.title'), companies_interview_hour_masters_path, class: 'btn btn-primary btn-block'
-      .col-xs-12.col-md-4.btn-group= link_to t('companies.confirm_documents.new.title'), new_companies_confirm_document_path, class: 'btn btn-primary btn-block'
-      .col-xs-12.col-md-4.btn-group= link_to t('helpers.links.edit'), edit_company_registration_path, class: 'btn btn-primary btn-block'
-      .col-xs-12.col-md-4.btn-group= link_to t('companies.projects.index.title'), companies_projects_path, class: 'btn btn-primary btn-block'
-  %hr
-  .row
-    .btn-group.btn-group-justified
-      .col-xs-12.col-md-4.btn-group= link_to t('companies.interview_hours.index.title'), companies_interview_hours_path, class: 'btn btn-primary btn-block'
+    .col-md-3
+    .col-md-9
+      %ul.nav.nav-tabs
+        %li.nav-item
+          %a{ href: '#projects', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= 'タブ1'
+        %li.nav-item
+          %a{ href: '#clips', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= 'タブ2'
+        %li.nav-item
+          %a.nav-link.bg-primary{ href: '#likes', 'data-toggle': 'tab' }= 'タブ3'
+        %li.nav-item
+          %a.nav-link.bg-primary{ href: '#reviews', 'data-toggle': 'tab' }= 'タブ4'
+      .tab-content
+        #projects.tab-pane.active
+          %br
+          - @projects.each do |project|
+            .panel.panel-default
+              .panel-heading= link_to project.title, [:companies, project]
+              .panel-body= project.note.truncate(90)
+              .panel-footer
+                = link_to t('.edit'), edit_companies_project_path(id: project.id), class: 'btn btn-info'
+                = link_to t('.destroy'), [:companies, project], method: :delete, class: 'btn btn-danger'
+        #clips.tab-pane
+          %br
+          - @projects.each do |project|
+            .panel.panel-default
+              .panel-heading= link_to project.title, [:companies, project]
+              .panel-body= project.note.truncate(90)
+              .panel-footer
+                = link_to t('.edit'), edit_companies_project_path(id: project.id), class: 'btn btn-info'
+        #likes.tab-pane
+          = 'y'
+        #reviews.tab-pane
+          = 'u'

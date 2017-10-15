@@ -1,7 +1,7 @@
 #
 # スカウト管理
 #
-class Companies::ScoutsController < ApplicationController
+class Companies::ScoutsController < Companies::BaseController
   #
   # Callbacks
   #
