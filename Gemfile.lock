@@ -57,8 +57,6 @@ GEM
       activerecord (>= 4.0, < 5.2)
     autoprefixer-rails (7.1.4)
       execjs
-    autosize-rails (1.18.17)
-      rails (>= 3.1)
     awesome_print (1.8.0)
     aws-partitions (1.23.0)
     aws-sdk (3.0.1)
@@ -1103,7 +1101,6 @@ DEPENDENCIES
   annotate
   audited
   autoprefixer-rails
-  autosize-rails
   awesome_print
   aws-sdk
   bcrypt-ruby
