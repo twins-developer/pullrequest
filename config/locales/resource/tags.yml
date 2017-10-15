@@ -1,17 +1,13 @@
 ja:
   activerecord:
     models:
-      company: エンジニア
-      company_profile: プロフィール
+      tag: タグ
 
     attributes:
-      company:
-        email: メールアドレス
-        password: パスワード
-        password_confirmation: パスワード（確認用）
-        sign_in_count: ログイン回数
-        created_at: 登録日時
-        last_sign_in_at: 前回ログイン時刻
+      tag:
+        name: タグ名
+        image: タグ画像
+        note: 説明
   tags:
     index:
       title: タグ一覧

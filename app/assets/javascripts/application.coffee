@@ -6,7 +6,6 @@
 #= require eonasdan-bootstrap-datetimepicker
 #= require turbolinks
 #= require cocoon
-#= require jquery.autosize
 #= require_tree .
 $(document).on 'turbolinks:load', ->
   $('input[type="file"]').fileinput
@@ -25,5 +24,3 @@ $(document).on 'turbolinks:load', ->
         return
       return
     return
-
-  $('#autosize_textarea').autosize()
