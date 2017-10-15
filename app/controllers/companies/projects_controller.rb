@@ -7,12 +7,6 @@ class Companies::ProjectsController < Companies::BaseController
   #
   before_action :set_project, only: %i(show edit update destroy)
 
-  # GET /projects
-  # GET /projects.json
-  def index
-    @projects = current_company.projects.page(params[:page])
-  end
-
   # GET /projects/1
   # GET /projects/1.json
   def show

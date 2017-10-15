@@ -25,7 +25,6 @@
       = link_to t('companies.interview_hour_masters.index.title'), companies_interview_hour_masters_path, class: 'btn btn-primary btn-block'
       = link_to t('companies.confirm_documents.new.title'), new_companies_confirm_document_path, class: 'btn btn-primary btn-block'
       = link_to t('helpers.links.edit'), edit_company_registration_path, class: 'btn btn-primary btn-block'
-      = link_to t('companies.projects.index.title'), companies_projects_path, class: 'btn btn-primary btn-block'
       = link_to t('companies.interview_hours.index.title'), companies_interview_hours_path, class: 'btn btn-primary btn-block'
 
     .col-md-9
@@ -48,7 +47,7 @@
     .col-md-9
       %ul.nav.nav-tabs
         %li.nav-item
-          %a{ href: '#projects', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= 'タブ1'
+          %a{ href: '#projects', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= t 'companies.projects.index.title'
         %li.nav-item
           %a{ href: '#clips', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= 'タブ2'
         %li.nav-item
@@ -66,13 +65,6 @@
                 = link_to t('.edit'), edit_companies_project_path(id: project.id), class: 'btn btn-info'
                 = link_to t('.destroy'), [:companies, project], method: :delete, class: 'btn btn-danger'
         #clips.tab-pane
-          %br
-          - @projects.each do |project|
-            .panel.panel-default
-              .panel-heading= link_to project.title, [:companies, project]
-              .panel-body= project.note.truncate(90)
-              .panel-footer
-                = link_to t('.edit'), edit_companies_project_path(id: project.id), class: 'btn btn-info'
         #likes.tab-pane
           = 'y'
         #reviews.tab-pane
