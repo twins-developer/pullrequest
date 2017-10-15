@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   namespace :companies do
     get 'my_page'
     resources :confirm_documents, only: %i(new create)
-    resources :projects
+    resources :projects, only: %i(new create show edit update destroy)
     resources :scouts, only: %i(new create show) do
       get 'confirm', on: :collection
       get 'error', on: :collection

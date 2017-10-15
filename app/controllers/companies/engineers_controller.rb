@@ -1,7 +1,7 @@
 #
 # スタートアップサイドのエンジニア管理
 #
-class Companies::EngineersController < ApplicationController
+class Companies::EngineersController < Companies::BaseController
   #
   # Callbacks
   #

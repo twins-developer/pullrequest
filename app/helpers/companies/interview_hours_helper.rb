@@ -24,6 +24,6 @@ module Companies::InterviewHoursHelper
   # @return [Array/Date] 一ヶ月後から一週間の日にち
   #
   def find_one_week
-    Time.zone.today..(Time.zone.today + 7.days)
+    Time.zone.today..(Time.zone.today + 6.days)
   end
 end

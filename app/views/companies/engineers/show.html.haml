@@ -1,22 +1,24 @@
-.page-header
-  %h1= title t '.title'
+/ @TODO 本人確認状況
+.container
+  .page-header
+    %h1= title t '.title'
 
-%h4= t '.basic_info'
-.row
-  .col-xs-12.col-md-4
-    %table.table.table-bordered
-      %tbody
-        %tr
-          %td.profile-label= t 'activerecord.attributes.engineer.email'
-          %td= @engineer.email
-        %tr
-          %td.profile-label= t 'activerecord.attributes.engineer.name'
-          %td= @engineer.name
-        %tr
-          %td.profile-label= t 'activerecord.attributes.engineer.image'
-          %td= image_tag @engineer.image.url, size: '23x23'
-        %tr
-          %td.profile-label= t 'activerecord.attributes.engineer.prefecture'
-          %td= @engineer.prefecture
-  .col-md-8
-    .col-xs-12.col-md-4.btn-group= link_to t('companies.scouts.confirm.submit'), new_companies_scout_path(engineer_id: @engineer.id), class: 'btn btn-primary btn-block'
+.container
+  .row
+    .col-md-9
+      %table.table.table-bordered
+        %tbody
+          %tr
+            %td.profile-label= t 'activerecord.attributes.engineer.name'
+            %td= @engineer.name
+          %tr
+            %td.profile-label= t 'activerecord.attributes.engineer.prefecture'
+            %td= @engineer.prefecture
+      %h3= '経歴'
+      %h3= 'GitHub'
+      %h3= '参加プロジェクト'
+      %h3= 'メッセージ'
+      %h3= 'レビュー一覧'
+    .col-md-3
+      = image_tag @engineer.image.thumbnail.url, class: 'img-responsive'
+      = link_to t('companies.scouts.confirm.submit'), new_companies_scout_path(engineer_id: @engineer.id), class: 'btn btn-primary btn-block'
