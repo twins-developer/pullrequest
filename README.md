@@ -18,7 +18,7 @@ Ruby on Rails
 
 Coffee Script
 
-![CoffeeScript](http://cdn-ak.f.st-hatena.com/images/fotolife/l/lo25131/20140326/20140326182112.png, "CoffeeScript")
+![CoffeeScript](http://cdn-ak.f.st-hatena.com/images/fotolife/l/lo25131/20140326/20140326182112.png "CoffeeScript")
 
 [公式サイト](http://coffeescript.org/)
 
@@ -26,7 +26,7 @@ Coffee Script
 
 Haml
 
-![Haml](http://haml.info/)
+![Haml](http://haml.info/ "Haml")
 [公式サイト](http://haml.info/)
 
 ## インデント
