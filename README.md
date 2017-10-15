@@ -32,7 +32,7 @@ Coffee Script
 
 Haml
 
-![Haml](http://haml.info/ "Haml")
+![Haml](http://haml.info/images/haml.png "Haml")
 [公式サイト](http://haml.info/)
 
 ## インデント
