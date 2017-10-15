@@ -1,0 +1,6 @@
+.nested-fields.tag-child
+  .col-md-2
+  .form.col-md-9
+    = f.collection_select :tag_id, Tag.all, :id, :name, {}, class: 'form-control'
+  .col-md-1
+    = link_to_remove_association "削除", f, class: 'btn btn-danger'

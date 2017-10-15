@@ -31,7 +31,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # 何かと使うサムネイル画像を作成しておく
   #
   version :thumbnail do
-    process resize_to_fit: [600, 600]
+    process resize_to_fit: [400, 400]
   end
   # Process files as they are uploaded:
   # process scale: [200, 300]

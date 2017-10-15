@@ -34,6 +34,7 @@ class Engineer < ApplicationRecord
   accepts_nested_attributes_for :profile
   has_one :unconfirmed_address, as: :resource, dependent: :destroy
   has_many :applies, dependent: :destroy
+  has_many :scouts, dependent: :destroy
 
   # -------------------------------------------------------------------------------
   # Callbacks

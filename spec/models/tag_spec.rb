@@ -3,9 +3,10 @@
 # Table name: tags
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  name       :string           not null
 #  note       :text
-#  image      :string
+#  image      :string           not null
+#  category   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

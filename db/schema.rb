@@ -278,9 +278,10 @@ ActiveRecord::Schema.define(version: 20171014130446) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "note"
-    t.string "image"
+    t.string "image", null: false
+    t.integer "category", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

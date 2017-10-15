@@ -1,10 +1,14 @@
+#
+# トップ系画面の管理
+#
 class PagesController < ApplicationController
+
+  # GET /
   def index
-    @projects = Project.all
     if engineer_signed_in?
+      @projects = Project.all.page(params[:page])
     else
       @engineers = Engineer.all.page(params[:page])
-      puts @engineers.count
     end
   end
 end

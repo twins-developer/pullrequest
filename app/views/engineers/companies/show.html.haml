@@ -1,0 +1,23 @@
+/ @TODO 本人確認状況
+.container
+  .page-header
+    %h1= title t '.title'
+
+.container
+  .row
+    .col-md-9
+      %table.table.table-bordered
+        %tbody
+          %tr
+            %td.profile-label= t 'activerecord.attributes.company.name'
+            %td= @company.name
+          %tr
+            %td.profile-label= t 'activerecord.attributes.company.prefecture'
+            %td= @company.prefecture
+      %h3= '経歴'
+      %h3= 'GitHub'
+      %h3= '参加プロジェクト'
+      %h3= 'メッセージ'
+      %h3= 'レビュー一覧'
+    .col-md-3
+      = image_tag @company.image.thumbnail.url, class: 'img-responsive'

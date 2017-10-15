@@ -1,0 +1,12 @@
+.page-header
+  %h1= title t('.title')
+
+.container
+  .row
+    .col-md-12
+      - @tags.each do |tag|
+        .col-md-6
+          .panel.panel-default
+            .panel-heading= tag.name
+            .panel-body= image_tag tag.image.thumbnail.url, class: 'image-responsive center-block'
+            .panel-body= tag.note

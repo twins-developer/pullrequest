@@ -60,4 +60,6 @@ Rails.application.routes.draw do
   namespace :staffs do
     get 'my_page'
   end
+
+  resources :tags, only: :index
 end
