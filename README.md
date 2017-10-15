@@ -2,6 +2,12 @@
 
 [デモ環境](https://fathomless-sierra-97899.herokuapp.com/)
 
+# 仕様書
+
+[データベース定義書](https://docs.google.com/spreadsheets/d/12kzpkfq8x0XqQZKbEUMAVKSs7WCIviT22aw8N7q1snY/edit?usp=sharing)
+[機能仕様書](https://hackmd.io/CYBghgHArBEgtAIygZgQFhQYwJxIOwgBm8O0AbBGITiIukA=)
+
+
 # 開発について
 
 ## 開発言語
