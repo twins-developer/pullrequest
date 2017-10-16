@@ -5,6 +5,6 @@ ja:
     attributes:
       project:
         title: プロジェクト名
-        start_on: 開始日
-        end_on: 終了日
+        started_on: プロジェクト開始予定日
+        ended_on: プロジェクト終了予定日
         note: プロジェクトの詳細

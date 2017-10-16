@@ -116,12 +116,6 @@ ja:
       update:
         success: 更新しました。
       form:
-        required: 必須
-        title: プロジェクトの編集
-        start_on: プロジェクト開始
-        end_on: プロジェクト終了
-        note: 募集要項
-        project_title: プロジェクト名
         title_example: 〇〇な人のソリューション！〇〇サイトのレビュアーを募集します！
         note_example: ご覧いただきありがとうございます。弊社は〇〇分野の新技術で〇〇を実現するために開発をしています〇〇会社と申します。
     interview_hour_masters:
