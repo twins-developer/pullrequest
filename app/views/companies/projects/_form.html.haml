@@ -18,46 +18,46 @@
             %li= msg
 
     .form-group
-      %label.col-sm-2.control-label.control-label-required
-        = t('.project_title')
+      %label.col-md-3.control-label.control-label-required
+        = t('activerecord.attributes.project.title')
         &nbsp;
-        %span.label.label-info= t('.required')
-      .col-sm-10
+        %span.label.label-info= t('helpers.labels.required')
+      .col-md-9
         = f.text_field :title, class: 'form-control', placeholder: t('.title_example')
 
     .form-group
-      %label.col-sm-2.control-label.control-label-required
-        = t('.start_on')
+      %label.col-md-3.control-label.control-label-required
+        = t('activerecord.attributes.project.started_on')
         &nbsp;
-        %span.label.label-info= t('.required')
-      .col-sm-10
-        = f.text_field :start_on, id: 'start_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
+        %span.label.label-info= t('helpers.labels.required')
+      .col-md-9
+        = f.text_field :start_on, id: 'datepicker_of_start', data: { date_format: 'YYYY/MM/DD' },
           class: 'form-control'
 
     .form-group
-      %label.col-sm-2.control-label.control-label-required
-        = t('.end_on')
+      %label.col-md-3.control-label.control-label-required
+        = t('activerecord.attributes.project.ended_on')
         &nbsp;
-        %span.label.label-info= t('.required')
-      .col-sm-10
-        = f.text_field :end_on, id: 'end_on_datepicker', data: { date_format: 'YYYY/MM/DD' },
+        %span.label.label-info= t('helpers.labels.required')
+      .col-md-9
+        = f.text_field :end_on, id: 'datepicker_of_end', data: { date_format: 'YYYY/MM/DD' },
           class: 'form-control'
 
     #tags.form-group
       = f.fields_for :project_tags do |project_tag|
-        .col-md-12
+        .col-md-9
           = render 'project_tag_fields', f: project_tag
-      .links.col-md-10.pull-right
+      .links.col-md-9.pull-right
         = link_to_add_association "Tag を追加", f, :project_tags, class: 'btn btn-primary btn-block'
 
     .form-group
-      %label.col-sm-2.control-label.control-label-required
-        = t('.note')
+      %label.col-md-3.control-label.control-label-required
+        = t('activerecord.attributes.project.note')
         &nbsp;
-        %span.label.label-info= t('.required')
-      .col-sm-10
+        %span.label.label-info= t('helpers.labels.required')
+      .col-md-9
         = f.text_area :note, size: '90x90', class: 'form-control', placeholder: t('.note_example')
 
     .form-group
-      .col-sm-offset-2.col-sm-10
-        = f.submit class: 'btn btn-primary'
+      .col-md-2.pull-right
+        = f.submit class: 'btn btn-primary btn-block'
