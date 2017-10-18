@@ -4,8 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  company_id :integer
-#  start_on   :date
-#  end_on     :date
+#  started_on :date
+#  ended_on   :date
 #  status     :integer
 #  title      :string
 #  note       :text
@@ -24,8 +24,8 @@
 FactoryGirl.define do
   factory :project do
     company nil
-    start_on Date.today
-    end_on Date.today
+    started_on Date.today
+    ended_on Date.today
     status nil
     title { Faker::Commerce.product_name }
     note { Faker::Lorem.paragraph }

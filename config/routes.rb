@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
     resources :projects, only: %i(show)
     resources :companies, only: %i(show)
+    resources :reviews, only: %i(index show)
   end
 
   #
@@ -58,7 +59,8 @@ Rails.application.routes.draw do
   # スタッフ向け画面
   #
   namespace :staffs do
-    get 'my_page'
+    get 'dashboard'
+    resources :reviews, only: %i(new create)
   end
 
   resources :tags, only: :index

@@ -4,7 +4,7 @@ namespace :app do
     task sample: :environment do
       FactoryGirl.create_list(:company, 2, :with_projects)
       FactoryGirl.create_list(:engineer, 2)
-      FactoryGirl.create_list(:staff, 2)
+      FactoryGirl.create_list(:staff, 2, :with_reviews)
     end
   end
 end

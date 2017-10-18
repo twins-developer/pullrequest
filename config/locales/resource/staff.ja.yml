@@ -33,12 +33,8 @@ ja:
         image: 法人確認書類
 
   staffs:
-    index:
-      title: マイページ
-    my_page:
-      title: マイページ
-      basic_info: 基本情報
-      entry: 法人をする
+    dashboard:
+      title: ダッシュボード
 
     edit_mail:
       title: メールアドレスを変更する

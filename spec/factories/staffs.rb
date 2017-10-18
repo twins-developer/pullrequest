@@ -29,5 +29,12 @@ FactoryGirl.define do
     password 'hogehoge'
     password_confirmation 'hogehoge'
     name { Faker::Japanese::Name.name }
+
+    trait :with_reviews do
+      after(:create) do |staff|
+        create_list(:review, 3, staff: staff)
+      end
+    end
+
   end
 end

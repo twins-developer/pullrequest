@@ -57,4 +57,15 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def after_inactive_sign_up_path_for(_resource)
+    staffs_dashboard_path
+  end
+
+  #
+  # アカウント情報を更新した後のリダイレクト先を指定
+  #
+  def after_update_path_for(_resource)
+    staffs_manage_page_path
+  end
 end

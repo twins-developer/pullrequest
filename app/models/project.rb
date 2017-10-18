@@ -4,8 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  company_id :integer
-#  start_on   :date
-#  end_on     :date
+#  started_on :date
+#  ended_on   :date
 #  status     :integer
 #  title      :string
 #  note       :text
@@ -32,14 +32,14 @@ class Project < ApplicationRecord
   belongs_to :company
   has_many :applies, dependent: :destroy
   has_many :project_tags, dependent: :destroy
-  
+
   accepts_nested_attributes_for :project_tags, allow_destroy: true
   # -------------------------------------------------------------------------------
   # Validations
   # -------------------------------------------------------------------------------
   validates :title, presence: true, length: { in: 10..50 }
-  validates :start_on, presence: true
-  validates :end_on, presence: true
+  validates :started_on, presence: true
+  validates :ended_on, presence: true
   validates :note, presence: true, length: { maximum: 10000 }
 
   # -------------------------------------------------------------------------------

@@ -215,8 +215,8 @@ ActiveRecord::Schema.define(version: 20171014130446) do
 
   create_table "projects", force: :cascade do |t|
     t.bigint "company_id"
-    t.date "start_on"
-    t.date "end_on"
+    t.date "started_on"
+    t.date "ended_on"
     t.integer "status"
     t.string "title"
     t.text "note"
@@ -237,6 +237,7 @@ ActiveRecord::Schema.define(version: 20171014130446) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.bigint "staff_id"
     t.string "title"
     t.date "started_on"
     t.date "ended_on"
@@ -244,6 +245,7 @@ ActiveRecord::Schema.define(version: 20171014130446) do
     t.text "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["staff_id"], name: "index_reviews_on_staff_id"
   end
 
   create_table "scouts", force: :cascade do |t|
@@ -337,6 +339,7 @@ ActiveRecord::Schema.define(version: 20171014130446) do
   add_foreign_key "review_tags", "engineers"
   add_foreign_key "review_tags", "reviews"
   add_foreign_key "review_tags", "tags"
+  add_foreign_key "reviews", "staffs"
   add_foreign_key "scouts", "companies"
   add_foreign_key "scouts", "engineers"
   add_foreign_key "work_tags", "engineers"

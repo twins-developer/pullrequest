@@ -4,8 +4,8 @@
 #
 #  id         :integer          not null, primary key
 #  company_id :integer
-#  start_on   :date
-#  end_on     :date
+#  started_on :date
+#  ended_on   :date
 #  status     :integer
 #  title      :string
 #  note       :text

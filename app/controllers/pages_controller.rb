@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   # GET /
   def index
+    @review = Review.last
     if engineer_signed_in?
       @projects = Project.all.page(params[:page])
     else
