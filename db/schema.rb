@@ -10,26 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171014130446) do
+ActiveRecord::Schema.define(version: 20170924110558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "applies", force: :cascade do |t|
-    t.bigint "engineer_id"
-    t.bigint "company_id"
-    t.bigint "project_id"
-    t.date "interviewed_on"
-    t.datetime "start_at"
-    t.integer "status"
-    t.text "engineer_reason"
-    t.text "company_reason"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_applies_on_company_id"
-    t.index ["engineer_id"], name: "index_applies_on_engineer_id"
-    t.index ["project_id"], name: "index_applies_on_project_id"
-  end
 
   create_table "companies", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -116,30 +100,18 @@ ActiveRecord::Schema.define(version: 20171014130446) do
     t.bigint "engineer_id"
     t.integer "status"
     t.string "image"
-    t.string "last_name"
-    t.string "last_name_kana"
-    t.string "first_name"
-    t.string "first_name_kana"
+    t.string "name"
     t.date "birthday"
     t.integer "gender"
-    t.string "zip_code"
-    t.string "prefecture"
-    t.string "city"
-    t.string "street"
-    t.string "building"
+    t.integer "communication"
+    t.boolean "delivery"
+    t.string "address"
     t.string "tel"
-    t.string "country"
-    t.string "message"
+    t.string "portfolio"
+    t.boolean "blacklist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["engineer_id"], name: "index_engineers_profiles_on_engineer_id"
-  end
-
-  create_table "engineers_reviews", force: :cascade do |t|
-    t.bigint "engineer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["engineer_id"], name: "index_engineers_reviews_on_engineer_id"
   end
 
   create_table "engineers_settings", force: :cascade do |t|
@@ -167,52 +139,6 @@ ActiveRecord::Schema.define(version: 20171014130446) do
     t.index ["tag_id"], name: "index_engineers_works_on_tag_id"
   end
 
-  create_table "interview_hour_masters", force: :cascade do |t|
-    t.bigint "company_id"
-    t.integer "wday", null: false
-    t.integer "hour", null: false
-    t.integer "status", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id", "wday", "hour"], name: "index_interview_hour_masters_on_company_id_and_wday_and_hour", unique: true
-    t.index ["company_id"], name: "index_interview_hour_masters_on_company_id"
-  end
-
-  create_table "interview_hours", force: :cascade do |t|
-    t.bigint "company_id"
-    t.bigint "scout_id"
-    t.bigint "apply_id"
-    t.date "interviewed_on", null: false
-    t.integer "wday", null: false
-    t.integer "hour", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["apply_id"], name: "index_interview_hours_on_apply_id"
-    t.index ["company_id"], name: "index_interview_hours_on_company_id"
-    t.index ["scout_id"], name: "index_interview_hours_on_scout_id"
-  end
-
-  create_table "project_tags", force: :cascade do |t|
-    t.bigint "tag_id"
-    t.bigint "project_id"
-    t.bigint "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_project_tags_on_company_id"
-    t.index ["project_id"], name: "index_project_tags_on_project_id"
-    t.index ["tag_id"], name: "index_project_tags_on_tag_id"
-  end
-
-  create_table "project_targets", force: :cascade do |t|
-    t.bigint "project_id"
-    t.bigint "company_id"
-    t.string "skill_list"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_project_targets_on_company_id"
-    t.index ["project_id"], name: "index_project_targets_on_project_id"
-  end
-
   create_table "projects", force: :cascade do |t|
     t.bigint "company_id"
     t.date "started_on"
@@ -223,29 +149,6 @@ ActiveRecord::Schema.define(version: 20171014130446) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_projects_on_company_id"
-  end
-
-  create_table "review_tags", force: :cascade do |t|
-    t.bigint "engineer_id"
-    t.bigint "tag_id"
-    t.bigint "review_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["engineer_id"], name: "index_review_tags_on_engineer_id"
-    t.index ["review_id"], name: "index_review_tags_on_review_id"
-    t.index ["tag_id"], name: "index_review_tags_on_tag_id"
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.bigint "staff_id"
-    t.string "title"
-    t.date "started_on"
-    t.date "ended_on"
-    t.text "note"
-    t.text "code"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["staff_id"], name: "index_reviews_on_staff_id"
   end
 
   create_table "scouts", force: :cascade do |t|
@@ -301,48 +204,17 @@ ActiveRecord::Schema.define(version: 20171014130446) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "work_tags", force: :cascade do |t|
-    t.bigint "engineer_id"
-    t.bigint "tag_id"
-    t.bigint "engineers_work_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["engineer_id"], name: "index_work_tags_on_engineer_id"
-    t.index ["engineers_work_id"], name: "index_work_tags_on_engineers_work_id"
-    t.index ["tag_id"], name: "index_work_tags_on_tag_id"
-  end
-
-  add_foreign_key "applies", "companies"
-  add_foreign_key "applies", "engineers"
-  add_foreign_key "applies", "projects"
   add_foreign_key "companies_basic_infos", "companies"
   add_foreign_key "companies_careers", "companies"
   add_foreign_key "companies_engineers", "companies"
   add_foreign_key "companies_engineers", "engineers"
   add_foreign_key "confirm_documents", "unconfirmed_addresses"
   add_foreign_key "engineers_profiles", "engineers"
-  add_foreign_key "engineers_reviews", "engineers"
   add_foreign_key "engineers_settings", "engineers"
   add_foreign_key "engineers_social_accounts", "engineers"
   add_foreign_key "engineers_works", "engineers"
   add_foreign_key "engineers_works", "tags"
-  add_foreign_key "interview_hour_masters", "companies"
-  add_foreign_key "interview_hours", "applies"
-  add_foreign_key "interview_hours", "companies"
-  add_foreign_key "interview_hours", "scouts"
-  add_foreign_key "project_tags", "companies"
-  add_foreign_key "project_tags", "projects"
-  add_foreign_key "project_tags", "tags"
-  add_foreign_key "project_targets", "companies"
-  add_foreign_key "project_targets", "projects"
   add_foreign_key "projects", "companies"
-  add_foreign_key "review_tags", "engineers"
-  add_foreign_key "review_tags", "reviews"
-  add_foreign_key "review_tags", "tags"
-  add_foreign_key "reviews", "staffs"
   add_foreign_key "scouts", "companies"
   add_foreign_key "scouts", "engineers"
-  add_foreign_key "work_tags", "engineers"
-  add_foreign_key "work_tags", "engineers_works"
-  add_foreign_key "work_tags", "tags"
 end

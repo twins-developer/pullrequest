@@ -32,8 +32,6 @@ class Engineer < ApplicationRecord
   # -------------------------------------------------------------------------------
   has_one :profile, class_name: 'Engineers::Profile', dependent: :destroy
   accepts_nested_attributes_for :profile
-  has_one :unconfirmed_address, as: :resource, dependent: :destroy
-  has_many :applies, dependent: :destroy
   has_many :scouts, dependent: :destroy
 
   # -------------------------------------------------------------------------------
@@ -46,21 +44,14 @@ class Engineer < ApplicationRecord
   # -------------------------------------------------------------------------------
   delegate :image, to: :profile
   delegate :name, to: :profile
-  delegate :last_name, to: :profile
-  delegate :last_name_kana, to: :profile
-  delegate :first_name, to: :profile
-  delegate :first_name_kana, to: :profile
+  delegate :status, to: :profile
   delegate :birthday, to: :profile
   delegate :gender, to: :profile
-  delegate :prefecture, to: :profile
-  delegate :zip_code, to: :profile
-  delegate :city, to: :profile
-  delegate :street, to: :profile
-  delegate :building, to: :profile
-  delegate :building, to: :profile
+  delegate :communication, to: :profile
+  delegate :address, to: :profile
+  delegate :portfolio, to: :profile
+  delegate :blacklist, to: :profile
   delegate :tel, to: :profile
-  delegate :country, to: :profile
-  delegate :message, to: :profile
 
   # -------------------------------------------------------------------------------
   # InstanceMethods
@@ -72,7 +63,6 @@ class Engineer < ApplicationRecord
   def build_default_associations
     engineer = Engineer.find(id)
     engineer.build_profile.save
-    engineer.build_unconfirmed_address.save
   end
 
   #
@@ -81,9 +71,9 @@ class Engineer < ApplicationRecord
   # @return [Boolean] プロフィールが全て登録されていればtrue、未登録であればfalse
   #
   def set_profile?
-    image && last_name && last_name_kana && first_name && first_name_kana &&
+    image && name &&
     birthday && gender &&
-    zip_code && prefecture && city && street && building &&
-    tel && country && message
+    address && portfolio &&
+    tel && communication && delivery
   end
 end

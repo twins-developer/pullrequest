@@ -22,4 +22,15 @@ class Engineers::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  #
+  # ユーザー登録完了後に遷移するパスを指定する
+  #
+  def after_sign_in_path_for(_resource)
+    engineers_my_page_path
+  end
+
+  def after_inactive_sign_in_path_for(_resource)
+    engineers_my_page_path
+  end
 end

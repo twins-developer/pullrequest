@@ -18,7 +18,6 @@
             %td.profile-label= t 'activerecord.attributes.user.name'
             %td= current_engineer.name
 
-      = link_to t('.confirm_documents'), new_engineers_confirm_document_path, class: 'btn btn-primary btn-block'
       = link_to t('helpers.links.edit'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
 
     .col-md-9
@@ -35,17 +34,7 @@
           %a.nav-link.bg-primary{ href: '#reviews', 'data-toggle': 'tab' }= 'タブ4'
       .tab-content
         #applies.tab-pane.active
-          %br
-          - @applies.each do |apply|
-            .panel.panel-default
-              .panel-heading= link_to apply.project.title, [:engineers, apply]
-              .panel-body= apply.project.note.truncate(90)
         #scouts.tab-pane
-          %br
-          - @scouts.each do |scout|
-            .panel.panel-default
-              .panel-heading= link_to scout.company.name, [:engineers, scout.company]
-              .panel-body= scout.company.name.truncate(90)
         #clips.tab-pane
         #likes.tab-pane
           = 'y'

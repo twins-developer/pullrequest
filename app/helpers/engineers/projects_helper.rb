@@ -1,2 +1,0 @@
-module Engineers::ProjectsHelper
-end

@@ -2,26 +2,21 @@
 #
 # Table name: engineers_profiles
 #
-#  id              :integer          not null, primary key
-#  engineer_id     :integer
-#  status          :integer
-#  image           :string
-#  last_name       :string
-#  last_name_kana  :string
-#  first_name      :string
-#  first_name_kana :string
-#  birthday        :date
-#  gender          :integer
-#  zip_code        :string
-#  prefecture      :string
-#  city            :string
-#  street          :string
-#  building        :string
-#  tel             :string
-#  country         :string
-#  message         :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id            :integer          not null, primary key
+#  engineer_id   :integer
+#  status        :integer
+#  image         :string
+#  name          :string
+#  birthday      :date
+#  gender        :integer
+#  communication :integer
+#  delivery      :boolean
+#  address       :string
+#  tel           :string
+#  portfolio     :string
+#  blacklist     :boolean
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
 #
 # Indexes
 #
@@ -42,39 +37,54 @@ class Engineers::Profile < ApplicationRecord
   # -------------------------------------------------------------------------------
   # Enumerables
   # -------------------------------------------------------------------------------
+  # @TODO enumの命名チェックしてもらう
+
+  # 性別
+  # woman -> 女性
+  # man -> 男性
   enum gender: {
-    woman:  1,
-    man:    2
+    woman:  1000,
+    man:    2000
+  }
+
+  # 利用状況
+  # passed -> 可
+  # failed -> 不可
+  # balck_list -> ブラックリスト
+  # 可・不可はエンジニアとしての技量としての判断
+  enum status: {
+    passed:  1000,
+    failed:    2000,
+    balck_list: 3000
+  }
+
+  # 案件配信
+  # hoped -> 希望
+  # no_hoped -> 希望なし
+  enum delivery: {
+    hoped:  1000,
+    no_hoped:    2000,
+  }
+
+  # 連絡方法
+  # email -> Eメール
+  # tel -> 電話
+  enum communication: {
+    email:  1000,
+    tel:    2000,
   }
 
   # -------------------------------------------------------------------------------
   # Validations
   # -------------------------------------------------------------------------------
+  # @TODO 細かいバリデーションの設定
   validates :engineer, presence: true
-  validates :last_name, presence: true, on: :update
-  validates :last_name_kana, presence: true, on: :update
-  validates :first_name, presence: true, on: :update
-  validates :first_name_kana, presence: true, on: :update
+  validates :name, presence: true, on: :update
   validates :birthday, presence: true, on: :update
   validates :gender, presence: true
-  validates :zip_code, presence: true, format: { with: /\A\d{3}\-?\d{4}\z/ }, on: :update
-  validates :prefecture, presence: true, on: :update
-  validates :city, presence: true, on: :update
-  validates :street, presence: true, on: :update
+  validates :address, presence: true, on: :update
+  validates :communication, presence: true, on: :update
+  validates :delivery, presence: true, on: :update
+  validates :portfolio, presence: true, on: :update
   validates :tel, presence: true, on: :update
-
-  # -------------------------------------------------------------------------------
-  # Attributes
-  # -------------------------------------------------------------------------------
-  attribute :gender, :integer, default: 1
-  attribute :last_name, default:'Unknown'
-
-  #
-  # フルネームを返す
-  #
-  # @return [String]
-  #
-  def name
-    [last_name, first_name].join ' '
-  end
 end

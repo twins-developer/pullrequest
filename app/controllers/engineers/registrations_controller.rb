@@ -62,11 +62,11 @@ class Engineers::RegistrationsController < Devise::RegistrationsController
   # ユーザー登録完了後に遷移するパスを指定する
   #
   def after_sign_up_path_for(_resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || engineers_my_page_path
+    engineers_my_page_path
   end
 
   def after_inactive_sign_up_path_for(_resource)
-    root_path
+    engineers_my_page_path
   end
 
   #

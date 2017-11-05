@@ -30,12 +30,7 @@ FactoryGirl.define do
 
     after(:build) do |engineer|
       engineer.profile ||= build(:engineers_profile,
-        engineer: engineer,
-        zip_code: nil,
-        prefecture: nil,
-        city: nil,
-        street: nil,
-        building: nil
+        engineer: engineer
       )
     end
   end

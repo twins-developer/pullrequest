@@ -9,7 +9,5 @@ class EngineersController < ApplicationController
 
   # GET /engineers/my_page
   def my_page
-    @applies = current_engineer.applies.page(params[:page])
-    @scouts = current_engineer.scouts.page(params[:page])
   end
 end

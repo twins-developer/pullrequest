@@ -29,14 +29,11 @@ Rails.application.routes.draw do
   #
   namespace :engineers do
     get 'my_page'
-    resources :confirm_documents, only: %i(new create)
     resources :applies do
       get 'confirm', on: :collection
       get 'error', on: :collection
     end
-    resources :projects, only: %i(show)
     resources :companies, only: %i(show)
-    resources :reviews, only: %i(index show)
   end
 
   #
@@ -45,14 +42,11 @@ Rails.application.routes.draw do
   namespace :companies do
     get 'my_page'
     resources :confirm_documents, only: %i(new create)
-    resources :projects, only: %i(new create show edit update destroy)
     resources :scouts, only: %i(new create show) do
       get 'confirm', on: :collection
       get 'error', on: :collection
     end
     resources :engineers, only: %i(index show)
-    resources :interview_hour_masters, only: :index
-    resources :interview_hours, only: %i(index create)
   end
 
   #
@@ -60,8 +54,12 @@ Rails.application.routes.draw do
   #
   namespace :staffs do
     get 'dashboard'
-    resources :reviews, only: %i(new create)
   end
 
   resources :tags, only: :index
+
+  # LetterOpenerWeb
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
