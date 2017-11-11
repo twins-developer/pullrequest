@@ -1,14 +1,14 @@
-.container
-  .row
-    .col-xs-12
-      - @engineers.each do |engineer|
-        .panel.panel-default
-          .panel-heading
-            = engineer.name
-          .panel-body
-            .col-md-3
-              = link_to image_tag(engineer.image.url, class: 'img-responsive img-circle'), [:companies, engineer]
-            .col-md-9
-              - if engineer.message
-                %li= engineer.message.truncate(30)
-              %li= engineer.created_at
+-# .container
+-#   .row
+-#     .col-xs-12
+-#       - @engineers.each do |engineer|
+-#         .panel.panel-default
+-#           .panel-heading
+-#             = engineer.name
+-#           .panel-body
+-#             .col-md-3
+-#               = link_to image_tag(engineer.image.url, class: 'img-responsive img-circle'), [:companies, engineer]
+-#             .col-md-9
+-#               - if engineer.message
+-#                 %li= engineer.message.truncate(30)
+-#               %li= engineer.created_at

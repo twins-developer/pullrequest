@@ -29,5 +29,4 @@ class Scout < ApplicationRecord
   # -------------------------------------------------------------------------------
   belongs_to :company
   belongs_to :engineer
-  has_many :interview_hours
 end

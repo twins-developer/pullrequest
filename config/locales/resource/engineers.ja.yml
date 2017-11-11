@@ -3,41 +3,38 @@ ja:
     models:
       engineer: エンジニア
       engineer_profile: プロフィール
+      engineer_career: 経歴
+      engineer_desire: 希望条件
+
     attributes:
       engineer:
-        email: メールアドレス
+        email: Email
         password: パスワード
         password_confirmation: パスワード（確認用）
         sign_in_count: ログイン回数
         created_at: 登録日時
         last_sign_in_at: 前回ログイン時刻
-        name: 名前
-        image: 画像
-        prefecture: 居住地
 
       engineers/profile:
         engineer: エンジニア
         engineer_id: エンジニア
         image: アイコン画像
         name: お名前
-        name_kana: お名前（ふりがな）
-        first_name: 名
-        first_name_kana: メイ
-        last_name: 性
-        last_name_kana: セイ
         birthday: 生年月日
         gender: 性別
-        zip_code: 郵便番号
-        prefecture: 都道府県
-        city: 市区町村
-        street: それ以降の住所（番地まで）
-        building: 建物名・部屋番号
+        address: 住所
         tel: 電話番号
-        country: 国籍
-        message: スタートアップへのメッセージ
+        delivery: 案件配信
 
-      address_confirmation_image:
-        image: 本人確認書類
+      engineers/career:
+        shift: 希望の勤務日数
+        timing: 希望の就業時期
+        salary: 希望の報酬額
+        job_category: 希望の職種
+
+      engineers/desire:
+        team_size: チーム規模
+        role: 役割
 
   enums:
     engineers:
@@ -45,23 +42,131 @@ ja:
         gender:
           woman: 女性
           man: 男性
+        status:
+          passed: 通過
+          failed: 落
+          balck_list: ブラックリスト
+        communication:
+          email: Eメール
+          tel: 電話
+      desire:
+        engineer: エンジニア
+        designer: デザイナー
+        director: PM/ディレクター
+        marketer: マーケター
+
+  booleans:
+    engineers:
+      profile:
+        delivery:
+          true: 受信
+          false: 拒否
+        blacklist:
+          true: ✔︎
+          false:
+
+  lists:
+    desire:
+      salary:
+        - 〜10万円
+        - 11〜20万円
+        - 21〜30万円
+        - 31〜40万円
+        - 41〜50万円
+        - 51〜60万円
+        - 61〜70万円
+        - 71〜80万円
+        - 81〜90万円
+        - 91〜100万円
+        - 101万円〜
+      timing:
+        - すぐ（1ヶ月以内）
+        - 3ヶ月以内
+        - 半年以内
+        - 一年以内
+        - 検討中
+      shift:
+        - 週 1
+        - 週 2
+        - 週 3
+        - 週 4
+        - 週 5
+        - 転職
+        - キャリア相談
+    career:
+      role:
+        server_side:
+          - サーバーサイド開発 経験あり
+          - サーバーサイド開発 1年
+          - サーバーサイド開発 2年
+          - サーバーサイド開発 3年
+          - サーバーサイド開発 4年
+          - サーバーサイド開発 5年
+          - サーバーサイド開発 6年
+        front_side:
+          - フロントサイド開発 経験あり
+          - フロントサイド開発 1年
+          - フロントサイド開発 2年
+          - フロントサイド開発 3年
+          - フロントサイド開発 4年
+          - フロントサイド開発 5年
+          - フロントサイド開発 6年
+        infra_architect:
+          - インフラ（アーキテクト） 経験あり
+          - インフラ（アーキテクト） 1年
+          - インフラ（アーキテクト） 2年
+          - インフラ（アーキテクト） 3年
+          - インフラ（アーキテクト） 4年
+          - インフラ（アーキテクト） 5年
+          - インフラ（アーキテクト） 6年
+        infra_software:
+          - インフラ（ソフトウェア） 経験あり
+          - インフラ（ソフトウェア） 1年
+          - インフラ（ソフトウェア） 2年
+          - インフラ（ソフトウェア） 3年
+          - インフラ（ソフトウェア） 4年
+          - インフラ（ソフトウェア） 5年
+          - インフラ（ソフトウェア） 6年
+        infra_network:
+          - インフラ（ネットワーク） 経験あり
+          - インフラ（ネットワーク） 1年
+          - インフラ（ネットワーク） 2年
+          - インフラ（ネットワーク） 3年
+          - インフラ（ネットワーク） 4年
+          - インフラ（ネットワーク） 5年
+          - インフラ（ネットワーク） 6年
+        analytical_platform:
+          - 分析基盤開発 経験あり
+          - 分析基盤開発 1年
+          - 分析基盤開発 2年
+          - 分析基盤開発 3年
+          - 分析基盤開発 4年
+          - 分析基盤開発 5年
+          - 分析基盤開発 6年
+        data_mining:
+          - データマイニング 経験あり
+          - データマイニング 1年
+          - データマイニング 2年
+          - データマイニング 3年
+          - データマイニング 4年
+          - データマイニング 5年
+          - データマイニング 6年
 
   engineers:
-    index:
-      title: マイページ
     my_page:
       title: マイページ
       basic_info: 基本情報
-      entry: 本人確認をする
-      edit_mail: メールアドレスを変更する
       unconfirmed_email: "%{unconfirmed_email}のメール確認を行ってください"
-      confirm_documents: 本人確認をする
-    edit_mail:
-      title: メールアドレスを変更する
-      unconfirmed_address_prepare: 本人確認をする
-      unconfirmed_address_confirmation: 本人確認審査中
-      unconfirmed_address_confirmed: 本人確認完了
-      unconfirmed_address_resubmit: 本人確認再提出願い
+      age: 年齢
+      age: 年齢
+
+      upload_document: 職務経歴書アップロード
+      download_sample_document: 職務経歴書サンプルDL
+      reset_password: パスワードを変更
+      logout: ログアウト
+      edit_profile: プロフィール編集
+      profile: ユーザー情報
+      hearing: ヒアリング
 
     sessions:
       new:
@@ -103,43 +208,9 @@ ja:
         placeholders:
           new_password: 半角英数字で8文字から128文字まで入力できます
           new_password_confirmation: 上記で入力したパスワードと同じものを入力してください
-
-    confirm_documents:
-      new:
-        title: 本人確認書類の提出
-        upload: 本人確認書類
-        submit: 本人確認書類を提出する
-        regist_address: プロフィールを登録してください
-
-    projects:
-      show:
-        title: プロジェクト詳細
-        apply: 応募する
-
-    applies:
-      new:
-        title: 応募情報入力
-        interviewed_on: 面談日
-        start_at: 開始
-        engineer_reason: 応募理由
-        required: 必須
-        engineer_reason_example: 御社の〇〇の事業を以前担当しており、興味を持ちました…
-      confirm:
-        title: 応募情報確認
-        interviewed_on: 面談日
-        start_at: 開始
-        engineer_reason: 応募理由
-      create:
-        success: 応募が完了しました
-      show:
-        title: 応募詳細
-        interviewed_on: 面談日
-        start_at: 開始
-        engineer_reason: 応募理由
-      error:
-        error: 先に応募が埋まってしまいました。お手数ですが、日時を変えて再度ご応募ください
-      index:
-        title: 応募一覧
     scouts:
       index:
         title: スカウト一覧
+
+  view_helpers:
+    age: "%{age}歳"

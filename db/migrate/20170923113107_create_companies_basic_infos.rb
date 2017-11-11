@@ -6,13 +6,11 @@ class CreateCompaniesBasicInfos < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :image
       t.date :founded_on
-      t.string :zip_code
-      t.string :prefecture
-      t.string :city
-      t.string :street
-      t.string :building
+      t.string :address
       t.string :tel
       t.string :capital
+      t.string :ceo
+      t.string :responsible_person
 
       t.timestamps
     end

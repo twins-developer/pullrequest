@@ -13,6 +13,7 @@ class CreateEngineersProfiles < ActiveRecord::Migration[5.1]
       t.string :tel
       t.string :portfolio
       t.boolean :blacklist
+      t.string :document
 
       t.timestamps
     end

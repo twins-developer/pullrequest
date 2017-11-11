@@ -167,4 +167,7 @@ ja:
 
   pages:
     index:
-      title: タイムライン
+
+  views:
+    required: 必須
+    blank_info: 未登録

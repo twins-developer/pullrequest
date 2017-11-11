@@ -15,6 +15,7 @@
 #  tel           :string
 #  portfolio     :string
 #  blacklist     :boolean
+#  document      :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -58,14 +59,6 @@ class Engineers::Profile < ApplicationRecord
     balck_list: 3000
   }
 
-  # 案件配信
-  # hoped -> 希望
-  # no_hoped -> 希望なし
-  enum delivery: {
-    hoped:  1000,
-    no_hoped:    2000,
-  }
-
   # 連絡方法
   # email -> Eメール
   # tel -> 電話
@@ -81,7 +74,7 @@ class Engineers::Profile < ApplicationRecord
   validates :engineer, presence: true
   validates :name, presence: true, on: :update
   validates :birthday, presence: true, on: :update
-  validates :gender, presence: true
+  validates :gender, presence: true, on: :update
   validates :address, presence: true, on: :update
   validates :communication, presence: true, on: :update
   validates :delivery, presence: true, on: :update

@@ -15,6 +15,7 @@
 #  tel           :string
 #  portfolio     :string
 #  blacklist     :boolean
+#  document      :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #
@@ -28,13 +29,13 @@
 #
 
 FactoryGirl.define do
-  factory :engineers_profile, class: 'engineers::Profile' do
+  factory :engineers_profile, class: 'Engineers::Profile' do
     engineer nil
     image { open(Faker::Avatar.image) }
-    name { Faker::Japanese::Name }
+    name { Faker::Japanese::Name.name }
     birthday { Date.today - 3.years }
     gender :man
-    address { Faker::Address }
+    address { Faker::Address.full_address }
     tel { Faker::PhoneNumber.phone_number }
     status :passed
     communication Engineers::Profile.communications.keys.sample

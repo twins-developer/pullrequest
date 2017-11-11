@@ -32,6 +32,43 @@ FactoryGirl.define do
       engineer.profile ||= build(:engineers_profile,
         engineer: engineer
       )
+      engineer.career ||= build(:engineers_career,
+        engineer: engineer
+      )
+      engineer.desire ||= build(:engineers_desire,
+        engineer: engineer
+      )
     end
+
+    after(:create) do |engineer|
+      engineer.interview ||= create(:interview,
+        resource_type: 'Engineer', resource_id: engineer.id
+      )
+    end
+
+    trait :with_resource_frame_works do
+      after(:create) do |engineer|
+        create_list(
+          :resource_frame_work, 10, resource_type: 'Engineer', resource_id: engineer.id
+        )
+      end
+    end
+
+    trait :with_resource_skills do
+      after(:create) do |engineer|
+        create_list(
+          :resource_skill, 10, resource_type: 'Engineer', resource_id: engineer.id
+        )
+      end
+    end
+
+    trait :with_resource_tools do
+      after(:create) do |engineer|
+        create_list(
+          :resource_tool, 10, resource_type: 'Engineer', resource_id: engineer.id
+        )
+      end
+    end
+
   end
 end

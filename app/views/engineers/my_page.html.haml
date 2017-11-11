@@ -11,32 +11,42 @@
       %hr
       %table.table.table-bordered
         %tbody
+          %tr= current_engineer.name
           %tr
-            %td.profile-label= t 'activerecord.attributes.user.email'
+            %td.profile-label= t 'activerecord.attributes.engineers/profile.gender'
+            %td= current_engineer.gender ? current_engineer.gender_i18n : t('views.blank_info')
+          %tr
+            %td.profile-label= t '.age'
+            %td= current_engineer.birthday ? current_engineer.age : t('views.blank_info')
+          %tr
+            %td.profile-label= t 'activerecord.attributes.engineers/profile.birthday'
+            %td= current_engineer.birthday ? current_engineer.birthday : t('views.blank_info')
+          %tr
+            %td.profile-label= t 'activerecord.attributes.engineers/profile.address'
+            %td= current_engineer.address ? current_engineer.address : t('views.blank_info')
+          %tr
+            %td.profile-label= t 'activerecord.attributes.engineer.email'
             %td= current_engineer.email
           %tr
-            %td.profile-label= t 'activerecord.attributes.user.name'
-            %td= current_engineer.name
+            %td.profile-label= t 'activerecord.attributes.engineers/profile.delivery'
+            %td= current_engineer.delivery ? current_engineer.delivery : t('views.blank_info')
+          %tr
+            %td.profile-label= t 'activerecord.attributes.engineers/profile.address'
+            %td= current_engineer.address ? current_engineer.address : t('views.blank_info')
 
-      = link_to t('helpers.links.edit'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
+      = link_to t('.upload_document'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
+      = link_to t('.download_sample_document'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
+      = link_to t('.edit_profile'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
+      = link_to t('.reset_password'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
+      = link_to t('.logout'), edit_engineer_registration_path, class: 'btn btn-primary btn-block'
 
     .col-md-9
       %ul.nav.nav-tabs
         %li.nav-item
-          %a{ href: '#applies', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= t 'engineers.applies.index.title'
+          %a{ href: '#profile-tab', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= t '.profile'
         %li.nav-item
-          %a{ href: '#scouts', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= t 'engineers.scouts.index.title'
-        %li.nav-item
-          %a{ href: '#clips', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= 'タブ2'
-        %li.nav-item
-          %a.nav-link.bg-primary{ href: '#likes', 'data-toggle': 'tab' }= 'タブ3'
-        %li.nav-item
-          %a.nav-link.bg-primary{ href: '#reviews', 'data-toggle': 'tab' }= 'タブ4'
+          %a{ href: '#hearing-tab', 'data-toggle': 'tab', class: 'nav-link bg-primary' }= t '.hearing'
+
       .tab-content
-        #applies.tab-pane.active
-        #scouts.tab-pane
-        #clips.tab-pane
-        #likes.tab-pane
-          = 'y'
-        #reviews.tab-pane
-          = 'u'
+        #profile-tab.tab-pane.active
+        #hearing-tab.tab-pane

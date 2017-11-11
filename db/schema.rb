@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170924110558) do
+ActiveRecord::Schema.define(version: 20171111065301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,45 +38,14 @@ ActiveRecord::Schema.define(version: 20170924110558) do
     t.string "name"
     t.string "image"
     t.date "founded_on"
-    t.string "zip_code"
-    t.string "prefecture"
-    t.string "city"
-    t.string "street"
-    t.string "building"
+    t.string "address"
     t.string "tel"
     t.string "capital"
+    t.string "ceo"
+    t.string "responsible_person"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_companies_basic_infos_on_company_id"
-  end
-
-  create_table "companies_careers", force: :cascade do |t|
-    t.bigint "company_id"
-    t.text "summary"
-    t.text "what_note"
-    t.text "why_note"
-    t.text "other_note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_companies_careers_on_company_id"
-  end
-
-  create_table "companies_engineers", force: :cascade do |t|
-    t.bigint "company_id"
-    t.bigint "engineer_id"
-    t.date "joined_on"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_companies_engineers_on_company_id"
-    t.index ["engineer_id"], name: "index_companies_engineers_on_engineer_id"
-  end
-
-  create_table "confirm_documents", force: :cascade do |t|
-    t.bigint "unconfirmed_address_id"
-    t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["unconfirmed_address_id"], name: "index_confirm_documents_on_unconfirmed_address_id"
   end
 
   create_table "engineers", force: :cascade do |t|
@@ -96,6 +65,26 @@ ActiveRecord::Schema.define(version: 20170924110558) do
     t.index ["reset_password_token"], name: "index_engineers_on_reset_password_token", unique: true
   end
 
+  create_table "engineers_careers", force: :cascade do |t|
+    t.bigint "engineer_id"
+    t.string "team_size"
+    t.string "role", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["engineer_id"], name: "index_engineers_careers_on_engineer_id"
+  end
+
+  create_table "engineers_desires", force: :cascade do |t|
+    t.bigint "engineer_id"
+    t.integer "shift", default: [], array: true
+    t.integer "timing"
+    t.integer "salary"
+    t.integer "job_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["engineer_id"], name: "index_engineers_desires_on_engineer_id"
+  end
+
   create_table "engineers_profiles", force: :cascade do |t|
     t.bigint "engineer_id"
     t.integer "status"
@@ -109,46 +98,56 @@ ActiveRecord::Schema.define(version: 20170924110558) do
     t.string "tel"
     t.string "portfolio"
     t.boolean "blacklist"
+    t.string "document"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["engineer_id"], name: "index_engineers_profiles_on_engineer_id"
   end
 
-  create_table "engineers_settings", force: :cascade do |t|
-    t.bigint "engineer_id"
+  create_table "frame_works", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["engineer_id"], name: "index_engineers_settings_on_engineer_id"
   end
 
-  create_table "engineers_social_accounts", force: :cascade do |t|
-    t.bigint "engineer_id"
-    t.string "name"
+  create_table "interviews", force: :cascade do |t|
+    t.integer "status", null: false
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "interview_at"
+    t.string "place"
+    t.integer "communication_id"
+    t.integer "means"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["engineer_id"], name: "index_engineers_social_accounts_on_engineer_id"
   end
 
-  create_table "engineers_works", force: :cascade do |t|
-    t.bigint "engineer_id"
-    t.bigint "tag_id"
-    t.string "title"
-    t.string "url"
-    t.string "note"
-    t.index ["engineer_id"], name: "index_engineers_works_on_engineer_id"
-    t.index ["tag_id"], name: "index_engineers_works_on_tag_id"
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.bigint "company_id"
-    t.date "started_on"
-    t.date "ended_on"
-    t.integer "status"
-    t.string "title"
-    t.text "note"
+  create_table "resource_frame_works", force: :cascade do |t|
+    t.bigint "frame_work_id"
+    t.string "resource_type"
+    t.integer "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_projects_on_company_id"
+    t.index ["frame_work_id"], name: "index_resource_frame_works_on_frame_work_id"
+  end
+
+  create_table "resource_skills", force: :cascade do |t|
+    t.bigint "skill_id"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["skill_id"], name: "index_resource_skills_on_skill_id"
+  end
+
+  create_table "resource_tools", force: :cascade do |t|
+    t.bigint "tool_id"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tool_id"], name: "index_resource_tools_on_tool_id"
   end
 
   create_table "scouts", force: :cascade do |t|
@@ -162,6 +161,13 @@ ActiveRecord::Schema.define(version: 20170924110558) do
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_scouts_on_company_id"
     t.index ["engineer_id"], name: "index_scouts_on_engineer_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "staffs", force: :cascade do |t|
@@ -182,39 +188,20 @@ ActiveRecord::Schema.define(version: 20170924110558) do
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tools", force: :cascade do |t|
     t.string "name", null: false
-    t.text "note"
-    t.string "image", null: false
-    t.integer "category", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "unconfirmed_addresses", force: :cascade do |t|
-    t.integer "status", null: false
-    t.string "resource_type"
-    t.integer "resource_id"
-    t.string "zip_code"
-    t.string "prefecture"
-    t.string "city"
-    t.string "street"
-    t.string "building"
+    t.string "code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "companies_basic_infos", "companies"
-  add_foreign_key "companies_careers", "companies"
-  add_foreign_key "companies_engineers", "companies"
-  add_foreign_key "companies_engineers", "engineers"
-  add_foreign_key "confirm_documents", "unconfirmed_addresses"
+  add_foreign_key "engineers_careers", "engineers"
+  add_foreign_key "engineers_desires", "engineers"
   add_foreign_key "engineers_profiles", "engineers"
-  add_foreign_key "engineers_settings", "engineers"
-  add_foreign_key "engineers_social_accounts", "engineers"
-  add_foreign_key "engineers_works", "engineers"
-  add_foreign_key "engineers_works", "tags"
-  add_foreign_key "projects", "companies"
+  add_foreign_key "resource_frame_works", "frame_works"
+  add_foreign_key "resource_skills", "skills"
+  add_foreign_key "resource_tools", "tools"
   add_foreign_key "scouts", "companies"
   add_foreign_key "scouts", "engineers"
 end

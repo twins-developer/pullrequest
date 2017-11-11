@@ -24,17 +24,6 @@
 
       %ul.nav.navbar-nav.pull-right
         - if engineer_signed_in?
-
-          %li
-            %p.nav-text= image_tag current_engineer.image.url, size: '36x36', class: 'img-circle'
-          %li= link_to current_engineer.name, engineers_my_page_path
-
-          %li
-            = link_to destroy_engineer_session_path, method: :delete do
-              = icon 'sign-out'
-              &nbsp;
-              エンジニア
-              = t('helpers.label.engineer.log_out')
         - else
           %li
             = link_to new_engineer_session_path do
